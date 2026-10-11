@@ -1,0 +1,2006 @@
+---
+# ====== Page: Home ==========================================
+id: 1
+identification: 
+  name: Home
+  alias: HOME
+  title: Inventory Management System
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  execute-when-page-loads: |
+    (function () {
+        "use strict";
+    
+        const DASHBOARD_REGIONS = [
+            "dashboard_overview",
+            "stock_by_branch_chart",
+            "stock_movement_trend",
+            "recent_stock_movements",
+            "dashboard_stock_alerts"
+        ];
+    
+        const REFRESH_INTERVAL = 60000;
+    
+        let isRefreshing = false;
+        let savedScrollY = 0;
+    
+        function restoreScroll() {
+            window.scrollTo({
+                top: savedScrollY,
+                left: 0,
+                behavior: "instant"
+            });
+        }
+    
+        function refreshDashboard() {
+    
+            if (isRefreshing) {
+                return;
+            }
+    
+            isRefreshing = true;
+    
+            // Save current scroll position
+            savedScrollY = window.scrollY;
+    
+            const refreshPromises = [];
+    
+            DASHBOARD_REGIONS.forEach(function (regionId) {
+    
+                const region = apex.region(regionId);
+    
+                if (!region || typeof region.refresh !== "function") {
+                    return;
+                }
+    
+                const regionElement = apex.jQuery("#" + regionId);
+    
+                // Restore scroll after each region refresh
+                regionElement.one("apexafterrefresh", function () {
+    
+                    // Remove focus from refreshed search controls
+                    const activeElement = document.activeElement;
+    
+                    if (
+                        activeElement &&
+                        activeElement.matches &&
+                        activeElement.matches(
+                            ".a-IRR-search-field, .a-IRR-search-button, .a-IRR-search-field-button"
+                        )
+                    ) {
+                        activeElement.blur();
+                    }
+    
+                    restoreScroll();
+                });
+    
+                region.refresh();
+            });
+    
+            // Final scroll restoration
+            setTimeout(function () {
+                restoreScroll();
+                isRefreshing = false;
+            }, 1500);
+        }
+    
+        if (window.inventoryDashboardTimer) {
+            clearInterval(window.inventoryDashboardTimer);
+        }
+    
+        window.inventoryDashboardTimer = setInterval(
+            refreshDashboard,
+            REFRESH_INTERVAL
+        );
+    
+    })();
+
+css: 
+  inline: |
+    .dashboard-card {
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transform .2s ease,
+                    box-shadow .2s ease;
+    }
+    
+    .dashboard-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0,0,0,.12);
+    }
+    
+    .dashboard-card-STOCK {
+        border-top: 4px solid #2563eb;
+    }
+    
+    .dashboard-card-PRODUCTS {
+        border-top: 4px solid #16a34a;
+    }
+    
+    .dashboard-card-LOW {
+        border-top: 4px solid #ea580c;
+    }
+    
+    .dashboard-card-OUT {
+        border-top: 4px solid #dc2626;
+    }
+    
+    .dashboard-card-STOCK .a-CardView-body {
+        color: #2563eb;
+    }
+    
+    .dashboard-card-PRODUCTS .a-CardView-body {
+        color: #16a34a;
+    }
+    
+    .dashboard-card-LOW .a-CardView-body {
+        color: #ea580c;
+    }
+    
+    .dashboard-card-OUT .a-CardView-body {
+        color: #dc2626;
+    }
+    
+    .dashboard-card .a-CardView-body {
+        font-size: 28px;
+        font-weight: 700;
+    }
+    
+    
+    /* ******************************  */
+    
+    .movement-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    
+    .movement-in {
+        background: #dcfce7;
+        color: #166534;
+    }
+    
+    .movement-out {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+    
+    .movement-transfer-in {
+        background: #dbeafe;
+        color: #1d4ed8;
+    }
+    
+    .movement-transfer-out {
+        background: #fef3c7;
+        color: #92400e;
+    }
+    
+    .movement-deprec {
+        background: #f3e8ff;
+        color: #7e22ce;
+    }
+    
+    /* ********************  */
+    
+    .stock-alert-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    
+    .stock-alert-low {
+        background: #fff3cd;
+        color: #9a6700;
+    }
+    
+    .stock-alert-out {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+    
+    #dashboard_stock_alerts .t-Report-report {
+        width: 100%;
+    }
+    
+    #dashboard_stock_alerts .t-Report-cell {
+        padding: 12px 14px;
+    }
+    
+    
+    /* ********** Inventory managment System *********** */
+    .inventory-home-brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+    
+    .inventory-home-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+    
+    .inventory-home-title {
+        margin: 0;
+        font-size: 34px;
+        font-weight: 700;
+        color: #111827;
+    }
+    
+    @media (max-width: 768px) {
+        .inventory-home-logo {
+            width: 58px;
+            height: 58px;
+        }
+    
+        .inventory-home-title {
+            font-size: 23px;
+        }
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Inventory Overview ==========================
+  id: 1040463891505647
+  identification: 
+    name: Inventory Overview
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH STOCK_SUMMARY AS
+      (
+          SELECT
+              NVL(SUM(S.STOCK_QTY), 0) AS TOTAL_STOCK,
+              COUNT(DISTINCT S.STOCK_PROD_ID) AS STOCKED_PRODUCTS
+          FROM HR.INV_STOCK S
+      ),
+      PRODUCT_SUMMARY AS
+      (
+          SELECT
+              COUNT(*) AS ACTIVE_PRODUCTS
+          FROM HR.INV_PRODUCT
+          WHERE PROD_ISACTIVE = '1'
+      ),
+      STOCK_ALERTS AS
+      (
+          SELECT
+              COUNT(
+                  CASE
+                      WHEN NVL(S.STOCK_QTY, 0) > 0
+                       AND NVL(S.STOCK_QTY, 0) < NVL(P.PROD_MIN_STOCK, 0)
+                      THEN 1
+                  END
+              ) AS LOW_STOCK,
+      
+              COUNT(
+                  CASE
+                      WHEN NVL(S.STOCK_QTY, 0) = 0
+                       AND NVL(P.PROD_MIN_STOCK, 0) > 0
+                      THEN 1
+                  END
+              ) AS OUT_OF_STOCK
+      
+          FROM HR.INV_BRANCHES B
+          CROSS JOIN HR.INV_PRODUCT P
+          LEFT JOIN HR.INV_STOCK S
+              ON S.STOCK_BRANCH_ID = B.BRANCH_ID
+             AND S.STOCK_PROD_ID = P.PROD_ID
+      
+          WHERE P.PROD_ISACTIVE = '1'
+            AND B.BRANCH_ISACTIVE = '1'
+      ),
+      SUMMARY AS
+      (
+          SELECT
+              S.TOTAL_STOCK,
+              P.ACTIVE_PRODUCTS,
+              A.LOW_STOCK,
+              A.OUT_OF_STOCK
+          FROM STOCK_SUMMARY S
+          CROSS JOIN PRODUCT_SUMMARY P
+          CROSS JOIN STOCK_ALERTS A
+      )
+      SELECT
+          CARD_TITLE,
+          CARD_VALUE,
+          CARD_ICON,
+          CARD_SUBTITLE,
+          CARD_TYPE
+      FROM
+      (
+          SELECT
+              'Total Stock' AS CARD_TITLE,
+              TOTAL_STOCK AS CARD_VALUE,
+              'fa-cubes' AS CARD_ICON,
+              'Total available units' AS CARD_SUBTITLE,
+              'STOCK' AS CARD_TYPE,
+              1 AS SORT_ORDER
+          FROM SUMMARY
+      
+          UNION ALL
+      
+          SELECT
+              'Active Products',
+              ACTIVE_PRODUCTS,
+              'fa-cube',
+              'Active products in catalog',
+              'PRODUCTS',
+              2
+          FROM SUMMARY
+      
+          UNION ALL
+      
+          SELECT
+              'Low Stock Items',
+              LOW_STOCK,
+              'fa-exclamation-triangle',
+              'Products below minimum stock',
+              'LOW',
+              3
+          FROM SUMMARY
+      
+          UNION ALL
+      
+          SELECT
+              'Out of Stock',
+              OUT_OF_STOCK,
+              'fa-times-circle',
+              'Products with zero stock',
+              'OUT',
+              4
+          FROM SUMMARY
+      )
+      ORDER BY SORT_ORDER
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: dashboard_overview
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1040547655505648
+    appearance: 
+      layout: Grid
+      grid-columns: 4 Columns
+
+    card: 
+      css-classes: 
+      - dashboard-card
+      - dashboard-card-&CARD_TYPE.
+
+    title: 
+      advanced-formatting: false
+      column: CARD_TITLE
+
+    subtitle: 
+      advanced-formatting: false
+      column: CARD_SUBTITLE
+
+    body: 
+      advanced-formatting: false
+      column: CARD_VALUE
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Icon Class
+      icon-css-classes: fa &CARD_ICON.
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: Stock by Branch =============================
+  id: 1040679329505649
+  identification: 
+    name: Stock by Branch
+    type: Chart
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: stock_by_branch_chart
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1040736642505650
+    chart: 
+      type: Bar
+
+    appearance: 
+      orientation: Vertical
+      stack: false
+
+    layout: 
+      height: 350
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    multi-series-chart-data: 
+      fill-gaps-in-chart-data: true
+      sort-order: Label - Ascending
+      render-gap-as-zero: true
+
+    settings: 
+      zoom-and-scroll: No
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-group-name: true
+      show-value: true
+
+    legend: 
+      show: false
+
+    series: 
+    - # ====== Series: Stock Quantity ==============================
+      id: 1040824344505651
+      identification: 
+        name: Stock Quantity
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          SELECT
+              B.BRANCH_NAME AS BRANCH,
+              NVL(SUM(S.STOCK_QTY), 0) AS TOTAL_QTY
+          FROM HR.INV_BRANCHES B
+          LEFT JOIN HR.INV_STOCK S
+              ON S.STOCK_BRANCH_ID = B.BRANCH_ID
+          GROUP BY
+              B.BRANCH_ID,
+              B.BRANCH_NAME
+          ORDER BY
+              TOTAL_QTY DESC
+
+      order-by: 
+        type: None
+
+      column-mapping: 
+        label: BRANCH
+        value: TOTAL_QTY
+
+      appearance: 
+        assigned-to-y2-axis: false
+
+      label: 
+        show: false
+
+    axes: 
+    - # ====== Axis: x =============================================
+      id: 1040980031505652
+      identification: 
+        name: x
+        show-axis: true
+
+      value: 
+        format-scaling: Automatic
+        baseline-scaling: Zero
+        scale: Linear
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+        rotation: true
+        position: Outside
+
+    - # ====== Axis: y =============================================
+      id: 1041026552505653
+      identification: 
+        name: y
+        show-axis: true
+
+      value: 
+        format: Decimal
+        decimal-places: 0
+        format-scaling: None
+        baseline-scaling: Zero
+        scale: Linear
+
+      appearance: 
+        position: Automatic
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+
+- # ====== Region: Stock Movement Trend ========================
+  id: 1041136314505654
+  identification: 
+    name: Stock Movement Trend
+    type: Chart
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 6
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: stock_movement_trend
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1041305828505656
+    chart: 
+      type: Line
+
+    appearance: 
+      orientation: Vertical
+      stack: false
+
+    layout: 
+      height: 350
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    multi-series-chart-data: 
+      fill-gaps-in-chart-data: true
+      sort-order: Label - Ascending
+      render-gap-as-zero: true
+
+    settings: 
+      zoom-and-scroll: No
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-group-name: true
+      show-value: true
+
+    legend: 
+      show: false
+
+    series: 
+    - # ====== Series: Stock Movements =============================
+      id: 1041484949505657
+      identification: 
+        name: Stock Movements
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          WITH MOVEMENTS AS
+          (
+              -- ORDER IN
+              SELECT
+                  TRUNC(O.ORDER_IN_DATE) AS MOVEMENT_DATE,
+                  D.ORDER_IN_DETAILS_QUANTITY AS QTY,
+                  'ORDER IN' AS MOVEMENT_TYPE
+              FROM HR.INV_ORDER_IN O
+              JOIN HR.INV_ORDER_IN_DETAILS D
+                ON D.ORDER_IN_DETAILS_ORDERIN_ID = O.ORDER_IN_ID
+          
+              UNION ALL
+          
+              -- ORDER OUT
+              SELECT
+                  TRUNC(O.ORDER_OUT_DATE),
+                  D.ORDER_OUT_DETAILS_QUANTITY,
+                  'ORDER OUT'
+              FROM HR.INV_ORDER_OUT O
+              JOIN HR.INV_ORDER_OUT_DETAILS D
+                ON D.ORDER_OUT_DETAILS_ORDEROUT_ID = O.ORDER_OUT_ID
+          
+              UNION ALL
+          
+              -- TRANSFERS
+              SELECT
+                  TRUNC(O.TRAN_ORD_DATE),
+                  D.TRAN_ORD_DETAILS_QUANTITY,
+                  'TRANSFER'
+              FROM HR.INV_TRANSFARE_ORDER O
+              JOIN HR.INV_TRANSFARE_ORDER_DETAILS D
+                ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = O.TRAN_ORD_ID
+          
+              UNION ALL
+          
+              -- DEPRECIATION
+              SELECT
+                  TRUNC(O.DEPREC_ORD_DATE),
+                  D.DEPREC_ORD_DETAILS_QUANTITY,
+                  'DEPRECIATION'
+              FROM HR.INV_DEPRECIATION_ORDER O
+              JOIN HR.INV_DEPRECIATION_ORDER_DETAILS D
+                ON D.DEPREC_ORD_DETAILS_DEPREC_ORD_ID = O.DEPREC_ORD_ID
+          )
+          SELECT
+              MOVEMENT_DATE,
+          
+              TO_CHAR(
+                  MOVEMENT_DATE,
+                  'DD Mon YYYY',
+                  'NLS_DATE_LANGUAGE=ENGLISH'
+              ) AS MOVEMENT_LABEL,
+          
+              MOVEMENT_TYPE,
+          
+              SUM(QTY) AS TOTAL_QTY
+          
+          FROM MOVEMENTS
+          
+          WHERE MOVEMENT_DATE >= TRUNC(SYSDATE) - 29
+            AND MOVEMENT_DATE < TRUNC(SYSDATE) + 1
+          
+          GROUP BY
+              MOVEMENT_DATE,
+              MOVEMENT_TYPE
+          
+          ORDER BY
+              MOVEMENT_DATE,
+              MOVEMENT_TYPE
+
+      order-by: 
+        type: None
+
+      column-mapping: 
+        series-name: MOVEMENT_TYPE
+        label: MOVEMENT_LABEL
+        value: TOTAL_QTY
+
+      appearance: 
+        assigned-to-y2-axis: false
+
+      line: 
+        style: Solid
+        type: Automatic
+
+      marker: 
+        show: Automatic
+        shape: Automatic
+
+      label: 
+        show: false
+
+    axes: 
+    - # ====== Axis: x =============================================
+      id: 1041530380505658
+      identification: 
+        name: x
+        show-axis: true
+
+      value: 
+        format-scaling: Automatic
+        baseline-scaling: Zero
+        scale: Linear
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+        rotation: true
+        position: Outside
+
+    - # ====== Axis: y =============================================
+      id: 1041640057505659
+      identification: 
+        name: y
+        show-axis: true
+
+      value: 
+        format: Decimal
+        decimal-places: 0
+        format-scaling: None
+        baseline-scaling: Zero
+        scale: Linear
+
+      appearance: 
+        position: Automatic
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+
+- # ====== Region: Recent Stock Movements ======================
+  id: 1041263714505655
+  identification: 
+    name: Recent Stock Movements
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH MOVEMENTS AS
+      (
+          -- ORDER IN
+          SELECT
+              O.ORDER_IN_DATE AS MOVEMENT_DATE,
+              'ORDER IN' AS MOVEMENT_TYPE,
+              B.BRANCH_NAME,
+              P.PROD_NAME,
+              E.EMP_NAME,
+              D.ORDER_IN_DETAILS_QUANTITY AS QTY,
+              D.ORDER_IN_DETAILS_QUANTITY AS QTY_CHANGE,
+              O.ORDER_IN_ID AS REFERENCE_NO
+      
+          FROM HR.INV_ORDER_IN O
+          JOIN HR.INV_ORDER_IN_DETAILS D
+            ON D.ORDER_IN_DETAILS_ORDERIN_ID = O.ORDER_IN_ID
+          LEFT JOIN HR.INV_BRANCHES B
+            ON B.BRANCH_ID = O.ORDER_IN_BRANCH_ID
+          LEFT JOIN HR.INV_PRODUCT P
+            ON P.PROD_ID = D.ORDER_IN_DETAILS_PROD_ID
+          LEFT JOIN HR.INV_EMPLOYEES E
+            ON E.EMP_ID = O.ORDER_IN_EMP_ID
+      
+          UNION ALL
+      
+          -- ORDER OUT
+          SELECT
+              O.ORDER_OUT_DATE,
+              'ORDER OUT',
+              B.BRANCH_NAME,
+              P.PROD_NAME,
+              E.EMP_NAME,
+              D.ORDER_OUT_DETAILS_QUANTITY,
+              -D.ORDER_OUT_DETAILS_QUANTITY,
+              O.ORDER_OUT_ID
+      
+          FROM HR.INV_ORDER_OUT O
+          JOIN HR.INV_ORDER_OUT_DETAILS D
+            ON D.ORDER_OUT_DETAILS_ORDEROUT_ID = O.ORDER_OUT_ID
+          LEFT JOIN HR.INV_BRANCHES B
+            ON B.BRANCH_ID = O.ORDER_OUT_BRANCH_ID
+          LEFT JOIN HR.INV_PRODUCT P
+            ON P.PROD_ID = D.ORDER_OUT_DETAILS_PROD_ID
+          LEFT JOIN HR.INV_EMPLOYEES E
+            ON E.EMP_ID = O.ORDER_OUT_EMP_ID
+      
+          UNION ALL
+      
+          -- TRANSFER OUT
+          SELECT
+              O.TRAN_ORD_DATE,
+              'TRANSFER OUT',
+              B.BRANCH_NAME,
+              P.PROD_NAME,
+              E.EMP_NAME,
+              D.TRAN_ORD_DETAILS_QUANTITY,
+              -D.TRAN_ORD_DETAILS_QUANTITY,
+              O.TRAN_ORD_ID
+      
+          FROM HR.INV_TRANSFARE_ORDER O
+          JOIN HR.INV_TRANSFARE_ORDER_DETAILS D
+            ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = O.TRAN_ORD_ID
+          LEFT JOIN HR.INV_BRANCHES B
+            ON B.BRANCH_ID = O.TRAN_ORD_FROM_BRANCH_ID
+          LEFT JOIN HR.INV_PRODUCT P
+            ON P.PROD_ID = D.TRAN_ORD_DETAILS_PROD_ID
+          LEFT JOIN HR.INV_EMPLOYEES E
+            ON E.EMP_ID = O.TRAN_ORD_EMP_ID
+      
+          UNION ALL
+      
+          -- TRANSFER IN
+          SELECT
+              O.TRAN_ORD_DATE,
+              'TRANSFER IN',
+              B.BRANCH_NAME,
+              P.PROD_NAME,
+              E.EMP_NAME,
+              D.TRAN_ORD_DETAILS_QUANTITY,
+              D.TRAN_ORD_DETAILS_QUANTITY,
+              O.TRAN_ORD_ID
+      
+          FROM HR.INV_TRANSFARE_ORDER O
+          JOIN HR.INV_TRANSFARE_ORDER_DETAILS D
+            ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = O.TRAN_ORD_ID
+          LEFT JOIN HR.INV_BRANCHES B
+            ON B.BRANCH_ID = O.TRAN_ORD_TO_BRANCH_ID
+          LEFT JOIN HR.INV_PRODUCT P
+            ON P.PROD_ID = D.TRAN_ORD_DETAILS_PROD_ID
+          LEFT JOIN HR.INV_EMPLOYEES E
+            ON E.EMP_ID = O.TRAN_ORD_EMP_ID
+      
+          UNION ALL
+      
+          -- DEPRECIATION
+          SELECT
+              O.DEPREC_ORD_DATE,
+              'DEPRECIATION',
+              B.BRANCH_NAME,
+              P.PROD_NAME,
+              E.EMP_NAME,
+              D.DEPREC_ORD_DETAILS_QUANTITY,
+              -D.DEPREC_ORD_DETAILS_QUANTITY,
+              O.DEPREC_ORD_ID
+      
+          FROM HR.INV_DEPRECIATION_ORDER O
+          JOIN HR.INV_DEPRECIATION_ORDER_DETAILS D
+            ON D.DEPREC_ORD_DETAILS_DEPREC_ORD_ID = O.DEPREC_ORD_ID
+          LEFT JOIN HR.INV_BRANCHES B
+            ON B.BRANCH_ID = O.DEPREC_ORD_BRANCH_ID
+          LEFT JOIN HR.INV_PRODUCT P
+            ON P.PROD_ID = D.DEPREC_ORD_DETAILS_PROD_ID
+          LEFT JOIN HR.INV_EMPLOYEES E
+            ON E.EMP_ID = O.DEPREC_ORD_EMP_ID
+      )
+      SELECT
+          MOVEMENT_DATE,
+          -- MOVEMENT_TYPE,
+          CASE MOVEMENT_TYPE
+              WHEN 'ORDER IN' THEN
+                  '<span class="movement-badge movement-in">ORDER IN</span>'
+              WHEN 'ORDER OUT' THEN
+                  '<span class="movement-badge movement-out">ORDER OUT</span>'
+              WHEN 'TRANSFER IN' THEN
+                  '<span class="movement-badge movement-transfer-in">TRANSFER IN</span>'
+              WHEN 'TRANSFER OUT' THEN
+                  '<span class="movement-badge movement-transfer-out">TRANSFER OUT</span>'
+              WHEN 'DEPRECIATION' THEN
+                  '<span class="movement-badge movement-deprec">DEPRECIATION</span>'
+          END AS MOVEMENT_TYPE,
+          REFERENCE_NO,
+          BRANCH_NAME,
+          PROD_NAME,
+          EMP_NAME,
+          QTY,
+          QTY_CHANGE
+      FROM MOVEMENTS
+      ORDER BY MOVEMENT_DATE DESC, REFERENCE_NO DESC
+      FETCH FIRST 10 ROWS ONLY
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: recent_stock_movements
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1042572471505668
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 1086286003005008
+      identification: 
+        name: Primary Report
+        alias: 68945
+
+    columns: 
+    - # ====== Column: MOVEMENT_DATE ===============================
+      id: 1042613817505669
+      identification: 
+        column-name: MOVEMENT_DATE
+        type: Plain Text
+
+      heading: 
+        heading: Movement Date
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: 'DD/MM/YYYY HH24:MI'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MOVEMENT_TYPE ===============================
+      id: 1042717845505670
+      identification: 
+        column-name: MOVEMENT_TYPE
+        type: Plain Text
+
+      heading: 
+        heading: Movement Type
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: REFERENCE_NO ================================
+      id: 1042865246505671
+      identification: 
+        column-name: REFERENCE_NO
+        type: Plain Text
+
+      heading: 
+        heading: Reference
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BRANCH_NAME =================================
+      id: 1042956357505672
+      identification: 
+        column-name: BRANCH_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Branch
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_NAME ===================================
+      id: 1042998189505673
+      identification: 
+        column-name: PROD_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Product
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EMP_NAME ====================================
+      id: 1043174875505674
+      identification: 
+        column-name: EMP_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Employee
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: QTY =========================================
+      id: 1075420055004325
+      identification: 
+        column-name: QTY
+        type: Plain Text
+
+      heading: 
+        heading: Quantity
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: QTY_CHANGE ==================================
+      id: 1075517692004326
+      identification: 
+        column-name: QTY_CHANGE
+        type: Plain Text
+
+      heading: 
+        heading: Stock Impact
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Stock Alerts ================================
+  id: 1075600160004327
+  identification: 
+    name: Stock Alerts
+    title: Stock Alerts
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT
+          B.BRANCH_NAME,
+          P.PROD_NAME,
+          NVL(S.STOCK_QTY, 0) AS CURRENT_STOCK,
+          NVL(P.PROD_MIN_STOCK, 0) AS MIN_STOCK,
+          GREATEST(
+              NVL(P.PROD_MIN_STOCK, 0) - NVL(S.STOCK_QTY, 0),
+              0
+          ) AS SHORTAGE_QTY,
+          CASE
+              WHEN NVL(S.STOCK_QTY, 0) = 0 THEN
+                  '<span class="stock-alert-badge stock-alert-out">OUT OF STOCK</span>'
+              ELSE
+                  '<span class="stock-alert-badge stock-alert-low">LOW STOCK</span>'
+          END AS STOCK_STATUS
+      FROM HR.INV_BRANCHES B
+      CROSS JOIN HR.INV_PRODUCT P
+      LEFT JOIN HR.INV_STOCK S
+          ON S.STOCK_BRANCH_ID = B.BRANCH_ID
+         AND S.STOCK_PROD_ID = P.PROD_ID
+      WHERE P.PROD_ISACTIVE = '1'
+        AND B.BRANCH_ISACTIVE = '1'
+        AND NVL(S.STOCK_QTY, 0) < NVL(P.PROD_MIN_STOCK, 0)
+      ORDER BY
+          CASE WHEN NVL(S.STOCK_QTY, 0) = 0 THEN 0 ELSE 1 END,
+          SHORTAGE_QTY DESC,
+          B.BRANCH_NAME,
+          P.PROD_NAME
+
+  layout: 
+    sequence: 50
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: dashboard_stock_alerts
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: CAN_VIEW_STOCK # 776395287532399
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1075767197004328
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 1091983027085417
+      identification: 
+        name: Primary Report
+        alias: 69002
+
+    columns: 
+    - # ====== Column: BRANCH_NAME =================================
+      id: 1075828381004329
+      identification: 
+        column-name: BRANCH_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Branch
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_NAME ===================================
+      id: 1075918887004330
+      identification: 
+        column-name: PROD_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Product
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CURRENT_STOCK ===============================
+      id: 1076013280004331
+      identification: 
+        column-name: CURRENT_STOCK
+        type: Plain Text
+
+      heading: 
+        heading: Current Stock
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MIN_STOCK ===================================
+      id: 1076135963004332
+      identification: 
+        column-name: MIN_STOCK
+        type: Plain Text
+
+      heading: 
+        heading: Minimum Stock
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SHORTAGE_QTY ================================
+      id: 1076195590004333
+      identification: 
+        column-name: SHORTAGE_QTY
+        type: Plain Text
+
+      heading: 
+        heading: Shortage Qty
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: STOCK_STATUS ================================
+      id: 1076323748004334
+      identification: 
+        column-name: STOCK_STATUS
+        type: Plain Text
+
+      heading: 
+        heading: Stock Status
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: false
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Stock Alerts
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Inventory Management System =================
+  id: 114548723975300457220
+  identification: 
+    name: Inventory Management System
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div class="inventory-home-brand">
+          <img
+              src="#APP_FILES#Inventory.png"
+              alt="Inventory Management System"
+              class="inventory-home-logo"
+          >
+      
+          <h1 class="inventory-home-title">
+              Inventory Management System
+          </h1>
+      </div>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+buttons: 
+- # ====== Button: VIEW_CURRENT_STOCK ==========================
+  id: 1076422098004335
+  identification: 
+    button-name: VIEW_CURRENT_STOCK
+    label: View Current Stock
+
+  layout: 
+    sequence: 10
+    region: Stock Alerts # 1075600160004327
+    slot: ABOVE_BOX
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    horizontal-alignment: Right
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-external-link
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:30:&SESSION.::&DEBUG.:::'
+      page: 30 # Current Stock
+
+    warn-on-unsaved-changes: Do Not Check
+

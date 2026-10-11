@@ -1,0 +1,121 @@
+---
+- # ====== List of Values: INV_BRANCHES.BRANCH_NAME ============
+  id: 589385949487188
+  identification: 
+    name: INV_BRANCHES.BRANCH_NAME
+
+  subscription: 
+    version-number: 5124444
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INV_BRANCHES
+
+  column-mapping: 
+    return: BRANCH_ID
+    display: BRANCH_NAME
+    default-sort: BRANCH_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INV_PRODUCT_CATG.PROD_CATG_NAME =====
+  id: 615069344826497
+  identification: 
+    name: INV_PRODUCT_CATG.PROD_CATG_NAME
+
+  subscription: 
+    version-number: 5147848
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INV_PRODUCT_CATG
+
+  column-mapping: 
+    return: PROD_CATG_ID
+    display: PROD_CATG_NAME
+    default-sort: PROD_CATG_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INV_UNITS.UNIT_NAME =================
+  id: 615760691826503
+  identification: 
+    name: INV_UNITS.UNIT_NAME
+
+  subscription: 
+    version-number: 5147848
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INV_UNITS
+
+  column-mapping: 
+    return: UNIT_ID
+    display: UNIT_NAME
+    default-sort: UNIT_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INV_SUPPLIERS.SUPPLIER_NAME =========
+  id: 616415586826503
+  identification: 
+    name: INV_SUPPLIERS.SUPPLIER_NAME
+
+  subscription: 
+    version-number: 5147848
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INV_SUPPLIERS
+
+  column-mapping: 
+    return: SUPPLIER_ID
+    display: SUPPLIER_NAME
+    default-sort: SUPPLIER_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INV_USERS.USER_NAME =================
+  id: 748728954286903
+  identification: 
+    name: INV_USERS.USER_NAME
+
+  subscription: 
+    version-number: 5431320
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INV_USERS
+
+  column-mapping: 
+    return: USER_ID
+    display: USER_NAME
+    default-sort: USER_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: INV_ROLES.ROLE_NAME =================
+  id: 749465526286920
+  identification: 
+    name: INV_ROLES.ROLE_NAME
+
+  subscription: 
+    version-number: 5431322
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INV_ROLES
+
+  column-mapping: 
+    return: ROLE_ID
+    display: ROLE_NAME
+    default-sort: ROLE_NAME
+    sort-direction: Ascending (Nulls Last)
+

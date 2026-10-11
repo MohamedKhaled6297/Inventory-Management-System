@@ -1,0 +1,206 @@
+---
+- # ====== Authorization: IS_ADMIN =============================
+  id: 767807182572611
+  identification: 
+    name: IS_ADMIN
+
+  subscription: 
+    version-number: 5462293
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(
+          P_USERNAME  => :APP_USER,
+          P_ROLE_NAME => 'ADMIN'
+      );
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to access this page.
+
+- # ====== Authorization: CAN_MANAGE_STOCK =====================
+  id: 775861321466361
+  identification: 
+    name: CAN_MANAGE_STOCK
+
+  subscription: 
+    version-number: 5500981
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'STORE_USER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to manage inventory transactions.
+
+- # ====== Authorization: CAN_MANAGE_DEPRECIATION ==============
+  id: 776010919469599
+  identification: 
+    name: CAN_MANAGE_DEPRECIATION
+
+  subscription: 
+    version-number: 5501056
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MANAGER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to manage depreciation transactions.
+
+- # ====== Authorization: CAN_VIEW_REPORTS =====================
+  id: 776229832525195
+  identification: 
+    name: CAN_VIEW_REPORTS
+
+  subscription: 
+    version-number: 5501649
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MANAGER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'REPORT_USER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to view reports.
+
+- # ====== Authorization: CAN_VIEW_STOCK =======================
+  id: 776395287532399
+  identification: 
+    name: CAN_VIEW_STOCK
+
+  subscription: 
+    version-number: 5501753
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'STORE_USER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MANAGER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'REPORT_USER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to view stock information.
+
+- # ====== Authorization: CAN_VIEW_MASTER_DATA =================
+  id: 1103941645144916
+  identification: 
+    name: CAN_VIEW_MASTER_DATA
+
+  subscription: 
+    version-number: 5908037
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MASTER_DATA_MANAGER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'STORE_USER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MANAGER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'REPORT_USER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to view master data.
+
+- # ====== Authorization: CAN_MANAGE_MASTER_DATA ===============
+  id: 1104203936157772
+  identification: 
+    name: CAN_MANAGE_MASTER_DATA
+
+  subscription: 
+    version-number: 5908192
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MASTER_DATA_MANAGER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: Access Denied. You do not have permission to manage master data.
+
+- # ====== Authorization: CAN_VIEW_TRANSACTIONS_MENU ===========
+  id: 1118275466068375
+  identification: 
+    name: CAN_VIEW_TRANSACTIONS_MENU
+
+  subscription: 
+    version-number: 5961111
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN HR.INV_HAS_ROLE(:APP_USER, 'ADMIN')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'STORE_USER')
+          OR HR.INV_HAS_ROLE(:APP_USER, 'MANAGER');
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: 'Access Denied: You do not have permission to access this section. Please contact your system administrator.'
+
+- # ====== Authorization: Administration Rights ================
+  id: 114548716062775457210
+  identification: 
+    name: Administration Rights
+
+  subscription: 
+    version-number: 15677366127681
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: return true;
+
+  server-cache: 
+    evaluation-point: Once per Page View
+
+  error: 
+    error-message: Insufficient privileges, user is not an Administrator
+

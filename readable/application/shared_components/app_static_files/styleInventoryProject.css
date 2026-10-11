@@ -1,0 +1,77 @@
+/* Tool Bar*/
+.t-Header,
+.t-Header-branding,
+.t-Header-nav/*,
+.t-Header-navBar*/
+ {
+    background: linear-gradient(135deg, #0096D6, #00BFFF, #007ACC) !important;
+    color: #ffffff !important;
+}
+@keyframes headerGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.t-Header,
+.t-Header-branding,
+.t-Header-nav/*,
+.t-Header-navBar*/ {
+    background-size: 200% 200%;
+    animation: headerGradientMove 10s ease infinite;
+}
+
+
+
+
+/* ===== Sidebar background ===== */
+.t-Body-nav{
+  background:#0096D6 !important;
+}
+
+/* make all items transparent by default */
+.t-Body-nav .t-TreeNav-row,
+.t-Body-nav .t-TreeNav-content,
+.t-Body-nav .t-TreeNav-label{
+  background: transparent !important;
+  color:#fff !important;
+}
+
+
+/* smooth */
+.t-Body-nav .t-TreeNav-row,
+.t-Body-nav .t-TreeNav-content,
+.t-Body-nav a{
+  transition: all .2s ease;
+}
+
+
+
+/* Indent Sub Menu */
+.t-TreeNav--styleB .a-TreeView-node--topLevel > ul {
+    padding-left: 25px !important;
+}
+
+
+/* remove any overlay */
+.t-TreeNav--styleB .a-TreeView-row.is-current--top:before,
+.t-TreeNav--styleB .a-TreeView-row.is-current:before {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* ===== Remove Focus Black Effect ===== */
+
+.t-TreeNav--styleB .a-TreeView-row.is-focused,
+.t-TreeNav--styleB .a-TreeView-content.is-focused,
+.t-TreeNav--styleB .a-TreeView-label:focus {
+
+    box-shadow: none !important;
+    outline: none !important;
+    color: #ffffff !important;
+}
+
+/* remove default focus ring */
+.t-TreeNav--styleB .a-TreeView-label:focus {
+    outline: none !important;
+}

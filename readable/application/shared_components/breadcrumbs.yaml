@@ -1,0 +1,301 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 114548710692820457195
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: Suppliers ====================================
+    id: 560231877020505
+    identification: 
+      name: Suppliers
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # Suppliers
+
+  - # ====== Entry: Customers ====================================
+    id: 581615333402264
+    identification: 
+      name: Customers
+      page-number: 6
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+        page: 6 # Customers
+
+  - # ====== Entry: Employees ====================================
+    id: 603792743487231
+    identification: 
+      name: Employees
+      page-number: 12
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:12:&APP_SESSION.::&DEBUG.:::'
+        page: 12 # Employees
+
+  - # ====== Entry: Products =====================================
+    id: 633116315826534
+    identification: 
+      name: Products
+      page-number: 14
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:14:&APP_SESSION.::&DEBUG.:::'
+        page: 14 # Products
+
+  - # ====== Entry: Users ========================================
+    id: 670180726148128
+    identification: 
+      name: Users
+      page-number: 16
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:16:&APP_SESSION.::&DEBUG.:::'
+        page: 16 # Users
+
+  - # ====== Entry: Roles ========================================
+    id: 729420061339241
+    identification: 
+      name: Roles
+      page-number: 20
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:20:&APP_SESSION.::&DEBUG.:::'
+        page: 20 # Roles
+
+  - # ====== Entry: User Roles ===================================
+    id: 761435261286978
+    identification: 
+      name: User Roles
+      page-number: 18
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:18:&APP_SESSION.::&DEBUG.:::'
+        page: 18 # User Roles
+
+  - # ====== Entry: Order IN =====================================
+    id: 779217376650599
+    identification: 
+      name: Order IN
+      page-number: 22
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:22:&APP_SESSION.::&DEBUG.:::'
+        page: 22 # Order IN
+
+  - # ====== Entry: Order OUT ====================================
+    id: 812791433482311
+    identification: 
+      name: Order OUT
+      page-number: 24
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:24:&APP_SESSION.::&DEBUG.:::'
+        page: 24 # Order OUT
+
+  - # ====== Entry: Stock Transfer ===============================
+    id: 845927706336620
+    identification: 
+      name: Stock Transfer
+      page-number: 26
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:26:&APP_SESSION.::&DEBUG.:::'
+        page: 26 # Stock Transfer
+
+  - # ====== Entry: Depreciation Order ===========================
+    id: 878185326526352
+    identification: 
+      name: Depreciation Order
+      page-number: 28
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:28:&APP_SESSION.::&DEBUG.:::'
+        page: 28 # Depreciation Order
+
+  - # ====== Entry: Current Stock ================================
+    id: 907017113906547
+    identification: 
+      name: Current Stock
+      page-number: 30
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:30:&APP_SESSION.::&DEBUG.:::'
+        page: 30 # Current Stock
+
+  - # ====== Entry: Stock Movement ===============================
+    id: 949507380292761
+    identification: 
+      name: Stock Movement
+      page-number: 23
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:23:&APP_SESSION.::&DEBUG.:::'
+        page: 23 # Stock Movement
+
+  - # ====== Entry: Stock Reconciliation =========================
+    id: 988273225088861
+    identification: 
+      name: Stock Reconciliation
+      page-number: 31
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:31:&APP_SESSION.::&DEBUG.:::'
+        page: 31 # Stock Reconciliation
+
+  - # ====== Entry: Order IN Report ==============================
+    id: 1008595819256486
+    identification: 
+      name: Order IN Report
+      page-number: 33
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:33:&APP_SESSION.::&DEBUG.:::'
+        page: 33 # Order IN Report
+
+  - # ====== Entry: Order OUT Report =============================
+    id: 1028040045485333
+    identification: 
+      name: Order OUT Report
+      page-number: 34
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:34:&APP_SESSION.::&DEBUG.:::'
+        page: 34 # Order OUT Report
+
+  - # ====== Entry: Depreciation Report ==========================
+    id: 1049583470648695
+    identification: 
+      name: Depreciation Report
+      page-number: 35
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:35:&APP_SESSION.::&DEBUG.:::'
+        page: 35 # Depreciation Report
+
+  - # ====== Entry: Home =========================================
+    id: 114548710844520457195
+    identification: 
+      name: Home
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+  - # ====== Entry: Branches =====================================
+    id: 122754847196699555205
+    identification: 
+      name: Branches
+      page-number: 3
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # Branches
+
+  - # ====== Entry: Units ========================================
+    id: 122759799638935659672
+    identification: 
+      name: Units
+      page-number: 8
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:8:&APP_SESSION.::&DEBUG.:::'
+        page: 8 # Units
+
+  - # ====== Entry: Categories ===================================
+    id: 122762277786044051173
+    identification: 
+      name: Categories
+      page-number: 10
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:::'
+        page: 10 # Categories
+

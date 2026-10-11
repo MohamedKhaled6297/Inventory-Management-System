@@ -1,0 +1,1224 @@
+---
+# ====== Page: Current Stock =================================
+id: 30
+identification: 
+  name: Current Stock
+  alias: CURRENT-STOCK
+  title: Current Stock
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .stock-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    
+    .stock-badge .fa {
+        font-size: 13px;
+    }
+    
+    /* Normal Stock */
+    .stock-normal {
+        background: #e8f5e9;
+        color: #1b5e20;
+        border: 1px solid #a5d6a7;
+    }
+    
+    /* Low Stock */
+    .stock-low {
+        background: #fff3e0;
+        color: #e65100;
+        border: 1px solid #ffcc80;
+    }
+    
+    /* Out Of Stock */
+    .stock-out {
+        background: #ffebee;
+        color: #b71c1c;
+        border: 1px solid #ef9a9a;
+    }
+    
+    /* Over Stock */
+    .stock-over {
+        background: #e3f2fd;
+        color: #0d47a1;
+        border: 1px solid #90caf9;
+    }
+    
+    
+    
+    
+    /******************************/
+    /* Current Stock Summary Cards */
+    
+    .stock-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+    
+    .stock-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    }
+    
+    /* Total Products */
+    .stock-card-PRODUCTS {
+        border-top: 4px solid #2196f3;
+    }
+    
+    /* Total Quantity */
+    .stock-card-QUANTITY {
+        border-top: 4px solid #00acc1;
+    }
+    
+    /* Low Stock */
+    .stock-card-LOW {
+        border-top: 4px solid #ff9800;
+    }
+    
+    /* Out of Stock */
+    .stock-card-OUT {
+        border-top: 4px solid #f44336;
+    }
+
+security: 
+  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Stock Summary ===============================
+  id: 1404267651453639
+  identification: 
+    name: Stock Summary
+    title: Stock Summary
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT 'Total Products' AS CARD_TITLE,
+             COUNT(DISTINCT S.STOCK_PROD_ID) AS CARD_VALUE,
+             'fa-cubes' AS CARD_ICON,
+             'Products currently in stock' AS CARD_SUBTITLE,
+             'PRODUCTS' AS CARD_TYPE
+      FROM INV_STOCK S
+      JOIN INV_PRODUCT P
+        ON P.PROD_ID = S.STOCK_PROD_ID
+      WHERE (:P30_BRANCH_ID IS NULL
+             OR S.STOCK_BRANCH_ID = :P30_BRANCH_ID)
+        AND (
+             :P30_STOCK_STATUS IS NULL
+             OR :P30_STOCK_STATUS =
+                CASE
+                    WHEN S.STOCK_QTY = 0 THEN 'OUT_OF_STOCK'
+                    WHEN P.PROD_MIN_STOCK IS NOT NULL
+                     AND S.STOCK_QTY <= P.PROD_MIN_STOCK THEN 'LOW_STOCK'
+                    WHEN P.PROD_MAX_STOCK IS NOT NULL
+                     AND S.STOCK_QTY > P.PROD_MAX_STOCK THEN 'OVER_STOCK'
+                    ELSE 'NORMAL'
+                END
+            )
+      
+      UNION ALL
+      
+      SELECT 'Total Stock Qty',
+             NVL(SUM(S.STOCK_QTY), 0),
+             'fa-database',
+             'Total quantity across selected stock',
+             'QUANTITY'
+      FROM INV_STOCK S
+      JOIN INV_PRODUCT P
+        ON P.PROD_ID = S.STOCK_PROD_ID
+      WHERE (:P30_BRANCH_ID IS NULL
+             OR S.STOCK_BRANCH_ID = :P30_BRANCH_ID)
+        AND (
+             :P30_STOCK_STATUS IS NULL
+             OR :P30_STOCK_STATUS =
+                CASE
+                    WHEN S.STOCK_QTY = 0 THEN 'OUT_OF_STOCK'
+                    WHEN P.PROD_MIN_STOCK IS NOT NULL
+                     AND S.STOCK_QTY <= P.PROD_MIN_STOCK THEN 'LOW_STOCK'
+                    WHEN P.PROD_MAX_STOCK IS NOT NULL
+                     AND S.STOCK_QTY > P.PROD_MAX_STOCK THEN 'OVER_STOCK'
+                    ELSE 'NORMAL'
+                END
+            )
+      
+      UNION ALL
+      
+      SELECT 'Low Stock',
+             COUNT(*),
+             'fa-exclamation-triangle',
+             'Products at or below minimum level',
+             'LOW'
+      FROM INV_STOCK S
+      JOIN INV_PRODUCT P
+        ON P.PROD_ID = S.STOCK_PROD_ID
+      WHERE (:P30_BRANCH_ID IS NULL
+             OR S.STOCK_BRANCH_ID = :P30_BRANCH_ID)
+        AND S.STOCK_QTY > 0
+        AND P.PROD_MIN_STOCK IS NOT NULL
+        AND S.STOCK_QTY <= P.PROD_MIN_STOCK
+        AND (:P30_STOCK_STATUS IS NULL
+             OR :P30_STOCK_STATUS = 'LOW_STOCK')
+      
+      UNION ALL
+      
+      SELECT 'Out of Stock',
+             COUNT(*),
+             'fa-times-circle',
+             'Products with zero quantity',
+             'OUT'
+      FROM INV_STOCK S
+      JOIN INV_PRODUCT P
+        ON P.PROD_ID = S.STOCK_PROD_ID
+      WHERE (:P30_BRANCH_ID IS NULL
+             OR S.STOCK_BRANCH_ID = :P30_BRANCH_ID)
+        AND S.STOCK_QTY = 0
+        AND (:P30_STOCK_STATUS IS NULL
+             OR :P30_STOCK_STATUS = 'OUT_OF_STOCK')
+    page-items-to-submit: 
+    - P30_BRANCH_ID
+    - P30_STOCK_STATUS
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 1404123583453638
+    appearance: 
+      layout: Grid
+      grid-columns: 4 Columns
+
+    card: 
+      css-classes: 
+      - stock-card
+      - stock-card-&CARD_TYPE.
+
+    title: 
+      advanced-formatting: false
+      column: CARD_TITLE
+
+    subtitle: 
+      advanced-formatting: false
+      column: CARD_SUBTITLE
+
+    body: 
+      advanced-formatting: false
+      column: CARD_VALUE
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Icon Class
+      icon-css-classes: fa &CARD_ICON.
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: Stock Filters ===============================
+  id: 1403986937453636
+  identification: 
+    name: Stock Filters
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Breadcrumb ==================================
+  id: 906559756906542
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 114548710692820457195
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Current Stock ===============================
+  id: 907214669906549
+  identification: 
+    name: Current Stock
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT
+          S.STOCK_ID,
+      
+          B.BRANCH_ID,
+          B.BRANCH_NAME,
+      
+          P.PROD_ID,
+          P.PROD_NAME,
+      
+          P.PROD_MIN_STOCK,
+          P.PROD_MAX_STOCK,
+      
+          S.STOCK_QTY,
+      
+          CASE
+              WHEN S.STOCK_QTY = 0 THEN 'OUT_OF_STOCK'
+      
+              WHEN P.PROD_MIN_STOCK IS NOT NULL
+               AND S.STOCK_QTY <= P.PROD_MIN_STOCK THEN 'LOW_STOCK'
+      
+              WHEN P.PROD_MAX_STOCK IS NOT NULL
+               AND S.STOCK_QTY > P.PROD_MAX_STOCK THEN 'OVER_STOCK'
+      
+              ELSE 'NORMAL'
+          END AS STOCK_STATUS_CODE,
+      
+      
+          CASE
+              WHEN S.STOCK_QTY = 0 THEN
+                  '<span class="stock-badge stock-out">
+                      <span class="fa fa-times-circle"></span>
+                      Out of Stock
+                   </span>'
+      
+              WHEN P.PROD_MIN_STOCK IS NOT NULL
+                   AND S.STOCK_QTY <= P.PROD_MIN_STOCK THEN
+                  '<span class="stock-badge stock-low">
+                      <span class="fa fa-exclamation-triangle"></span>
+                      Low Stock
+                   </span>'
+      
+              WHEN P.PROD_MAX_STOCK IS NOT NULL
+                   AND S.STOCK_QTY > P.PROD_MAX_STOCK THEN
+                  '<span class="stock-badge stock-over">
+                      <span class="fa fa-arrow-circle-up"></span>
+                      Over Stock
+                   </span>'
+      
+              ELSE
+                  '<span class="stock-badge stock-normal">
+                      <span class="fa fa-check-circle"></span>
+                      Normal
+                   </span>'
+          END AS STOCK_STATUS
+      
+      FROM INV_STOCK S
+      
+      JOIN INV_BRANCHES B
+          ON B.BRANCH_ID = S.STOCK_BRANCH_ID
+      
+      JOIN INV_PRODUCT P
+          ON P.PROD_ID = S.STOCK_PROD_ID
+      
+      WHERE (:P30_BRANCH_ID IS NULL
+             OR S.STOCK_BRANCH_ID = :P30_BRANCH_ID)
+      
+      AND (
+          :P30_STOCK_STATUS IS NULL
+      
+          OR :P30_STOCK_STATUS =
+             CASE
+                 WHEN S.STOCK_QTY = 0 THEN 'OUT_OF_STOCK'
+      
+                 WHEN P.PROD_MIN_STOCK IS NOT NULL
+                  AND S.STOCK_QTY <= P.PROD_MIN_STOCK
+                     THEN 'LOW_STOCK'
+      
+                 WHEN P.PROD_MAX_STOCK IS NOT NULL
+                  AND S.STOCK_QTY > P.PROD_MAX_STOCK
+                     THEN 'OVER_STOCK'
+      
+                 ELSE 'NORMAL'
+             END
+      )
+      
+      
+      ORDER BY
+          B.BRANCH_NAME,
+          P.PROD_NAME
+    page-items-to-submit: 
+    - P30_BRANCH_ID
+    - P30_STOCK_STATUS
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 907343951906549
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: No data found.
+      when-more-data-found: 'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 911516843908392
+      identification: 
+        name: Primary Report
+        alias: 67198
+
+    columns: 
+    - # ====== Column: STOCK_STATUS_CODE ===========================
+      id: 1404068610453637
+      identification: 
+        column-name: STOCK_STATUS_CODE
+        type: Hidden
+
+      heading: 
+        heading: Stock Status Code
+
+      layout: 
+        sequence: 18
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: STOCK_ID ====================================
+      id: 907956081906564
+      identification: 
+        column-name: STOCK_ID
+        type: Hidden
+
+      heading: 
+        heading: Stock Id
+
+      layout: 
+        sequence: 1
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BRANCH_ID ===================================
+      id: 908387250906567
+      identification: 
+        column-name: BRANCH_ID
+        type: Hidden
+
+      heading: 
+        heading: Branch Id
+
+      layout: 
+        sequence: 2
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BRANCH_NAME =================================
+      id: 908728856906569
+      identification: 
+        column-name: BRANCH_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Branch
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 3
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_ID =====================================
+      id: 909117447906569
+      identification: 
+        column-name: PROD_ID
+        type: Hidden
+
+      heading: 
+        heading: Prod Id
+
+      layout: 
+        sequence: 4
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_NAME ===================================
+      id: 909546775906570
+      identification: 
+        column-name: PROD_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Product
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 5
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_MIN_STOCK ==============================
+      id: 909952308906572
+      identification: 
+        column-name: PROD_MIN_STOCK
+        type: Plain Text
+
+      heading: 
+        heading: Min Stock
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 6
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_MAX_STOCK ==============================
+      id: 910354545906572
+      identification: 
+        column-name: PROD_MAX_STOCK
+        type: Plain Text
+
+      heading: 
+        heading: Max Stock
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 7
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: STOCK_QTY ===================================
+      id: 910757909906572
+      identification: 
+        column-name: STOCK_QTY
+        type: Plain Text
+
+      heading: 
+        heading: Current Stock
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 8
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: STOCK_STATUS ================================
+      id: 911143911906574
+      identification: 
+        column-name: STOCK_STATUS
+        type: Plain Text
+
+      heading: 
+        heading: Stock Status
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 28
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: false
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Current Stock
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P30_BRANCH_ID ============================
+  id: 1403898554453635
+  identification: 
+    name: P30_BRANCH_ID
+    type: Select List
+
+  label: 
+    label: Branch
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Stock Filters # 1403986937453636
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT BRANCH_NAME d,
+             BRANCH_ID r
+      FROM INV_BRANCHES
+      WHERE BRANCH_ISACTIVE = '1'
+      ORDER BY BRANCH_NAME
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Branches -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P30_STOCK_STATUS =========================
+  id: 1403726116453634
+  identification: 
+    name: P30_STOCK_STATUS
+    type: Select List
+
+  label: 
+    label: Stock Status
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Stock Filters # 1403986937453636
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Normal;NORMAL,Low Stock;LOW_STOCK,Out of Stock;OUT_OF_STOCK,Over Stock;OVER_STOCK'
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Statuses -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CLEAR_FILTERS ===============================
+  id: 1403331267453630
+  identification: 
+    button-name: CLEAR_FILTERS
+    label: Clear Filters
+
+  layout: 
+    sequence: 30
+    region: Stock Filters # 1403986937453636
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-eraser
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: Refresh Stock Dashboard =============
+  id: 1403665235453633
+  identification: 
+    name: Refresh Stock Dashboard
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P30_BRANCH_ID
+    - ' P30_STOCK_STATUS'
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 1403517003453632
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Current Stock # 907214669906549
+
+    execution: 
+      sequence: 10
+      event: Refresh Stock Dashboard # 1403665235453633
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh =====================================
+    id: 1403480899453631
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Stock Summary # 1404267651453639
+
+    execution: 
+      sequence: 20
+      event: Refresh Stock Dashboard # 1403665235453633
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Clear Stock Filters =================
+  id: 1403236748453629
+  identification: 
+    name: Clear Stock Filters
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CLEAR_FILTERS # 1403331267453630
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 1403185104453628
+    identification: 
+      name: Clear
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P30_BRANCH_ID
+      - P30_STOCK_STATUS
+
+    execution: 
+      sequence: 10
+      event: Clear Stock Filters # 1403236748453629
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh Current Stock =======================
+    id: 1403053691453627
+    identification: 
+      name: Refresh Current Stock
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Current Stock # 907214669906549
+
+    execution: 
+      sequence: 20
+      event: Clear Stock Filters # 1403236748453629
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh Cards ===============================
+    id: 1402931790453626
+    identification: 
+      name: Refresh Cards
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Stock Summary # 1404267651453639
+
+    execution: 
+      sequence: 30
+      event: Clear Stock Filters # 1403236748453629
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

@@ -1,0 +1,1549 @@
+---
+# ====== Page: Stock Movement ================================
+id: 23
+identification: 
+  name: Stock Movement
+  alias: STOCK-MOVEMENT
+  title: Stock Movement
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .movement-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 6px 13px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        min-width: 125px;
+    }
+    
+    .movement-in {
+        background: #e8f5e9;
+        color: #1b5e20;
+        border: 1px solid #a5d6a7;
+    }
+    
+    .movement-out {
+        background: #ffebee;
+        color: #b71c1c;
+        border: 1px solid #ef9a9a;
+    }
+    
+    .movement-transfer-in {
+        background: #e3f2fd;
+        color: #0d47a1;
+        border: 1px solid #90caf9;
+    }
+    
+    .movement-transfer-out {
+        background: #fff3e0;
+        color: #e65100;
+        border: 1px solid #ffcc80;
+    }
+    
+    .movement-depreciation {
+        background: #f3e5f5;
+        color: #6a1b9a;
+        border: 1px solid #ce93d8;
+    }
+    
+    
+    
+    /* Summery Cards */
+    
+    
+    .movement-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+    
+    .movement-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    }
+    
+    .movement-card-IN {
+        border-top: 4px solid #2e7d32;
+    }
+    
+    .movement-card-OUT {
+        border-top: 4px solid #d32f2f;
+    }
+    
+    .movement-card-TRANSFER {
+        border-top: 4px solid #1976d2;
+    }
+    
+    .movement-card-DEPRECIATION {
+        border-top: 4px solid #8e24aa;
+    }
+    
+    
+    /* Movement Summary - Card Values */
+    
+    .movement-card-IN .a-CardView-body {
+        color: #2e7d32;
+        font-size: 28px;
+        font-weight: 700;
+    }
+    
+    .movement-card-OUT .a-CardView-body {
+        color: #d32f2f;
+        font-size: 28px;
+        font-weight: 700;
+    }
+    
+    .movement-card-TRANSFER .a-CardView-body {
+        color: #1976d2;
+        font-size: 28px;
+        font-weight: 700;
+    }
+    
+    .movement-card-DEPRECIATION .a-CardView-body {
+        color: #8e24aa;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+security: 
+  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 949045604292742
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 114548710692820457195
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Stock Movement ==============================
+  id: 949712947292763
+  identification: 
+    name: Stock Movement
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH STOCK_MOVEMENTS AS
+      (
+          ------------------------------------------------------------
+          -- ORDER IN
+          ------------------------------------------------------------
+          SELECT
+              O.ORDER_IN_DATE AS MOVEMENT_DATE,
+              O.ORDER_IN_BRANCH_ID AS BRANCH_ID,
+              D.ORDER_IN_DETAILS_PROD_ID AS PROD_ID,
+              'ORDER IN' AS MOVEMENT_TYPE,
+              D.ORDER_IN_DETAILS_QUANTITY AS QUANTITY,
+              'Order IN #' || O.ORDER_IN_ID AS REFERENCE_NO,
+              O.ORDER_IN_EMP_ID AS EMP_ID
+          FROM INV_ORDER_IN O
+          JOIN INV_ORDER_IN_DETAILS D
+            ON D.ORDER_IN_DETAILS_ORDERIN_ID = O.ORDER_IN_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- ORDER OUT
+          ------------------------------------------------------------
+          SELECT
+              O.ORDER_OUT_DATE,
+              O.ORDER_OUT_BRANCH_ID,
+              D.ORDER_OUT_DETAILS_PROD_ID,
+              'ORDER OUT',
+              -D.ORDER_OUT_DETAILS_QUANTITY,
+              'Order OUT #' || O.ORDER_OUT_ID,
+              O.ORDER_OUT_EMP_ID
+          FROM INV_ORDER_OUT O
+          JOIN INV_ORDER_OUT_DETAILS D
+            ON D.ORDER_OUT_DETAILS_ORDEROUT_ID = O.ORDER_OUT_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- TRANSFER OUT
+          ------------------------------------------------------------
+          SELECT
+              T.TRAN_ORD_DATE,
+              T.TRAN_ORD_FROM_BRANCH_ID,
+              D.TRAN_ORD_DETAILS_PROD_ID,
+              'TRANSFER OUT',
+              -D.TRAN_ORD_DETAILS_QUANTITY,
+              'Transfer #' || T.TRAN_ORD_ID,
+              T.TRAN_ORD_EMP_ID
+          FROM INV_TRANSFARE_ORDER T
+          JOIN INV_TRANSFARE_ORDER_DETAILS D
+            ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = T.TRAN_ORD_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- TRANSFER IN
+          ------------------------------------------------------------
+          SELECT
+              T.TRAN_ORD_DATE,
+              T.TRAN_ORD_TO_BRANCH_ID,
+              D.TRAN_ORD_DETAILS_PROD_ID,
+              'TRANSFER IN',
+              D.TRAN_ORD_DETAILS_QUANTITY,
+              'Transfer #' || T.TRAN_ORD_ID,
+              T.TRAN_ORD_EMP_ID
+          FROM INV_TRANSFARE_ORDER T
+          JOIN INV_TRANSFARE_ORDER_DETAILS D
+            ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = T.TRAN_ORD_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- DEPRECIATION
+          ------------------------------------------------------------
+          SELECT
+              O.DEPREC_ORD_DATE,
+              O.DEPREC_ORD_BRANCH_ID,
+              D.DEPREC_ORD_DETAILS_PROD_ID,
+              'DEPRECIATION',
+              -D.DEPREC_ORD_DETAILS_QUANTITY,
+              'Depreciation #' || O.DEPREC_ORD_ID,
+              O.DEPREC_ORD_EMP_ID
+          FROM INV_DEPRECIATION_ORDER O
+          JOIN INV_DEPRECIATION_ORDER_DETAILS D
+            ON D.DEPREC_ORD_DETAILS_DEPREC_ORD_ID = O.DEPREC_ORD_ID
+      )
+      
+      SELECT
+          M.MOVEMENT_DATE,
+          B.BRANCH_NAME AS BRANCH,
+          P.PROD_NAME AS PRODUCT,
+          M.MOVEMENT_TYPE AS MOVEMENT_TYPE_CODE,
+          CASE M.MOVEMENT_TYPE
+              WHEN 'ORDER IN' THEN
+                  '<span class="movement-badge movement-in">
+                   <span class="fa fa-arrow-down"></span>
+                   Order IN</span>'
+      
+              WHEN 'ORDER OUT' THEN
+                  '<span class="movement-badge movement-out">
+                   <span class="fa fa-arrow-up"></span>
+                   Order OUT</span>'
+      
+              WHEN 'TRANSFER IN' THEN
+                  '<span class="movement-badge movement-transfer-in">
+                   <span class="fa fa-exchange"></span>
+                   Transfer IN</span>'
+      
+              WHEN 'TRANSFER OUT' THEN
+                  '<span class="movement-badge movement-transfer-out">
+                   <span class="fa fa-exchange"></span>
+                   Transfer OUT</span>'
+      
+              WHEN 'DEPRECIATION' THEN
+                  '<span class="movement-badge movement-depreciation">
+                   <span class="fa fa-minus-circle"></span>
+                   Depreciation</span>'
+      
+          END AS MOVEMENT_TYPE,
+          M.QUANTITY,
+          M.REFERENCE_NO,
+          E.EMP_NAME AS EMPLOYEE
+      FROM STOCK_MOVEMENTS M
+      LEFT JOIN INV_BRANCHES B
+        ON B.BRANCH_ID = M.BRANCH_ID
+      LEFT JOIN INV_PRODUCT P
+        ON P.PROD_ID = M.PROD_ID
+      LEFT JOIN INV_EMPLOYEES E
+        ON E.EMP_ID = M.EMP_ID
+      WHERE
+          (
+              :P23_DATE_FROM IS NULL
+              OR M.MOVEMENT_DATE >=
+                 TO_DATE(:P23_DATE_FROM, 'DD/MM/YYYY')
+          )
+      
+      AND (
+              :P23_DATE_TO IS NULL
+              OR M.MOVEMENT_DATE <
+                 TO_DATE(:P23_DATE_TO, 'DD/MM/YYYY') + 1
+          )
+      
+      AND (
+              :P23_BRANCH_ID IS NULL
+              OR M.BRANCH_ID = :P23_BRANCH_ID
+          )
+      
+      AND (
+              :P23_PROD_ID IS NULL
+              OR M.PROD_ID = :P23_PROD_ID
+          )
+      
+      AND (
+              :P23_MOVEMENT_TYPE IS NULL
+              OR M.MOVEMENT_TYPE = :P23_MOVEMENT_TYPE
+          )
+      ORDER BY
+          M.MOVEMENT_DATE DESC,
+          M.REFERENCE_NO DESC
+    page-items-to-submit: 
+    - P23_DATE_FROM
+    - P23_DATE_TO
+    - P23_BRANCH_ID
+    - P23_PROD_ID
+    - P23_MOVEMENT_TYPE
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: stock_movement_report
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 949794434292763
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: No data found.
+      when-more-data-found: 'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 953456604293830
+      identification: 
+        name: Primary Report
+        alias: 67617
+
+    columns: 
+    - # ====== Column: MOVEMENT_DATE ===============================
+      id: 950507797292781
+      identification: 
+        column-name: MOVEMENT_DATE
+        type: Plain Text
+
+      heading: 
+        heading: Movement Date
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 1
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: 'DD/MM/YYYY HH24:MI'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MOVEMENT_TYPE ===============================
+      id: 951598185292791
+      identification: 
+        column-name: MOVEMENT_TYPE
+        type: Plain Text
+
+      heading: 
+        heading: Movement Type
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 51
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: QUANTITY ====================================
+      id: 952001916292791
+      identification: 
+        column-name: QUANTITY
+        type: Plain Text
+
+      heading: 
+        heading: Quantity
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 61
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: REFERENCE_NO ================================
+      id: 952391043292792
+      identification: 
+        column-name: REFERENCE_NO
+        type: Plain Text
+
+      heading: 
+        heading: Reference No
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 71
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BRANCH ======================================
+      id: 954879149313425
+      identification: 
+        column-name: BRANCH
+        type: Plain Text
+
+      heading: 
+        heading: Branch
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 21
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PRODUCT =====================================
+      id: 954984628313426
+      identification: 
+        column-name: PRODUCT
+        type: Plain Text
+
+      heading: 
+        heading: Product
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 31
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EMPLOYEE ====================================
+      id: 955058096313427
+      identification: 
+        column-name: EMPLOYEE
+        type: Plain Text
+
+      heading: 
+        heading: Employee
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 11
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MOVEMENT_TYPE_CODE ==========================
+      id: 955132456313428
+      identification: 
+        column-name: MOVEMENT_TYPE_CODE
+        type: Hidden
+
+      heading: 
+        heading: Movement Type Code
+
+      layout: 
+        sequence: 41
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Stock Movement
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Movement Summary ============================
+  id: 955211844313429
+  identification: 
+    name: Movement Summary
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH MOVEMENTS AS
+      (
+          ------------------------------------------------------------
+          -- ORDER IN
+          ------------------------------------------------------------
+          SELECT
+              O.ORDER_IN_DATE AS MOVEMENT_DATE,
+              O.ORDER_IN_BRANCH_ID AS BRANCH_ID,
+              D.ORDER_IN_DETAILS_PROD_ID AS PROD_ID,
+              'ORDER IN' AS MOVEMENT_TYPE,
+              D.ORDER_IN_DETAILS_QUANTITY AS QTY
+          FROM INV_ORDER_IN O
+          JOIN INV_ORDER_IN_DETAILS D
+            ON D.ORDER_IN_DETAILS_ORDERIN_ID = O.ORDER_IN_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- ORDER OUT
+          ------------------------------------------------------------
+          SELECT
+              O.ORDER_OUT_DATE,
+              O.ORDER_OUT_BRANCH_ID,
+              D.ORDER_OUT_DETAILS_PROD_ID,
+              'ORDER OUT',
+              D.ORDER_OUT_DETAILS_QUANTITY
+          FROM INV_ORDER_OUT O
+          JOIN INV_ORDER_OUT_DETAILS D
+            ON D.ORDER_OUT_DETAILS_ORDEROUT_ID = O.ORDER_OUT_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- TRANSFER OUT
+          ------------------------------------------------------------
+          SELECT
+              T.TRAN_ORD_DATE,
+              T.TRAN_ORD_FROM_BRANCH_ID,
+              D.TRAN_ORD_DETAILS_PROD_ID,
+              'TRANSFER OUT',
+              D.TRAN_ORD_DETAILS_QUANTITY
+          FROM INV_TRANSFARE_ORDER T
+          JOIN INV_TRANSFARE_ORDER_DETAILS D
+            ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = T.TRAN_ORD_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- TRANSFER IN
+          ------------------------------------------------------------
+          SELECT
+              T.TRAN_ORD_DATE,
+              T.TRAN_ORD_TO_BRANCH_ID,
+              D.TRAN_ORD_DETAILS_PROD_ID,
+              'TRANSFER IN',
+              D.TRAN_ORD_DETAILS_QUANTITY
+          FROM INV_TRANSFARE_ORDER T
+          JOIN INV_TRANSFARE_ORDER_DETAILS D
+            ON D.TRAN_ORD_DETAILS_TRAN_ORD_ID = T.TRAN_ORD_ID
+      
+          UNION ALL
+      
+          ------------------------------------------------------------
+          -- DEPRECIATION
+          ------------------------------------------------------------
+          SELECT
+              O.DEPREC_ORD_DATE,
+              O.DEPREC_ORD_BRANCH_ID,
+              D.DEPREC_ORD_DETAILS_PROD_ID,
+              'DEPRECIATION',
+              D.DEPREC_ORD_DETAILS_QUANTITY
+          FROM INV_DEPRECIATION_ORDER O
+          JOIN INV_DEPRECIATION_ORDER_DETAILS D
+            ON D.DEPREC_ORD_DETAILS_DEPREC_ORD_ID = O.DEPREC_ORD_ID
+      ),
+      FILTERED_MOVEMENTS AS
+      (
+          SELECT *
+          FROM MOVEMENTS M
+          WHERE
+              (
+                  :P23_DATE_FROM IS NULL
+                  OR M.MOVEMENT_DATE >=
+                     TO_DATE(:P23_DATE_FROM, 'DD/MM/YYYY')
+              )
+              AND (
+                  :P23_DATE_TO IS NULL
+                  OR M.MOVEMENT_DATE <
+                     TO_DATE(:P23_DATE_TO, 'DD/MM/YYYY') + 1
+              )
+              AND (
+                  :P23_BRANCH_ID IS NULL
+                  OR M.BRANCH_ID = :P23_BRANCH_ID
+              )
+              AND (
+                  :P23_PROD_ID IS NULL
+                  OR M.PROD_ID = :P23_PROD_ID
+              )
+              AND (
+                  :P23_MOVEMENT_TYPE IS NULL
+                  OR M.MOVEMENT_TYPE = :P23_MOVEMENT_TYPE
+              )
+      )
+      SELECT
+          CARD_TITLE,
+          CARD_VALUE,
+          CARD_ICON,
+          CARD_SUBTITLE,
+          CARD_TYPE
+      FROM
+      (
+          SELECT
+              'Order IN' AS CARD_TITLE,
+              NVL(SUM(CASE WHEN MOVEMENT_TYPE = 'ORDER IN'
+                           THEN QTY ELSE 0 END), 0) AS CARD_VALUE,
+              'fa-arrow-down' AS CARD_ICON,
+              'Total received quantity' AS CARD_SUBTITLE,
+              'IN' AS CARD_TYPE,
+              1 AS SORT_ORDER
+          FROM FILTERED_MOVEMENTS
+      
+          UNION ALL
+      
+          SELECT
+              'Order OUT',
+              NVL(SUM(CASE WHEN MOVEMENT_TYPE = 'ORDER OUT'
+                           THEN QTY ELSE 0 END), 0),
+              'fa-arrow-up',
+              'Total issued quantity',
+              'OUT',
+              2
+          FROM FILTERED_MOVEMENTS
+      
+          UNION ALL
+      
+          SELECT
+              'Transfers',
+              NVL(SUM(CASE WHEN MOVEMENT_TYPE = 'TRANSFER OUT'
+                           THEN QTY ELSE 0 END), 0),
+              'fa-exchange',
+              'Total transferred out quantity',
+              'TRANSFER',
+              3
+          FROM FILTERED_MOVEMENTS
+      
+          UNION ALL
+      
+          SELECT
+              'Depreciation',
+              NVL(SUM(CASE WHEN MOVEMENT_TYPE = 'DEPRECIATION'
+                           THEN QTY ELSE 0 END), 0),
+              'fa-minus-circle',
+              'Total depreciated quantity',
+              'DEPRECIATION',
+              4
+          FROM FILTERED_MOVEMENTS
+      )
+      ORDER BY SORT_ORDER
+    page-items-to-submit: 
+    - P23_DATE_FROM
+    - P23_DATE_TO
+    - P23_BRANCH_ID
+    - P23_PROD_ID
+    - P23_MOVEMENT_TYPE
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: movement_summary
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 955365674313430
+    appearance: 
+      layout: Grid
+      grid-columns: 4 Columns
+
+    card: 
+      css-classes: 
+      - movement-card
+      - movement-card-&CARD_TYPE.
+
+    title: 
+      advanced-formatting: false
+      column: CARD_TITLE
+
+    subtitle: 
+      advanced-formatting: false
+      column: CARD_SUBTITLE
+
+    body: 
+      advanced-formatting: false
+      column: CARD_VALUE
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Icon Class
+      icon-css-classes: fa &CARD_ICON.
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: Movement Filters ============================
+  id: 955397304313431
+  identification: 
+    name: Movement Filters
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P23_DATE_FROM ============================
+  id: 955490361313432
+  identification: 
+    name: P23_DATE_FROM
+    type: Date Picker
+
+  label: 
+    label: Date From
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 10
+    region: Movement Filters # 955397304313431
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: DD/MM/YYYY
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P23_DATE_TO ==============================
+  id: 955590994313433
+  identification: 
+    name: P23_DATE_TO
+    type: Date Picker
+
+  label: 
+    label: Date To
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 20
+    region: Movement Filters # 955397304313431
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: DD/MM/YYYY
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P23_BRANCH_ID ============================
+  id: 955735146313434
+  identification: 
+    name: P23_BRANCH_ID
+    type: Select List
+
+  label: 
+    label: Branch
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 30
+    region: Movement Filters # 955397304313431
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT BRANCH_NAME d,
+             BRANCH_ID r
+      FROM INV_BRANCHES
+      WHERE BRANCH_ISACTIVE = '1'
+      ORDER BY BRANCH_NAME
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Branches -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P23_PROD_ID ==============================
+  id: 955811820313435
+  identification: 
+    name: P23_PROD_ID
+    type: Select List
+
+  label: 
+    label: Product
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 40
+    region: Movement Filters # 955397304313431
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT PROD_NAME d,
+             PROD_ID r
+      FROM INV_PRODUCT
+      ORDER BY PROD_NAME
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Products -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P23_MOVEMENT_TYPE ========================
+  id: 955977288313436
+  identification: 
+    name: P23_MOVEMENT_TYPE
+    type: Select List
+
+  label: 
+    label: Movement Type
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 50
+    region: Movement Filters # 955397304313431
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Order IN;ORDER IN,Order OUT;ORDER OUT,Transfer IN;TRANSFER IN,Transfer OUT;TRANSFER OUT,Depreciation;DEPRECIATION'
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Movements -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CLEAR_FILTERS ===============================
+  id: 956371718313440
+  identification: 
+    button-name: CLEAR_FILTERS
+    label: Clear Filters
+
+  layout: 
+    sequence: 60
+    region: Movement Filters # 955397304313431
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-eraser
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: Refresh Movement Dashboard ==========
+  id: 956021299313437
+  identification: 
+    name: Refresh Movement Dashboard
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P23_DATE_FROM
+    - P23_DATE_TO
+    - P23_BRANCH_ID
+    - P23_PROD_ID
+    - P23_MOVEMENT_TYPE
+
+  actions: 
+  - # ====== Action: Refresh Stock Movement ======================
+    id: 956094025313438
+    identification: 
+      name: Refresh Stock Movement
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Stock Movement # 949712947292763
+
+    execution: 
+      sequence: 10
+      event: Refresh Movement Dashboard # 956021299313437
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh Movement Summary ====================
+    id: 956199571313439
+    identification: 
+      name: Refresh Movement Summary
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Movement Summary # 955211844313429
+
+    execution: 
+      sequence: 20
+      event: Refresh Movement Dashboard # 956021299313437
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Clear Movement Filters ==============
+  id: 956435577313441
+  identification: 
+    name: Clear Movement Filters
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CLEAR_FILTERS # 956371718313440
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 956675608313443
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // 1. Clear all filters without firing Change events
+        [
+            "P23_DATE_FROM",
+            "P23_DATE_TO",
+            "P23_BRANCH_ID",
+            "P23_PROD_ID",
+            "P23_MOVEMENT_TYPE"
+        ].forEach(function (itemName) {
+            apex.item(itemName).setValue("", null, true);
+        });
+        
+        // 2. Refresh both regions after clearing all values
+        apex.region("stock_movement_report").refresh();
+        apex.region("movement_summary").refresh();
+
+    execution: 
+      sequence: 20
+      event: Clear Movement Filters # 956435577313441
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

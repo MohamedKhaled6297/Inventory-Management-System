@@ -1,0 +1,43 @@
+---
+- # ====== Authentication: Inventory Authentication ============
+  id: 767485187519427
+  identification: 
+    name: Inventory Authentication
+
+  subscription: 
+    version-number: 5461528
+
+  settings: 
+    type: Custom
+    authentication-function-name: HR.INV_AUTHENTICATE_USER
+    enable-legacy-authentication-attributes: false
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 114548710397085457195
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 15677366127083
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+

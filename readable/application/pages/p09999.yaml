@@ -1,0 +1,620 @@
+---
+# ====== Page: Login Page ====================================
+id: 9999
+identification: 
+  name: Login Page
+  alias: LOGIN
+  title: Inventory Management System
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+css: 
+  inline: |
+    /************************************
+     * 1) LOGIN PAGE CONTAINER (Background)
+     ************************************/
+    .t-Login-container  {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    
+        /* Base gradient */
+        background: radial-gradient(circle at 20% 30%, #00BFFF 0%, #0096D6 40%, #0077B6 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    
+    /************************************
+     * 2) LIGHT BIG GLOW DOTS BEHIND EVERYTHING
+     ************************************/
+    .t-Login-container::before,
+    .t-Login-container::after {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background: rgba(255, 255, 255, 0.20);
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: bubbleFloat 12s infinite ease-in-out;
+        z-index: 0; /* behind bubble layer */
+    }
+    
+    .t-Login-container::before {
+        top: 15%;
+        left: 10%;
+    }
+    
+    .t-Login-container::after {
+        bottom: 15%;
+        right: 10%;
+    }
+    
+    @keyframes bubbleFloat {
+        0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+        50%      { transform: translateY(-50px) scale(1.2); opacity: 0.8; }
+    }
+    
+    /************************************
+     * 3) LOGIN REGION (White Card)
+     ************************************/
+    .t-Login-region {
+        position: relative;
+        z-index: 999; /* keeps it ALWAYS above bubbles */
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        width: 420px;
+        box-shadow:
+            0 10px 40px rgba(0, 0, 0, 0.15),
+            0 0 25px rgba(0,150,214,0.4);
+    }
+    
+    /************************************
+     * 4) LOGIN LOGO
+     ************************************/
+    .t-Login-logo {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 20px;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 0 25px rgba(0,150,214,0.4);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .t-Login-logo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        /* background-image: url("#APP_FILES#RQ.png"); */
+        background-size: 75%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    
+    
+    /************************************
+     * 7) BUTTON
+     ************************************/
+    .t-Button {
+        background: linear-gradient(90deg, #0077B6, #0096D6) !important;
+        color: #fff !important;
+        border-radius: 10px !important;
+        padding: 10px 20px !important;
+        font-weight: bold;
+        border: none !important;
+    }
+    
+    .t-Button:hover {
+        background: linear-gradient(90deg, #0096D6, #00BFFF) !important;
+    }
+    
+    
+    /************************************
+     BUBBLE STYLE
+    ************************************/
+    .bubble {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        box-shadow:
+            0 0 60px rgba(255,255,255,0.5) inset,
+            0 0 40px rgba(255,255,255,0.3);
+        animation: moveBubble 20s infinite ease-in-out;
+    }
+    
+    .bubble::before {
+        content: "";
+        position: absolute;
+        width: 70px;
+        height: 32px;
+        background: rgba(255,255,255,0.25);
+        top: 25px;
+        left: 40px;
+        border-radius: 50%;
+        transform: rotate(-22deg);
+    }
+    
+    /************************************
+     FULL-SCREEN ANIMATION
+    ************************************/
+    @keyframes moveBubble {
+        0%   { transform: translate(-60vw, 0) scale(1); opacity: .4; }  /* START far left */
+        25%  { transform: translate(0vw, -15vh) scale(1.2); opacity: .7; }
+        50%  { transform: translate(20vw, 20vh) scale(1.1); opacity: .8; }
+        75%  { transform: translate(40vw, 30vh) scale(1.3); opacity: .9; }
+        100% { transform: translate(-60vw, 0) scale(1); opacity: .4; }  /* RETURN left */
+    }
+    
+    
+    /************************************
+     RANDOM POSITIONS / DELAYS
+    ************************************/
+    .bubble:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
+    .bubble:nth-child(2) { top: 20%; left: 2%; animation-delay: 1s; }
+    .bubble:nth-child(3) { top: 65%; left: 5%; animation-delay: 3s; }
+    .bubble:nth-child(4) { top: 40%; left: 20%; animation-delay: 5s; }
+    .bubble:nth-child(5) { top: 85%; left: 45%; animation-delay: 2s; }
+    .bubble:nth-child(6) { top: 10%; left: 55%; animation-delay: 4s; }
+    .bubble:nth-child(7) { top: 50%; left: 1%; animation-delay: 6s; }
+    .bubble:nth-child(8) { top: 35%; left: 15%; animation-delay: 7s; }
+    .bubble:nth-child(9) { top: 75%; left: 10%; animation-delay: 8s; }
+    .bubble:nth-child(10){ top: 30%; left: 45%; animation-delay: 9s; }
+    
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Inventory Management System =================
+  id: 114548716972810457212
+  identification: 
+    name: Inventory Management System
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P9999_USERNAME ===========================
+  id: 114548717458428457213
+  identification: 
+    name: P9999_USERNAME
+    type: Text Field
+
+  label: 
+    label: Username
+    alignment: Right
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Inventory Management System # 114548716972810457212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-user
+    width: 40
+    value-placeholder: Username
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    custom-attributes: 
+    - autocomplete="username"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_PASSWORD ===========================
+  id: 114548717895849457214
+  identification: 
+    name: P9999_PASSWORD
+    type: Password
+
+  label: 
+    label: Password
+    alignment: Right
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 20
+    region: Inventory Management System # 114548716972810457212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-key
+    width: 40
+    value-placeholder: Password
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    custom-attributes: 
+    - autocomplete="current-password"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_REMEMBER ===========================
+  id: 114548718294167457214
+  identification: 
+    name: P9999_REMEMBER
+    type: Checkbox
+
+  label: 
+    label: Remember username
+    alignment: Right
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 30
+    region: Inventory Management System # 114548716972810457212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: apex_authentication.persistent_cookies_enabled
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: LOGIN =======================================
+  id: 114548718680283457214
+  identification: 
+    button-name: LOGIN
+    label: Sign In
+
+  layout: 
+    sequence: 40
+    region: Inventory Management System # 114548716972810457212
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: Login ======================================
+  id: 114548718989153457215
+  identification: 
+    name: Login
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APEX_AUTHENTICATION
+    procedure-or-function: LOGIN
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_username ===============================
+    id: 114548719423828457215
+    identification: 
+      name: p_username
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_USERNAME
+
+    advanced: 
+      display-sequence: 1
+
+  - # ====== Parameter: p_password ===============================
+    id: 114548719947794457216
+    identification: 
+      name: p_password
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_PASSWORD
+
+    advanced: 
+      display-sequence: 2
+
+  - # ====== Parameter: p_set_persistent_auth ====================
+    id: 114548720424263457216
+    identification: 
+      name: p_set_persistent_auth
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 3
+
+- # ====== Process: Set Username Cookie ========================
+  id: 114548720867644457216
+  identification: 
+    name: Set Username Cookie
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APEX_AUTHENTICATION
+    procedure-or-function: SEND_LOGIN_USERNAME_COOKIE
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_username ===============================
+    id: 114548721365280457216
+    identification: 
+      name: p_username
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Expression
+      language: PL/SQL
+      pl/sql-expression: 'lower( :P9999_USERNAME )'
+
+    advanced: 
+      display-sequence: 1
+
+  - # ====== Parameter: p_consent ================================
+    id: 114548721870139457217
+    identification: 
+      name: p_consent
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_REMEMBER
+
+    advanced: 
+      display-sequence: 2
+
+- # ====== Process: Get Username Cookie ========================
+  id: 114548722354449457217
+  identification: 
+    name: Get Username Cookie
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      :P9999_USERNAME := apex_authentication.get_login_username_cookie;
+      :P9999_REMEMBER := case when :P9999_USERNAME is not null then 'Y' end;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Clear Page(s) Cache ========================
+  id: 114548722706462457217
+  identification: 
+    name: Clear Page(s) Cache
+    type: Clear Session State
+    execution-chain: None
+
+  settings: 
+    type: Clear all Items on the Current Page
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

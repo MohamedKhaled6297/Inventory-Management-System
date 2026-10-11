@@ -1,0 +1,118 @@
+---
+- # ====== Static Application File: styleInventoryProject.min.cs
+  id: 563475384104430
+  identification: 
+    file-name: styleInventoryProject.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: inventory-translation.js ===
+  id: 1384398428035116
+  identification: 
+    file-name: inventory-translation.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: inventory-translation.css ==
+  id: 1391991804272189
+  identification: 
+    file-name: inventory-translation.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: inventory-translation.min.cs
+  id: 1399006308444366
+  identification: 
+    file-name: inventory-translation.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: inventory-translation.min.js
+  id: 1401778254549792
+  identification: 
+    file-name: inventory-translation.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: Inventory.png ==============
+  id: 1403462566833213
+  identification: 
+    file-name: Inventory.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 114548713427262457205
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 114548713802516457206
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 114548714165410457207
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 114548714470493457208
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 114548714759383457209
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: styleInventoryProject.css ==
+  id: 114553874776611687578
+  identification: 
+    file-name: styleInventoryProject.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: RQ.png =====================
+  id: 114696430580453371646
+  identification: 
+    file-name: RQ.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+

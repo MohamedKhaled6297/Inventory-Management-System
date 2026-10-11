@@ -1,0 +1,13 @@
+# Local / sensitive files
+.env
+.env.*
+*.wallet
+*.p12
+*.pfx
+*.key
+*.pem
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,933 @@
+---
+- # ====== List: Navigation Menu ===============================
+  id: 114548711156926457196
+  identification: 
+    name: Navigation Menu
+
+  subscription: 
+    version-number: 5961268
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Suppliers ====================================
+    id: 555048583020438
+    label: 
+      label: Suppliers
+
+    icon: 
+      image/icon-css-classes: fa-truck
+
+    layout: 
+      sequence: 60
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 2
+      - 5
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::::'
+        page: 2 # Suppliers
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Customers ====================================
+    id: 576410023402247
+    label: 
+      label: Customers
+
+    icon: 
+      image/icon-css-classes: fa-users
+
+    layout: 
+      sequence: 70
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 6
+      - 7
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&SESSION.::&DEBUG.::::'
+        page: 6 # Customers
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Employees ====================================
+    id: 597885389487217
+    label: 
+      label: Employees
+
+    icon: 
+      image/icon-css-classes: fa-id-card
+
+    layout: 
+      sequence: 80
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 12
+      - 13
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
+        page: 12 # Employees
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Products =====================================
+    id: 626351383826524
+    label: 
+      label: Products
+
+    icon: 
+      image/icon-css-classes: fa-cube
+
+    layout: 
+      sequence: 90
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 14
+      - 15
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:14:&SESSION.::&DEBUG.::::'
+        page: 14 # Products
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Security =====================================
+    id: 651000929106628
+    label: 
+      label: Security
+
+    icon: 
+      image/icon-css-classes: fa-shield
+
+    layout: 
+      sequence: 320
+
+    is-current: 
+      type: Target Page
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: IS_ADMIN # 767807182572611
+
+  - # ====== Entry: Users ========================================
+    id: 663880517148078
+    label: 
+      label: Users
+
+    icon: 
+      image/icon-css-classes: fa-users
+
+    layout: 
+      sequence: 170
+      parent-entry: Security # 651000929106628
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 16
+      - 17
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:16:&SESSION.::&DEBUG.::::'
+        page: 16 # Users
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: IS_ADMIN # 767807182572611
+
+  - # ====== Entry: Roles ========================================
+    id: 724373546339152
+    label: 
+      label: Roles
+
+    icon: 
+      image/icon-css-classes: fa-id-badge
+
+    layout: 
+      sequence: 180
+      parent-entry: Security # 651000929106628
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 20
+      - 21
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:20:&SESSION.::&DEBUG.::::'
+        page: 20 # Roles
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: IS_ADMIN # 767807182572611
+
+  - # ====== Entry: User Roles ===================================
+    id: 756717718286950
+    label: 
+      label: User Roles
+
+    icon: 
+      image/icon-css-classes: fa-user-tag
+
+    layout: 
+      sequence: 190
+      parent-entry: Security # 651000929106628
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 18
+      - 19
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:18:&SESSION.::&DEBUG.::::'
+        page: 18 # User Roles
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: IS_ADMIN # 767807182572611
+
+  - # ====== Entry: Inventory Transactions =======================
+    id: 777099639578056
+    label: 
+      label: Inventory Transactions
+
+    icon: 
+      image/icon-css-classes: fa-exchange
+
+    layout: 
+      sequence: 200
+
+    is-current: 
+      type: Target Page
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_TRANSACTIONS_MENU # 1118275466068375
+
+  - # ====== Entry: Order IN =====================================
+    id: 778371378650586
+    label: 
+      label: Order IN
+
+    icon: 
+      image/icon-css-classes: fa-box-arrow-in-ne
+
+    layout: 
+      sequence: 210
+      parent-entry: Inventory Transactions # 777099639578056
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 22
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:22:&SESSION.::&DEBUG.::::'
+        page: 22 # Order IN
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+
+  - # ====== Entry: Order OUT ====================================
+    id: 811936199482297
+    label: 
+      label: Order OUT
+
+    icon: 
+      image/icon-css-classes: fa-box-arrow-out-ne
+
+    layout: 
+      sequence: 220
+      parent-entry: Inventory Transactions # 777099639578056
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 24
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:24:&SESSION.::&DEBUG.::::'
+        page: 24 # Order OUT
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+
+  - # ====== Entry: Stock Transfer ===============================
+    id: 845033828336602
+    label: 
+      label: Stock Transfer
+
+    icon: 
+      image/icon-css-classes: fa-exchange
+
+    layout: 
+      sequence: 230
+      parent-entry: Inventory Transactions # 777099639578056
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 26
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:26:&SESSION.::&DEBUG.::::'
+        page: 26 # Stock Transfer
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+
+  - # ====== Entry: Depreciation Order ===========================
+    id: 877221895526345
+    label: 
+      label: Depreciation Order
+
+    icon: 
+      image/icon-css-classes: fa-trash-can
+
+    layout: 
+      sequence: 240
+      parent-entry: Inventory Transactions # 777099639578056
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 28
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:28:&SESSION.::&DEBUG.::::'
+        page: 28 # Depreciation Order
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_MANAGE_DEPRECIATION # 776010919469599
+
+  - # ====== Entry: Current Stock ================================
+    id: 906172565906538
+    label: 
+      label: Current Stock
+
+    icon: 
+      image/icon-css-classes: fa-cubes
+
+    layout: 
+      sequence: 265
+      parent-entry: Reports # 942858096717627
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 30
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:30:&SESSION.::&DEBUG.::::'
+        page: 30 # Current Stock
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Reports ======================================
+    id: 942858096717627
+    label: 
+      label: Reports
+
+    icon: 
+      image/icon-css-classes: fa-bar-chart
+
+    layout: 
+      sequence: 260
+
+    is-current: 
+      type: Target Page
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Stock Movement ===============================
+    id: 948685541292719
+    label: 
+      label: Stock Movement
+
+    icon: 
+      image/icon-css-classes: fa-history
+
+    layout: 
+      sequence: 270
+      parent-entry: Reports # 942858096717627
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 23
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:23:&SESSION.::&DEBUG.::::'
+        page: 23 # Stock Movement
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Stock Reconciliation =========================
+    id: 987294335088841
+    label: 
+      label: Stock Reconciliation
+
+    icon: 
+      image/icon-css-classes: fa-balance-scale
+
+    layout: 
+      sequence: 280
+      parent-entry: Reports # 942858096717627
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 31
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:31:&SESSION.::&DEBUG.::::'
+        page: 31 # Stock Reconciliation
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Order IN Report ==============================
+    id: 1007733294256480
+    label: 
+      label: Order IN Report
+
+    icon: 
+      image/icon-css-classes: fa-file-text-o
+
+    layout: 
+      sequence: 290
+      parent-entry: Reports # 942858096717627
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 33
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:33:&SESSION.::&DEBUG.::::'
+        page: 33 # Order IN Report
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Order OUT Report =============================
+    id: 1027257589485322
+    label: 
+      label: Order OUT Report
+
+    icon: 
+      image/icon-css-classes: fa-file-text-o
+
+    layout: 
+      sequence: 300
+      parent-entry: Reports # 942858096717627
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 34
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:34:&SESSION.::&DEBUG.::::'
+        page: 34 # Order OUT Report
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Depreciation Report ==========================
+    id: 1048647511648689
+    label: 
+      label: Depreciation Report
+
+    icon: 
+      image/icon-css-classes: fa-minus-circle
+
+    layout: 
+      sequence: 310
+      parent-entry: Reports # 942858096717627
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 35
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:35:&SESSION.::&DEBUG.::::'
+        page: 35 # Depreciation Report
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+
+  - # ====== Entry: Home =========================================
+    id: 114548723019702457218
+    label: 
+      label: Home
+
+    icon: 
+      image/icon-css-classes: fa-home
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Master Data ==================================
+    id: 122758756389938936791
+    label: 
+      label: Master Data
+
+    icon: 
+      image/icon-css-classes: fa-folder
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Units ========================================
+    id: 122759794898868659666
+    label: 
+      label: Units
+
+    icon: 
+      image/icon-css-classes: fa-hand-coins
+
+    layout: 
+      sequence: 40
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 8
+      - 9
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:8:&SESSION.::&DEBUG.::::'
+        page: 8 # Units
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Branches =====================================
+    id: 122761874415907025607
+    label: 
+      label: Branches
+
+    icon: 
+      image/icon-css-classes: fa-tree-org
+
+    layout: 
+      sequence: 30
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&SESSION.::&DEBUG.::::'
+        page: 3 # Branches
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+  - # ====== Entry: Categories ===================================
+    id: 122762273331680051168
+    label: 
+      label: Categories
+
+    icon: 
+      image/icon-css-classes: fa-box-arrow-in-ne
+
+    layout: 
+      sequence: 50
+      parent-entry: Master Data # 122758756389938936791
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 10
+      - 11
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.::::'
+        page: 10 # Categories
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+
+- # ====== List: Navigation Bar ================================
+  id: 114548712359554457200
+  identification: 
+    name: Navigation Bar
+
+  subscription: 
+    version-number: 5997720
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: &APP_TEXT$LANGUAGE_LABEL. ====================
+    id: 1378763292542953
+    label: 
+      label: '&APP_TEXT$LANGUAGE_LABEL.'
+
+    icon: 
+      image/icon-css-classes: fa-globe
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:#:&SESSION.::&DEBUG.::::'
+        page: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: العربية ======================================
+    id: 1379088010552064
+    label: 
+      label: العربية
+
+    icon: 
+      image/icon-css-classes: fa-language
+
+    layout: 
+      sequence: 60
+      parent-entry: '&APP_TEXT$LANGUAGE_LABEL.' # 1378763292542953
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: "javascript:apex.navigation.redirect('f?p=&APP_ID.:&APP_PAGE_ID.:&APP_SESSION.::NO::&P_LANG=ar');"
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: English ======================================
+    id: 1379363345555824
+    label: 
+      label: English
+
+    icon: 
+      image/icon-css-classes: fa-language
+
+    layout: 
+      sequence: 70
+      parent-entry: '&APP_TEXT$LANGUAGE_LABEL.' # 1378763292542953
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: "javascript:apex.navigation.redirect('f?p=&APP_ID.:&APP_PAGE_ID.:&APP_SESSION.::NO::&P_LANG=en');"
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: &APP_USER. ===================================
+    id: 114548724531224457221
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 114548725025619457222
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 20
+      parent-entry: '&APP_USER.' # 114548724531224457221
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+  - # ====== Entry: Sign Out =====================================
+    id: 114548725416339457223
+    label: 
+      label: Sign Out
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 114548724531224457221
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+  - # ====== Entry: Master Data ==================================
+    id: 122757300535119919932
+    label: 
+      label: Master Data
+
+    icon: 
+      image/icon-css-classes: fa-folder
+
+    layout: 
+      sequence: 40
+
+    subentries: 
+      list: Navigation Menu # 114548711156926457196
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&SESSION.::&DEBUG.::::'
+        page: 3 # Branches
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+

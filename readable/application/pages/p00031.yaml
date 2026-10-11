@@ -1,0 +1,1106 @@
+---
+# ====== Page: Stock Reconciliation ==========================
+id: 31
+identification: 
+  name: Stock Reconciliation
+  alias: STOCK-RECONCILIATION
+  title: Stock Reconciliation
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    /* Reconciliation Status */
+    
+    .recon-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        min-width: 115px;
+    }
+    
+    .recon-match {
+        color: #1b5e20;
+        background: #e8f5e9;
+        border: 1px solid #a5d6a7;
+    }
+    
+    .recon-mismatch {
+        color: #b71c1c;
+        background: #ffebee;
+        border: 1px solid #ef9a9a;
+    }
+    
+    /* Smmery Cards  */
+    
+    .recon-card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform .2s ease,
+                    box-shadow .2s ease;
+    }
+    
+    .recon-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    }
+    
+    .recon-card-STOCK {
+        border-top: 4px solid #2196f3;
+    }
+    
+    .recon-card-MATCH {
+        border-top: 4px solid #2e7d32;
+    }
+    
+    .recon-card-MISMATCH {
+        border-top: 4px solid #d32f2f;
+    }
+    
+    .recon-card-DIFFERENCE {
+        border-top: 4px solid #8e24aa;
+    }
+    
+    .recon-card-STOCK .a-CardView-body {
+        color: #1976d2;
+    }
+    
+    .recon-card-MATCH .a-CardView-body {
+        color: #2e7d32;
+    }
+    
+    .recon-card-MISMATCH .a-CardView-body {
+        color: #d32f2f;
+    }
+    
+    .recon-card-DIFFERENCE .a-CardView-body {
+        color: #8e24aa;
+    }
+    
+    .recon-card .a-CardView-body {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+security: 
+  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Reconciliation Summary ======================
+  id: 956891491313446
+  identification: 
+    name: Reconciliation Summary
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH FILTERED_DATA AS
+      (
+          SELECT *
+          FROM HR.INV_V_STOCK_RECONCILIATION
+          WHERE
+              (:P31_BRANCH_ID IS NULL
+               OR BRANCH_ID = :P31_BRANCH_ID)
+      
+          AND (:P31_STATUS IS NULL
+               OR RECON_STATUS = :P31_STATUS)
+      ),
+      SUMMARY AS
+      (
+          SELECT
+              NVL(SUM(ACTUAL_QTY), 0) TOTAL_STOCK,
+              NVL(SUM(CASE WHEN RECON_STATUS = 'MATCH'
+                           THEN 1 ELSE 0 END), 0) MATCHED,
+              NVL(SUM(CASE WHEN RECON_STATUS = 'MISMATCH'
+                           THEN 1 ELSE 0 END), 0) MISMATCHED,
+              NVL(SUM(ABS(DIFFERENCE)), 0) TOTAL_DIFFERENCE
+          FROM FILTERED_DATA
+      )
+      SELECT
+          CARD_TITLE,
+          CARD_VALUE,
+          CARD_ICON,
+          CARD_SUBTITLE,
+          CARD_TYPE
+      FROM
+      (
+          SELECT
+              'Stock Quantity' CARD_TITLE,
+              TOTAL_STOCK CARD_VALUE,
+              'fa-database' CARD_ICON,
+              'Actual quantity in selected stock' CARD_SUBTITLE,
+              'STOCK' CARD_TYPE,
+              1 SORT_ORDER
+          FROM SUMMARY
+      
+          UNION ALL
+      
+          SELECT
+              'Matched Records',
+              MATCHED,
+              'fa-check-circle',
+              'Balances matching transactions',
+              'MATCH',
+              2
+          FROM SUMMARY
+      
+          UNION ALL
+      
+          SELECT
+              'Mismatched Records',
+              MISMATCHED,
+              'fa-exclamation-triangle',
+              'Balances requiring investigation',
+              'MISMATCH',
+              3
+          FROM SUMMARY
+      
+          UNION ALL
+      
+          SELECT
+              'Total Difference',
+              TOTAL_DIFFERENCE,
+              'fa-balance-scale',
+              'Total absolute quantity difference',
+              'DIFFERENCE',
+              4
+          FROM SUMMARY
+      )
+      ORDER BY SORT_ORDER
+    page-items-to-submit: 
+    - P31_BRANCH_ID
+    - P31_STATUS
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: recon_summary
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 957014600313447
+    appearance: 
+      layout: Grid
+      grid-columns: 4 Columns
+
+    card: 
+      css-classes: 
+      - recon-card
+      - recon-card-&CARD_TYPE.
+
+    title: 
+      advanced-formatting: false
+      column: CARD_TITLE
+
+    subtitle: 
+      advanced-formatting: false
+      column: CARD_SUBTITLE
+
+    body: 
+      advanced-formatting: false
+      column: CARD_VALUE
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Icon Class
+      icon-css-classes: fa &CARD_ICON.
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: Reconciliation Filters ======================
+  id: 957134641313448
+  identification: 
+    name: Reconciliation Filters
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Breadcrumb ==================================
+  id: 987735614088850
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 114548710692820457195
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Stock Reconciliation ========================
+  id: 988437372088863
+  identification: 
+    name: Stock Reconciliation
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT
+          BRANCH_ID,
+          BRANCH_NAME,
+          PROD_ID,
+          PROD_NAME,
+          ACTUAL_QTY,
+          CALCULATED_QTY,
+          DIFFERENCE,
+          RECON_STATUS,
+      
+          CASE RECON_STATUS
+              WHEN 'MATCH' THEN
+                  '<span class="recon-badge recon-match">
+                      <span class="fa fa-check-circle"></span>
+                      MATCH
+                   </span>'
+      
+              ELSE
+                  '<span class="recon-badge recon-mismatch">
+                      <span class="fa fa-exclamation-triangle"></span>
+                      MISMATCH
+                   </span>'
+          END AS STATUS_BADGE
+      
+      FROM HR.INV_V_STOCK_RECONCILIATION
+      WHERE
+          (:P31_BRANCH_ID IS NULL
+           OR BRANCH_ID = :P31_BRANCH_ID)
+      
+      AND (:P31_STATUS IS NULL
+           OR RECON_STATUS = :P31_STATUS)
+    page-items-to-submit: 
+    - P31_BRANCH_ID
+    - P31_STATUS
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: recon_report
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 988551127088863
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: No data found.
+      when-more-data-found: 'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 995046736100267
+      identification: 
+        name: Primary Report
+        alias: 68033
+
+    columns: 
+    - # ====== Column: STATUS_BADGE ================================
+      id: 956850245313445
+      identification: 
+        column-name: STATUS_BADGE
+        type: Plain Text
+
+      heading: 
+        heading: Status
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 18
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: false
+
+    - # ====== Column: BRANCH_ID ===================================
+      id: 989253900088874
+      identification: 
+        column-name: BRANCH_ID
+        type: Hidden
+
+      heading: 
+        heading: Branch Id
+
+      layout: 
+        sequence: 1
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BRANCH_NAME =================================
+      id: 989677241088878
+      identification: 
+        column-name: BRANCH_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Branch
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_ID =====================================
+      id: 990076412088880
+      identification: 
+        column-name: PROD_ID
+        type: Hidden
+
+      heading: 
+        heading: Prod Id
+
+      layout: 
+        sequence: 3
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PROD_NAME ===================================
+      id: 990476701088880
+      identification: 
+        column-name: PROD_NAME
+        type: Plain Text
+
+      heading: 
+        heading: Product
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 4
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACTUAL_QTY ==================================
+      id: 990872057088884
+      identification: 
+        column-name: ACTUAL_QTY
+        type: Plain Text
+
+      heading: 
+        heading: Actual Stock
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 5
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CALCULATED_QTY ==============================
+      id: 991197349088888
+      identification: 
+        column-name: CALCULATED_QTY
+        type: Plain Text
+
+      heading: 
+        heading: Calculated Stock
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 6
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DIFFERENCE ==================================
+      id: 991594965088888
+      identification: 
+        column-name: DIFFERENCE
+        type: Plain Text
+
+      heading: 
+        heading: Difference
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 7
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: RECON_STATUS ================================
+      id: 992076258088889
+      identification: 
+        column-name: RECON_STATUS
+        type: Hidden
+
+      heading: 
+        heading: Status
+
+      layout: 
+        sequence: 8
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Stock Reconciliation
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P31_BRANCH_ID ============================
+  id: 957265206313449
+  identification: 
+    name: P31_BRANCH_ID
+    type: Select List
+
+  label: 
+    label: Branch Id
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Reconciliation Filters # 957134641313448
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT BRANCH_NAME d,
+             BRANCH_ID r
+      FROM INV_BRANCHES
+      ORDER BY BRANCH_NAME
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Branches -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P31_STATUS ===============================
+  id: 957386245313450
+  identification: 
+    name: P31_STATUS
+    type: Select List
+
+  label: 
+    label: Status
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Reconciliation Filters # 957134641313448
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Matched;MATCH,Mismatched;MISMATCH'
+    display-extra-values: true
+    display-null-value: true
+    null-display-value: '- All Statuses -'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CLEAR_FILTERS ===============================
+  id: 957787158313454
+  identification: 
+    button-name: CLEAR_FILTERS
+    label: Clear Filters
+
+  layout: 
+    sequence: 20
+    region: Reconciliation Filters # 957134641313448
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-eraser
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: Refresh Reconciliation Dashboard ====
+  id: 957462550313451
+  identification: 
+    name: Refresh Reconciliation Dashboard
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P31_BRANCH_ID
+    - P31_STATUS
+
+  actions: 
+  - # ====== Action: Refresh Stock Reconciliation ================
+    id: 957582941313452
+    identification: 
+      name: Refresh Stock Reconciliation
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Stock Reconciliation # 988437372088863
+
+    execution: 
+      sequence: 10
+      event: Refresh Reconciliation Dashboard # 957462550313451
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh Reconciliation Summary ==============
+    id: 957641736313453
+    identification: 
+      name: Refresh Reconciliation Summary
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Reconciliation Summary # 956891491313446
+
+    execution: 
+      sequence: 20
+      event: Refresh Reconciliation Dashboard # 957462550313451
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Clear Reconciliation Filters ========
+  id: 957806327313455
+  identification: 
+    name: Clear Reconciliation Filters
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CLEAR_FILTERS # 957787158313454
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 957929235313456
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        [
+            "P31_BRANCH_ID",
+            "P31_STATUS"
+        ].forEach(function (itemName) {
+            apex.item(itemName).setValue("", null, true);
+        });
+        
+        apex.region("recon_report").refresh();
+        apex.region("recon_summary").refresh();
+
+    execution: 
+      sequence: 10
+      event: Clear Reconciliation Filters # 957806327313455
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

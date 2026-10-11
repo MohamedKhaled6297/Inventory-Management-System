@@ -1,0 +1,31 @@
+---
+- # ====== Text Message: LANGUAGE_LABEL ========================
+  id: 1381727643613670
+  identification: 
+    name: LANGUAGE_LABEL
+
+  message: 
+    text: Language
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: false
+
+  subscription: 
+    version-number: 5998103
+
+- # ====== Text Message: LANGUAGE_LABEL ========================
+  id: 1405658135972331
+  identification: 
+    name: LANGUAGE_LABEL
+
+  message: 
+    text: اللغة
+
+  attributes: 
+    language: Arabic (ar)
+    used-in-javascript: false
+
+  subscription: 
+    version-number: 6124038
+
