@@ -6,13 +6,13 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
 ,p_release=>'24.2.0'
-,p_default_workspace_id=>68919995520195961853
-,p_default_application_id=>139471
+,p_default_workspace_id=>1600544795405981
+,p_default_application_id=>106
 ,p_default_id_offset=>5808209737823576
-,p_default_owner=>'WKSP_TOKIO2'
+,p_default_owner=>'HR'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(615760691826503)
+ p_id=>wwv_flow_imp.id(6423970429650079)
 ,p_lov_name=>'INV_UNITS.UNIT_NAME'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'

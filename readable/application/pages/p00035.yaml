@@ -70,7 +70,7 @@ css:
     }
 
 security: 
-  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -89,7 +89,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Depreciation Summary ========================
-  id: 1039159378505634
+  id: 6847369116329210
   identification: 
     name: Depreciation Summary
     type: Cards
@@ -216,7 +216,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1039309322505636
+    id: 6847519060329212
     appearance: 
       layout: Grid
       grid-columns: 4 Columns
@@ -258,7 +258,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: Depreciation Filters ========================
-  id: 1039257838505635
+  id: 6847467576329211
   identification: 
     name: Depreciation Filters
     type: Static Content
@@ -297,13 +297,13 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Breadcrumb ==================================
-  id: 1049052112648691
+  id: 6857261850472267
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -340,7 +340,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Depreciation Report =========================
-  id: 1049780606648695
+  id: 6857990344472271
   identification: 
     name: Depreciation Report
     type: Interactive Report
@@ -418,7 +418,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1049824508648695
+    id: 6858034246472271
     link: 
       link-column: Exclude Link Column
 
@@ -480,14 +480,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 1058354001665306
+      id: 6866563739488882
       identification: 
         name: Primary Report
         alias: 68666
 
     columns: 
     - # ====== Column: DEPREC_ORD_ID ===============================
-      id: 1050555194648700
+      id: 6858764932472276
       identification: 
         column-name: DEPREC_ORD_ID
         type: Plain Text
@@ -528,7 +528,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DEPREC_ORD_DATE =============================
-      id: 1050976368648705
+      id: 6859186106472281
       identification: 
         column-name: DEPREC_ORD_DATE
         type: Plain Text
@@ -570,7 +570,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: BRANCH_NAME =================================
-      id: 1051375580648706
+      id: 6859585318472282
       identification: 
         column-name: BRANCH_NAME
         type: Plain Text
@@ -611,7 +611,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMP_NAME ====================================
-      id: 1051694997648706
+      id: 6859904735472282
       identification: 
         column-name: EMP_NAME
         type: Plain Text
@@ -652,7 +652,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_NAME ===================================
-      id: 1052138916648708
+      id: 6860348654472284
       identification: 
         column-name: PROD_NAME
         type: Plain Text
@@ -693,7 +693,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: QUANTITY ====================================
-      id: 1052571061648708
+      id: 6860780799472284
       identification: 
         column-name: QUANTITY
         type: Plain Text
@@ -734,7 +734,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DEPREC_ORD_NOTES ============================
-      id: 1052946394648709
+      id: 6861156132472285
       identification: 
         column-name: DEPREC_ORD_NOTES
         type: Plain Text
@@ -775,7 +775,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREATED_BY ==================================
-      id: 1053379225648709
+      id: 6861588963472285
       identification: 
         column-name: CREATED_BY
         type: Plain Text
@@ -816,7 +816,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREATED_DATE ================================
-      id: 1053729684648711
+      id: 6861939422472287
       identification: 
         column-name: CREATED_DATE
         type: Plain Text
@@ -902,7 +902,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P35_DATE_FROM ============================
-  id: 1039421556505637
+  id: 6847631294329213
   identification: 
     name: P35_DATE_FROM
     type: Date Picker
@@ -921,7 +921,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Depreciation Filters # 1039257838505635
+    region: Depreciation Filters # 6847467576329211
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -960,7 +960,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P35_DATE_TO ==============================
-  id: 1039527198505638
+  id: 6847736936329214
   identification: 
     name: P35_DATE_TO
     type: Date Picker
@@ -979,7 +979,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Depreciation Filters # 1039257838505635
+    region: Depreciation Filters # 6847467576329211
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1018,7 +1018,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P35_BRANCH_ID ============================
-  id: 1039599470505639
+  id: 6847809208329215
   identification: 
     name: P35_BRANCH_ID
     type: Select List
@@ -1035,7 +1035,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Depreciation Filters # 1039257838505635
+    region: Depreciation Filters # 6847467576329211
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1084,7 +1084,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P35_PROD_ID ==============================
-  id: 1039757513505640
+  id: 6847967251329216
   identification: 
     name: P35_PROD_ID
     type: Select List
@@ -1101,7 +1101,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Depreciation Filters # 1039257838505635
+    region: Depreciation Filters # 6847467576329211
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1151,14 +1151,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLEAR_FILTERS ===============================
-  id: 1040187940505644
+  id: 6848397678329220
   identification: 
     button-name: CLEAR_FILTERS
     label: Clear Filters
 
   layout: 
     sequence: 50
-    region: Depreciation Filters # 1039257838505635
+    region: Depreciation Filters # 6847467576329211
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -1181,7 +1181,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: DA_REFRESH_DEPRECIATION =============
-  id: 1039824180505641
+  id: 6848033918329217
   identification: 
     name: DA_REFRESH_DEPRECIATION
 
@@ -1201,7 +1201,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh → Depreciation Report ===============
-    id: 1039941584505642
+    id: 6848151322329218
     identification: 
       name: Refresh → Depreciation Report
       action: Refresh
@@ -1211,16 +1211,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Depreciation Report # 1049780606648695
+      region: Depreciation Report # 6857990344472271
 
     execution: 
       sequence: 10
-      event: DA_REFRESH_DEPRECIATION # 1039824180505641
+      event: DA_REFRESH_DEPRECIATION # 6848033918329217
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh → Depreciation Summary ==============
-    id: 1040021642505643
+    id: 6848231380329219
     identification: 
       name: Refresh → Depreciation Summary
       action: Refresh
@@ -1230,16 +1230,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Depreciation Summary # 1039159378505634
+      region: Depreciation Summary # 6847369116329210
 
     execution: 
       sequence: 20
-      event: DA_REFRESH_DEPRECIATION # 1039824180505641
+      event: DA_REFRESH_DEPRECIATION # 6848033918329217
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: New =================================
-  id: 1040196288505645
+  id: 6848406026329221
   identification: 
     name: New
 
@@ -1251,11 +1251,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CLEAR_FILTERS # 1040187940505644
+    button: CLEAR_FILTERS # 6848397678329220
 
   actions: 
   - # ====== Action: Clear Depreciation Filter ===================
-    id: 1040372166505646
+    id: 6848581904329222
     identification: 
       name: Clear Depreciation Filter
       action: Execute JavaScript Code
@@ -1285,7 +1285,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: New # 1040196288505645
+      event: New # 6848406026329221
       fire-when-event-result-is: True
       fire-on-initialization: false
 

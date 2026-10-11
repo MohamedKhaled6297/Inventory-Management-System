@@ -1,6 +1,6 @@
 ---
 # ====== Application: Inventory Management System ============
-id: 139471
+id: 106
 identification: 
   name: Inventory Management System
   alias: INVENTORY-PROJECT
@@ -31,7 +31,7 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: Inventory Authentication # 767485187519427
+  authentication-scheme: Inventory Authentication # 6575694925343003
 
 authorization: 
   source-for-role-or-group-schemes: Access Control User Role Assignments
@@ -96,11 +96,11 @@ navigation-menu:
   - js-navCollapsed--default
   - t-TreeNav--styleB
   list-position: Side
-  list: Navigation Menu # 114548711156926457196
+  list: Navigation Menu # 114554519366664280772
 
 navigation-bar: 
   implementation: List
-  list: Navigation Bar # 114548712359554457200
+  list: Navigation Bar # 114554520569292280776
   list-template: Navigation Bar
   template-options: 
   - '#DEFAULT#'
@@ -123,11 +123,11 @@ attributes:
   auto-dismiss-success-messages: false
 
 subscription: 
-  version-number: 6122797
+  version-number: 6152654
 
 substitutions: 
 - # ====== Substitution: APP_NAME ==============================
-  id: 5808209737823575
+  id: 1
   identification: 
     name: APP_NAME
 
@@ -136,7 +136,7 @@ substitutions:
 
 component-settings: 
 - # ====== Component Setting: NATIVE_OPEN_AI_ASSISTANT =========
-  id: 114548705822854457190
+  id: 114554514032592280766
   identification: 
     name: NATIVE_OPEN_AI_ASSISTANT
     type: Dynamic Action
@@ -145,7 +145,7 @@ component-settings:
     version-number: 15677366126930
 
 - # ====== Component Setting: NATIVE_COLOR_PICKER ==============
-  id: 114548706182295457192
+  id: 114554514392033280768
   identification: 
     name: NATIVE_COLOR_PICKER
     type: Item
@@ -154,7 +154,7 @@ component-settings:
     version-number: 15677366126960
 
 - # ====== Component Setting: NATIVE_DATE_PICKER_APEX ==========
-  id: 114548706438259457192
+  id: 114554514647997280768
   identification: 
     name: NATIVE_DATE_PICKER_APEX
     type: Item
@@ -163,7 +163,7 @@ component-settings:
     version-number: 15677366126963
 
 - # ====== Component Setting: NATIVE_GEOCODED_ADDRESS ==========
-  id: 114548706728946457192
+  id: 114554514938684280768
   identification: 
     name: NATIVE_GEOCODED_ADDRESS
     type: Item
@@ -172,7 +172,7 @@ component-settings:
     version-number: 15677366126966
 
 - # ====== Component Setting: NATIVE_SELECT_MANY ===============
-  id: 114548707071746457192
+  id: 114554515281484280768
   identification: 
     name: NATIVE_SELECT_MANY
     type: Item
@@ -181,7 +181,7 @@ component-settings:
     version-number: 15677366126969
 
 - # ====== Component Setting: NATIVE_SINGLE_CHECKBOX ===========
-  id: 114548707355451457192
+  id: 114554515565189280768
   identification: 
     name: NATIVE_SINGLE_CHECKBOX
     type: Item
@@ -190,7 +190,7 @@ component-settings:
     version-number: 15677366126979
 
 - # ====== Component Setting: NATIVE_STAR_RATING ===============
-  id: 114548707603984457193
+  id: 114554515813722280769
   identification: 
     name: NATIVE_STAR_RATING
     type: Item
@@ -199,7 +199,7 @@ component-settings:
     version-number: 15677366126991
 
 - # ====== Component Setting: NATIVE_YES_NO ====================
-  id: 114548707950557457193
+  id: 114554516160295280769
   identification: 
     name: NATIVE_YES_NO
     type: Item
@@ -208,7 +208,7 @@ component-settings:
     version-number: 15677366126991
 
 - # ====== Component Setting: NATIVE_GEOCODING =================
-  id: 114548708298678457193
+  id: 114554516508416280769
   identification: 
     name: NATIVE_GEOCODING
     type: Process
@@ -220,7 +220,7 @@ component-settings:
     version-number: 15677366127002
 
 - # ====== Component Setting: NATIVE_DISPLAY_SELECTOR ==========
-  id: 114548708588217457193
+  id: 114554516797955280769
   identification: 
     name: NATIVE_DISPLAY_SELECTOR
     type: Region
@@ -229,7 +229,7 @@ component-settings:
     version-number: 15677366127008
 
 - # ====== Component Setting: NATIVE_IR ========================
-  id: 114548708822677457193
+  id: 114554517032415280769
   identification: 
     name: NATIVE_IR
     type: Region
@@ -238,7 +238,7 @@ component-settings:
     version-number: 15677366127021
 
 - # ====== Component Setting: NATIVE_MAP_REGION ================
-  id: 114548709177800457194
+  id: 114554517387538280770
   identification: 
     name: NATIVE_MAP_REGION
     type: Region
@@ -247,7 +247,7 @@ component-settings:
     version-number: 15677366127026
 
 - # ====== Component Setting: NATIVE_ADFBC =====================
-  id: 114548709475565457194
+  id: 114554517685303280770
   identification: 
     name: NATIVE_ADFBC
     type: REST Data Source
@@ -256,7 +256,7 @@ component-settings:
     version-number: 15677366127042
 
 - # ====== Component Setting: NATIVE_BOSS ======================
-  id: 114548709790568457194
+  id: 114554518000306280770
   identification: 
     name: NATIVE_BOSS
     type: REST Data Source
@@ -266,7 +266,7 @@ component-settings:
 
 language-mappings: 
 - # ====== Language Mapping: Arabic (ar) =======================
-  id: 1119225008153470
+  id: 6927434745977046
   attributes: 
     translation-application: 206
     language: Arabic (ar)

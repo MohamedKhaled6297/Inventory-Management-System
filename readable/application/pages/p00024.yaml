@@ -20,7 +20,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+  authorization-scheme: CAN_MANAGE_STOCK # 6584071059289937
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,13 +39,13 @@ server-cache:
 
 regions: 
 - # ====== Region: Breadcrumb ==================================
-  id: 812338358482306
+  id: 6620548096305882
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -82,7 +82,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Buttons =====================================
-  id: 813005194482313
+  id: 6621214932305889
   identification: 
     name: Buttons
     type: Static Content
@@ -122,7 +122,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Order OUT ===================================
-  id: 813885613482319
+  id: 6622095351305895
   identification: 
     name: Order OUT
     type: Interactive Grid
@@ -163,7 +163,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 814383488482322
+    id: 6622593226305898
     edit: 
       enabled: true
       allowed-operations: 
@@ -217,14 +217,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 814754572482330
+      id: 6622964310305906
       identification: 
         name: Primary Report
         alias: 66230
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 815175303482333
+    id: 6623385041305909
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -238,7 +238,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 815663326482333
+    id: 6623873064305909
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -247,7 +247,7 @@ regions:
       sequence: 20
 
   - # ====== Column: ORDER_OUT_ID ================================
-    id: 816633162482336
+    id: 6624842900305912
     identification: 
       column-name: ORDER_OUT_ID
       type: Hidden
@@ -279,7 +279,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: ORDER_OUT_CUSTOMER_ID =======================
-    id: 817688767482338
+    id: 6625898505305914
     identification: 
       column-name: ORDER_OUT_CUSTOMER_ID
       type: Select List
@@ -339,7 +339,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_EMP_ID ============================
-    id: 818683547482339
+    id: 6626893285305915
     identification: 
       column-name: ORDER_OUT_EMP_ID
       type: Select List
@@ -400,7 +400,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_BRANCH_ID =========================
-    id: 819689558482341
+    id: 6627899296305917
     identification: 
       column-name: ORDER_OUT_BRANCH_ID
       type: Select List
@@ -461,7 +461,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_DATE ==============================
-    id: 820631524482344
+    id: 6628841262305920
     identification: 
       column-name: ORDER_OUT_DATE
       type: Date Picker
@@ -516,7 +516,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_NOTES =============================
-    id: 821636827482345
+    id: 6629846565305921
     identification: 
       column-name: ORDER_OUT_NOTES
       type: Textarea
@@ -574,7 +574,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_CR_USER ===========================
-    id: 822634093482347
+    id: 6630843831305923
     identification: 
       column-name: ORDER_OUT_CR_USER
       type: Hidden
@@ -611,7 +611,7 @@ regions:
       sort: false
 
   - # ====== Column: ORDER_OUT_CR_DATE ===========================
-    id: 823684576482350
+    id: 6631894314305926
     identification: 
       column-name: ORDER_OUT_CR_DATE
       type: Hidden
@@ -687,7 +687,7 @@ regions:
       alignment: center
 
 - # ====== Region: Order OUT Details ===========================
-  id: 824981545482416
+  id: 6633191283305992
   identification: 
     name: Order OUT Details
     type: Interactive Grid
@@ -721,7 +721,7 @@ regions:
     landmark-type: Template Default
 
   master-detail: 
-    master-region: Order OUT # 813885613482319
+    master-region: Order OUT # 6622095351305895
 
   advanced: 
     region-display-selector: false
@@ -731,7 +731,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 825385846482417
+    id: 6633595584305993
     edit: 
       enabled: true
       allowed-operations: 
@@ -785,14 +785,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 825779983482417
+      id: 6633989721305993
       identification: 
         name: Primary Report
         alias: 66340
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 826165558482419
+    id: 6634375296305995
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -806,7 +806,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 826624973482419
+    id: 6634834711305995
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -815,7 +815,7 @@ regions:
       sequence: 20
 
   - # ====== Column: ORDER_OUT_DETAILS_ID ========================
-    id: 827605298482422
+    id: 6635815036305998
     identification: 
       column-name: ORDER_OUT_DETAILS_ID
       type: Hidden
@@ -847,7 +847,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: ORDER_OUT_DETAILS_ORDEROUT_ID ===============
-    id: 828640219482424
+    id: 6636849957306000
     identification: 
       column-name: ORDER_OUT_DETAILS_ORDEROUT_ID
       type: Hidden
@@ -869,7 +869,7 @@ regions:
       primary-key: false
 
     master-detail: 
-      master-column: ORDER_OUT_ID # 816633162482336
+      master-column: ORDER_OUT_ID # 6624842900305912
 
     session-state: 
       data-type: VARCHAR2
@@ -882,7 +882,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: ORDER_OUT_DETAILS_PROD_ID ===================
-    id: 829678487482427
+    id: 6637888225306003
     identification: 
       column-name: ORDER_OUT_DETAILS_PROD_ID
       type: Select List
@@ -943,7 +943,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_DETAILS_QUANTITY ==================
-    id: 830614181482430
+    id: 6638823919306006
     identification: 
       column-name: ORDER_OUT_DETAILS_QUANTITY
       type: Number Field
@@ -991,7 +991,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_DETAILS_UNIT_PRICE ================
-    id: 831664595482431
+    id: 6639874333306007
     identification: 
       column-name: ORDER_OUT_DETAILS_UNIT_PRICE
       type: Number Field
@@ -1039,7 +1039,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER_OUT_DETAILS_CR_USER ===================
-    id: 832637423482434
+    id: 6640847161306010
     identification: 
       column-name: ORDER_OUT_DETAILS_CR_USER
       type: Hidden
@@ -1076,7 +1076,7 @@ regions:
       sort: false
 
   - # ====== Column: ORDER_OUT_DETAILS_CR_DATE ===================
-    id: 833666008482434
+    id: 6641875746306010
     identification: 
       column-name: ORDER_OUT_DETAILS_CR_DATE
       type: Hidden
@@ -1153,14 +1153,14 @@ regions:
 
 buttons: 
 - # ====== Button: SAVE ========================================
-  id: 813443906482314
+  id: 6621653644305890
   identification: 
     button-name: SAVE
     label: Save
 
   layout: 
     sequence: 10
-    region: Buttons # 813005194482313
+    region: Buttons # 6621214932305889
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1182,12 +1182,12 @@ buttons:
 
 processes: 
 - # ====== Process: Order OUT - Save Interactive Grid Data =====
-  id: 824597875482358
+  id: 6632807613305934
   identification: 
     name: Order OUT - Save Interactive Grid Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Order OUT # 813885613482319
+    editable-region: Order OUT # 6622095351305895
 
   settings: 
     target-type: Region Source
@@ -1204,16 +1204,16 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 813443906482314
+    when-button-pressed: SAVE # 6621653644305890
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: Order OUT Details - Save Interactive Grid Da
-  id: 834677720482438
+  id: 6642887458306014
   identification: 
     name: Order OUT Details - Save Interactive Grid Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Order OUT Details # 824981545482416
+    editable-region: Order OUT Details # 6633191283305992
 
   settings: 
     target-type: Region Source
@@ -1230,6 +1230,6 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 813443906482314
+    when-button-pressed: SAVE # 6621653644305890
     execution-scope: For Created and Modified Rows
 

@@ -25,7 +25,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: CAN_MANAGE_MASTER_DATA # 1104203936157772
+  authorization-scheme: CAN_MANAGE_MASTER_DATA # 6912413673981348
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -44,7 +44,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Suppliers Form ==============================
-  id: 546185592020353
+  id: 6354395329843929
   identification: 
     name: Suppliers Form
     type: Form
@@ -93,7 +93,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 550670166020411
+  id: 6358879903843987
   identification: 
     name: Buttons
     type: Static Content
@@ -132,7 +132,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P5_SUPPLIER_ID ===========================
-  id: 546444707020372
+  id: 6354654444843948
   identification: 
     name: P5_SUPPLIER_ID
     type: Hidden
@@ -142,14 +142,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Suppliers Form # 546185592020353
+    region: Suppliers Form # 6354395329843929
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
     column: SUPPLIER_ID
     data-type: NUMBER
     query-only: true
@@ -165,7 +165,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SUPPLIER_NAME =========================
-  id: 546856978020391
+  id: 6355066715843967
   identification: 
     name: P5_SUPPLIER_NAME
     type: Text Field
@@ -183,7 +183,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Suppliers Form # 546185592020353
+    region: Suppliers Form # 6354395329843929
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -207,7 +207,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
     column: SUPPLIER_NAME
     data-type: VARCHAR2
     query-only: false
@@ -225,7 +225,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SUPPLIER_PHONE ========================
-  id: 547250549020392
+  id: 6355460286843968
   identification: 
     name: P5_SUPPLIER_PHONE
     type: Text Field
@@ -243,7 +243,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Suppliers Form # 546185592020353
+    region: Suppliers Form # 6354395329843929
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -267,7 +267,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
     column: SUPPLIER_PHONE
     data-type: VARCHAR2
     query-only: false
@@ -285,7 +285,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SUPPLIER_ISACTIVE =====================
-  id: 547685315020394
+  id: 6355895052843970
   identification: 
     name: P5_SUPPLIER_ISACTIVE
     type: Switch
@@ -301,7 +301,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Suppliers Form # 546185592020353
+    region: Suppliers Form # 6354395329843929
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -323,7 +323,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
     column: SUPPLIER_ISACTIVE
     data-type: VARCHAR2
     query-only: false
@@ -342,7 +342,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SUPPLIER_CR_USER ======================
-  id: 548055520020394
+  id: 6356265257843970
   identification: 
     name: P5_SUPPLIER_CR_USER
     type: Hidden
@@ -352,14 +352,14 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Suppliers Form # 546185592020353
+    region: Suppliers Form # 6354395329843929
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
     column: SUPPLIER_CR_USER
     data-type: VARCHAR2
     query-only: false
@@ -380,7 +380,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SUPPLIER_CR_DATE ======================
-  id: 548410926020395
+  id: 6356620663843971
   identification: 
     name: P5_SUPPLIER_CR_DATE
     type: Hidden
@@ -390,14 +390,14 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Suppliers Form # 546185592020353
+    region: Suppliers Form # 6354395329843929
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
     column: SUPPLIER_CR_DATE
     data-type: DATE
     query-only: false
@@ -419,14 +419,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 550996404020413
+  id: 6359206141843989
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 550670166020411
+    region: Buttons # 6358879903843987
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -445,14 +445,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 552433754020425
+  id: 6360643491844001
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 550670166020411
+    region: Buttons # 6358879903843987
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -482,14 +482,14 @@ buttons:
     item: P5_SUPPLIER_ID
 
 - # ====== Button: SAVE ========================================
-  id: 552797110020427
+  id: 6361006847844003
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 550670166020411
+    region: Buttons # 6358879903843987
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -515,14 +515,14 @@ buttons:
     item: P5_SUPPLIER_ID
 
 - # ====== Button: CREATE ======================================
-  id: 553201699020427
+  id: 6361411436844003
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 550670166020411
+    region: Buttons # 6358879903843987
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -549,7 +549,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 551119196020413
+  id: 6359328933843989
   identification: 
     name: Cancel Dialog
 
@@ -561,28 +561,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 550996404020413
+    button: CANCEL # 6359206141843989
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 551953186020424
+    id: 6360162923844000
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 551119196020413
+      event: Cancel Dialog # 6359328933843989
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Suppliers Form =============
-  id: 553592767020430
+  id: 6361802504844006
   identification: 
     name: Initialize form Suppliers Form
     type: Form - Initialization
     execution-chain: None
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
 
   execution: 
     sequence: 10
@@ -590,12 +590,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Suppliers Form ================
-  id: 554026410020434
+  id: 6362236147844010
   identification: 
     name: Process form Suppliers Form
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Suppliers Form # 546185592020353
+    form-region: Suppliers Form # 6354395329843929
 
   settings: 
     target-type: Region Source
@@ -612,7 +612,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 554395725020434
+  id: 6362605462844010
   identification: 
     name: Close Dialog
     type: Close Dialog

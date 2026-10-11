@@ -20,7 +20,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 767807182572611
+  authorization-scheme: IS_ADMIN # 6576016920396187
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,17 +39,25 @@ server-cache:
 
 regions: 
 - # ====== Region: Roles =======================================
-  id: 724605718339213
+  id: 6532815456162789
   identification: 
     name: Roles
     type: Interactive Report
 
   source: 
     location: Local Database
-    type: Table / View
-    table-owner: Parsing Schema
-    table-name: INV_ROLES
-    include-rowid-column: false
+    type: SQL Query
+    sql-query: |
+      select ROLE_ID,
+             ROLE_NAME,
+             DESCRIPTION,
+              CASE IS_ACTIVE
+                  WHEN '1' THEN '<span class="t-Badge t-Badge--success">Active</span>'
+                  WHEN '0' THEN '<span class="t-Badge t-Badge--danger">Inactive</span>'
+              END AS IS_ACTIVE,
+             CR_USER,
+             CR_DATE
+        from INV_ROLES
 
   layout: 
     sequence: 10
@@ -83,7 +91,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 724750265339213
+    id: 6532960003162789
     link: 
       link-column: Link to Custom Target
       target: 
@@ -153,14 +161,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 730381437346233
+      id: 6538591175169809
       identification: 
         name: Primary Report
         alias: 65386
 
     columns: 
     - # ====== Column: ROLE_ID =====================================
-      id: 725465558339228
+      id: 6533675296162804
       identification: 
         column-name: ROLE_ID
         type: Hidden
@@ -178,7 +186,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ROLE_NAME ===================================
-      id: 725812561339231
+      id: 6534022299162807
       identification: 
         column-name: ROLE_NAME
         type: Plain Text
@@ -219,7 +227,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DESCRIPTION =================================
-      id: 726277458339231
+      id: 6534487196162807
       identification: 
         column-name: DESCRIPTION
         type: Plain Text
@@ -260,21 +268,21 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: IS_ACTIVE ===================================
-      id: 726641695339233
+      id: 6534851433162809
       identification: 
         column-name: IS_ACTIVE
         type: Plain Text
 
       heading: 
         heading: Is Active
-        alignment: start
+        alignment: center
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
         sequence: 4
-        column-alignment: start
+        column-alignment: center
 
       accessibility: 
         value-identifies-row: false
@@ -298,87 +306,40 @@ regions:
         pivot: true
 
       security: 
-        escape-special-characters: true
+        escape-special-characters: false
 
     - # ====== Column: CR_USER =====================================
-      id: 727001828339233
+      id: 6535211566162809
       identification: 
         column-name: CR_USER
-        type: Plain Text
+        type: Hidden
 
       heading: 
         heading: Cr User
-        alignment: start
-
-      single-row-view: 
-        use-column-heading: true
 
       layout: 
         sequence: 5
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
 
       source: 
         primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
 
       security: 
         escape-special-characters: true
 
     - # ====== Column: CR_DATE =====================================
-      id: 727405439339234
+      id: 6535615177162810
       identification: 
         column-name: CR_DATE
-        type: Plain Text
+        type: Hidden
 
       heading: 
         heading: Cr Date
-        alignment: start
-
-      single-row-view: 
-        use-column-heading: true
 
       layout: 
         sequence: 6
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
 
       source: 
         primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-        date-ranges: All
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
 
       security: 
         escape-special-characters: true
@@ -427,13 +388,13 @@ regions:
         alignment: center
 
 - # ====== Region: Breadcrumb ==================================
-  id: 729511261339241
+  id: 6537720999162817
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -471,14 +432,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 727989925339234
+  id: 6536199663162810
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 10
-    region: Roles # 724605718339213
+    region: Roles # 6532815456162789
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -503,7 +464,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 728284142339236
+  id: 6536493880162812
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -515,11 +476,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Roles # 724605718339213
+    region: Roles # 6532815456162789
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 728748180339238
+    id: 6536957918162814
     identification: 
       action: Refresh
 
@@ -528,11 +489,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Roles # 724605718339213
+      region: Roles # 6532815456162789
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 728284142339236
+      event: Edit Report - Dialog Closed # 6536493880162812
       fire-when-event-result-is: True
       fire-on-initialization: false
 

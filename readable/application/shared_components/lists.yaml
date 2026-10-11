@@ -1,6 +1,6 @@
 ---
 - # ====== List: Navigation Menu ===============================
-  id: 114548711156926457196
+  id: 114554519366664280772
   identification: 
     name: Navigation Menu
 
@@ -12,7 +12,7 @@
 
   entries: 
   - # ====== Entry: Suppliers ====================================
-    id: 555048583020438
+    id: 6363258320844014
     label: 
       label: Suppliers
 
@@ -21,7 +21,7 @@
 
     layout: 
       sequence: 60
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Pages
@@ -41,10 +41,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Customers ====================================
-    id: 576410023402247
+    id: 6384619761225823
     label: 
       label: Customers
 
@@ -53,7 +53,7 @@
 
     layout: 
       sequence: 70
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Pages
@@ -73,10 +73,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Employees ====================================
-    id: 597885389487217
+    id: 6406095127310793
     label: 
       label: Employees
 
@@ -85,7 +85,7 @@
 
     layout: 
       sequence: 80
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Pages
@@ -105,10 +105,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Products =====================================
-    id: 626351383826524
+    id: 6434561121650100
     label: 
       label: Products
 
@@ -117,7 +117,7 @@
 
     layout: 
       sequence: 90
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Pages
@@ -137,10 +137,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Security =====================================
-    id: 651000929106628
+    id: 6459210666930204
     label: 
       label: Security
 
@@ -157,10 +157,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: IS_ADMIN # 767807182572611
+      authorization-scheme: IS_ADMIN # 6576016920396187
 
   - # ====== Entry: Users ========================================
-    id: 663880517148078
+    id: 6472090254971654
     label: 
       label: Users
 
@@ -169,7 +169,7 @@
 
     layout: 
       sequence: 170
-      parent-entry: Security # 651000929106628
+      parent-entry: Security # 6459210666930204
 
     is-current: 
       type: Pages
@@ -189,10 +189,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: IS_ADMIN # 767807182572611
+      authorization-scheme: IS_ADMIN # 6576016920396187
 
   - # ====== Entry: Roles ========================================
-    id: 724373546339152
+    id: 6532583284162728
     label: 
       label: Roles
 
@@ -201,7 +201,7 @@
 
     layout: 
       sequence: 180
-      parent-entry: Security # 651000929106628
+      parent-entry: Security # 6459210666930204
 
     is-current: 
       type: Pages
@@ -221,10 +221,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: IS_ADMIN # 767807182572611
+      authorization-scheme: IS_ADMIN # 6576016920396187
 
   - # ====== Entry: User Roles ===================================
-    id: 756717718286950
+    id: 6564927456110526
     label: 
       label: User Roles
 
@@ -233,7 +233,7 @@
 
     layout: 
       sequence: 190
-      parent-entry: Security # 651000929106628
+      parent-entry: Security # 6459210666930204
 
     is-current: 
       type: Pages
@@ -253,10 +253,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: IS_ADMIN # 767807182572611
+      authorization-scheme: IS_ADMIN # 6576016920396187
 
   - # ====== Entry: Inventory Transactions =======================
-    id: 777099639578056
+    id: 6585309377401632
     label: 
       label: Inventory Transactions
 
@@ -273,10 +273,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_TRANSACTIONS_MENU # 1118275466068375
+      authorization-scheme: CAN_VIEW_TRANSACTIONS_MENU # 6926485203891951
 
   - # ====== Entry: Order IN =====================================
-    id: 778371378650586
+    id: 6586581116474162
     label: 
       label: Order IN
 
@@ -285,7 +285,7 @@
 
     layout: 
       sequence: 210
-      parent-entry: Inventory Transactions # 777099639578056
+      parent-entry: Inventory Transactions # 6585309377401632
 
     is-current: 
       type: Pages
@@ -304,10 +304,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+      authorization-scheme: CAN_MANAGE_STOCK # 6584071059289937
 
   - # ====== Entry: Order OUT ====================================
-    id: 811936199482297
+    id: 6620145937305873
     label: 
       label: Order OUT
 
@@ -316,7 +316,7 @@
 
     layout: 
       sequence: 220
-      parent-entry: Inventory Transactions # 777099639578056
+      parent-entry: Inventory Transactions # 6585309377401632
 
     is-current: 
       type: Pages
@@ -335,10 +335,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+      authorization-scheme: CAN_MANAGE_STOCK # 6584071059289937
 
   - # ====== Entry: Stock Transfer ===============================
-    id: 845033828336602
+    id: 6653243566160178
     label: 
       label: Stock Transfer
 
@@ -347,7 +347,7 @@
 
     layout: 
       sequence: 230
-      parent-entry: Inventory Transactions # 777099639578056
+      parent-entry: Inventory Transactions # 6585309377401632
 
     is-current: 
       type: Pages
@@ -366,10 +366,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+      authorization-scheme: CAN_MANAGE_STOCK # 6584071059289937
 
   - # ====== Entry: Depreciation Order ===========================
-    id: 877221895526345
+    id: 6685431633349921
     label: 
       label: Depreciation Order
 
@@ -378,7 +378,7 @@
 
     layout: 
       sequence: 240
-      parent-entry: Inventory Transactions # 777099639578056
+      parent-entry: Inventory Transactions # 6585309377401632
 
     is-current: 
       type: Pages
@@ -397,10 +397,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_MANAGE_DEPRECIATION # 776010919469599
+      authorization-scheme: CAN_MANAGE_DEPRECIATION # 6584220657293175
 
   - # ====== Entry: Current Stock ================================
-    id: 906172565906538
+    id: 6714382303730114
     label: 
       label: Current Stock
 
@@ -409,7 +409,7 @@
 
     layout: 
       sequence: 265
-      parent-entry: Reports # 942858096717627
+      parent-entry: Reports # 6751067834541203
 
     is-current: 
       type: Pages
@@ -428,10 +428,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Reports ======================================
-    id: 942858096717627
+    id: 6751067834541203
     label: 
       label: Reports
 
@@ -448,10 +448,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Stock Movement ===============================
-    id: 948685541292719
+    id: 6756895279116295
     label: 
       label: Stock Movement
 
@@ -460,7 +460,7 @@
 
     layout: 
       sequence: 270
-      parent-entry: Reports # 942858096717627
+      parent-entry: Reports # 6751067834541203
 
     is-current: 
       type: Pages
@@ -479,10 +479,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Stock Reconciliation =========================
-    id: 987294335088841
+    id: 6795504072912417
     label: 
       label: Stock Reconciliation
 
@@ -491,7 +491,7 @@
 
     layout: 
       sequence: 280
-      parent-entry: Reports # 942858096717627
+      parent-entry: Reports # 6751067834541203
 
     is-current: 
       type: Pages
@@ -510,10 +510,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Order IN Report ==============================
-    id: 1007733294256480
+    id: 6815943032080056
     label: 
       label: Order IN Report
 
@@ -522,7 +522,7 @@
 
     layout: 
       sequence: 290
-      parent-entry: Reports # 942858096717627
+      parent-entry: Reports # 6751067834541203
 
     is-current: 
       type: Pages
@@ -541,10 +541,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Order OUT Report =============================
-    id: 1027257589485322
+    id: 6835467327308898
     label: 
       label: Order OUT Report
 
@@ -553,7 +553,7 @@
 
     layout: 
       sequence: 300
-      parent-entry: Reports # 942858096717627
+      parent-entry: Reports # 6751067834541203
 
     is-current: 
       type: Pages
@@ -572,10 +572,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Depreciation Report ==========================
-    id: 1048647511648689
+    id: 6856857249472265
     label: 
       label: Depreciation Report
 
@@ -584,7 +584,7 @@
 
     layout: 
       sequence: 310
-      parent-entry: Reports # 942858096717627
+      parent-entry: Reports # 6751067834541203
 
     is-current: 
       type: Pages
@@ -603,10 +603,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+      authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   - # ====== Entry: Home =========================================
-    id: 114548723019702457218
+    id: 114554531229440280794
     label: 
       label: Home
 
@@ -631,7 +631,7 @@
       translatable: false
 
   - # ====== Entry: Master Data ==================================
-    id: 122758756389938936791
+    id: 122764564599676760367
     label: 
       label: Master Data
 
@@ -648,10 +648,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Units ========================================
-    id: 122759794898868659666
+    id: 122765603108606483242
     label: 
       label: Units
 
@@ -660,7 +660,7 @@
 
     layout: 
       sequence: 40
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Pages
@@ -680,10 +680,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Branches =====================================
-    id: 122761874415907025607
+    id: 122767682625644849183
     label: 
       label: Branches
 
@@ -692,7 +692,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Target Page
@@ -709,10 +709,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
   - # ====== Entry: Categories ===================================
-    id: 122762273331680051168
+    id: 122768081541417874744
     label: 
       label: Categories
 
@@ -721,7 +721,7 @@
 
     layout: 
       sequence: 50
-      parent-entry: Master Data # 122758756389938936791
+      parent-entry: Master Data # 122764564599676760367
 
     is-current: 
       type: Pages
@@ -741,10 +741,10 @@
       translatable: false
 
     security: 
-      authorization-scheme: CAN_VIEW_MASTER_DATA # 1103941645144916
+      authorization-scheme: CAN_VIEW_MASTER_DATA # 6912151382968492
 
 - # ====== List: Navigation Bar ================================
-  id: 114548712359554457200
+  id: 114554520569292280776
   identification: 
     name: Navigation Bar
 
@@ -756,7 +756,7 @@
 
   entries: 
   - # ====== Entry: &APP_TEXT$LANGUAGE_LABEL. ====================
-    id: 1378763292542953
+    id: 7186973030366529
     label: 
       label: '&APP_TEXT$LANGUAGE_LABEL.'
 
@@ -781,7 +781,7 @@
       translatable: false
 
   - # ====== Entry: العربية ======================================
-    id: 1379088010552064
+    id: 7187297748375640
     label: 
       label: العربية
 
@@ -790,7 +790,7 @@
 
     layout: 
       sequence: 60
-      parent-entry: '&APP_TEXT$LANGUAGE_LABEL.' # 1378763292542953
+      parent-entry: '&APP_TEXT$LANGUAGE_LABEL.' # 7186973030366529
 
     is-current: 
       type: Target Page
@@ -805,7 +805,7 @@
       translatable: false
 
   - # ====== Entry: English ======================================
-    id: 1379363345555824
+    id: 7187573083379400
     label: 
       label: English
 
@@ -814,7 +814,7 @@
 
     layout: 
       sequence: 70
-      parent-entry: '&APP_TEXT$LANGUAGE_LABEL.' # 1378763292542953
+      parent-entry: '&APP_TEXT$LANGUAGE_LABEL.' # 7186973030366529
 
     is-current: 
       type: Target Page
@@ -829,7 +829,7 @@
       translatable: false
 
   - # ====== Entry: &APP_USER. ===================================
-    id: 114548724531224457221
+    id: 114554532740962280797
     label: 
       label: '&APP_USER.'
 
@@ -853,13 +853,13 @@
       2.: has-username
 
   - # ====== Entry: --- ==========================================
-    id: 114548725025619457222
+    id: 114554533235357280798
     label: 
       label: '---'
 
     layout: 
       sequence: 20
-      parent-entry: '&APP_USER.' # 114548724531224457221
+      parent-entry: '&APP_USER.' # 114554532740962280797
 
     is-current: 
       type: Target Page
@@ -877,7 +877,7 @@
       type: User is Authenticated (not public)
 
   - # ====== Entry: Sign Out =====================================
-    id: 114548725416339457223
+    id: 114554533626077280799
     label: 
       label: Sign Out
 
@@ -886,7 +886,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: '&APP_USER.' # 114548724531224457221
+      parent-entry: '&APP_USER.' # 114554532740962280797
 
     is-current: 
       type: Target Page
@@ -904,7 +904,7 @@
       type: User is Authenticated (not public)
 
   - # ====== Entry: Master Data ==================================
-    id: 122757300535119919932
+    id: 122763108744857743508
     label: 
       label: Master Data
 
@@ -915,7 +915,7 @@
       sequence: 40
 
     subentries: 
-      list: Navigation Menu # 114548711156926457196
+      list: Navigation Menu # 114554519366664280772
 
     is-current: 
       type: Target Page

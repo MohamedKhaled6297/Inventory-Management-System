@@ -20,7 +20,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 767807182572611
+  authorization-scheme: IS_ADMIN # 6576016920396187
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,7 +39,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Users =======================================
-  id: 664280579148089
+  id: 6472490316971665
   identification: 
     name: Users
     type: Interactive Report
@@ -54,9 +54,9 @@ regions:
          U.PASS,
          U.EMAIL,
          CASE U.IS_ACTIVE
-             WHEN '1' THEN 'Active'
-             WHEN '0' THEN 'Inactive'
-         END AS STATUS,
+              WHEN '1' THEN '<span class="t-Badge t-Badge--success">Active</span>'
+              WHEN '0' THEN '<span class="t-Badge t-Badge--danger">Inactive</span>'
+          END AS STATUS,
          B.BRANCH_NAME
       FROM INV_USERS U
       LEFT JOIN INV_BRANCHES B
@@ -95,7 +95,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 664371361148089
+    id: 6472581098971665
     link: 
       link-column: Link to Custom Target
       target: 
@@ -165,14 +165,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 670818585151519
+      id: 6479028322975095
       identification: 
         name: Primary Report
         alias: 64791
 
     columns: 
     - # ====== Column: PASS ========================================
-      id: 1404847991453645
+      id: 4403361746369931
       identification: 
         column-name: PASS
         type: Plain Text
@@ -216,21 +216,21 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STATUS ======================================
-      id: 1404528576453642
+      id: 4403681161369934
       identification: 
         column-name: STATUS
         type: Plain Text
 
       heading: 
         heading: Status
-        alignment: start
+        alignment: center
 
       single-row-view: 
         use-column-heading: true
 
       layout: 
         sequence: 33
-        column-alignment: start
+        column-alignment: center
 
       accessibility: 
         value-identifies-row: false
@@ -254,10 +254,10 @@ regions:
         pivot: true
 
       security: 
-        escape-special-characters: true
+        escape-special-characters: false
 
     - # ====== Column: BRANCH_NAME =================================
-      id: 1404486073453641
+      id: 4403723664369935
       identification: 
         column-name: BRANCH_NAME
         type: Plain Text
@@ -298,7 +298,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: USER_ID =====================================
-      id: 664966951148106
+      id: 6473176688971682
       identification: 
         column-name: USER_ID
         type: Hidden
@@ -316,7 +316,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: USER_NAME ===================================
-      id: 665382225148111
+      id: 6473591962971687
       identification: 
         column-name: USER_NAME
         type: Plain Text
@@ -357,7 +357,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: LOGIN_NAME ==================================
-      id: 665739418148114
+      id: 6473949155971690
       identification: 
         column-name: LOGIN_NAME
         type: Plain Text
@@ -398,7 +398,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMAIL =======================================
-      id: 666502463148116
+      id: 6474712200971692
       identification: 
         column-name: EMAIL
         type: Plain Text
@@ -482,13 +482,13 @@ regions:
         alignment: center
 
 - # ====== Region: Breadcrumb ==================================
-  id: 670251047148128
+  id: 6478460784971704
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -526,14 +526,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 668667891148124
+  id: 6476877628971700
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 10
-    region: Users # 664280579148089
+    region: Users # 6472490316971665
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -558,7 +558,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 668936438148125
+  id: 6477146175971701
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -570,11 +570,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Users # 664280579148089
+    region: Users # 6472490316971665
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 669395114148125
+    id: 6477604851971701
     identification: 
       action: Refresh
 
@@ -583,11 +583,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Users # 664280579148089
+      region: Users # 6472490316971665
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 668936438148125
+      event: Edit Report - Dialog Closed # 6477146175971701
       fire-when-event-result-is: True
       fire-on-initialization: false
 

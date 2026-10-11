@@ -25,7 +25,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: CAN_MANAGE_MASTER_DATA # 1104203936157772
+  authorization-scheme: CAN_MANAGE_MASTER_DATA # 6912413673981348
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -44,7 +44,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Employees Form ==============================
-  id: 587311957487170
+  id: 6395521695310746
   identification: 
     name: Employees Form
     type: Form
@@ -93,7 +93,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 593494503487208
+  id: 6401704241310784
   identification: 
     name: Buttons
     type: Static Content
@@ -132,7 +132,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P13_EMP_ID ===============================
-  id: 587594426487174
+  id: 6395804164310750
   identification: 
     name: P13_EMP_ID
     type: Hidden
@@ -142,14 +142,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_ID
     data-type: NUMBER
     query-only: true
@@ -165,7 +165,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_NAME =============================
-  id: 588059692487175
+  id: 6396269430310751
   identification: 
     name: P13_EMP_NAME
     type: Text Field
@@ -183,7 +183,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -207,7 +207,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_NAME
     data-type: VARCHAR2
     query-only: false
@@ -225,7 +225,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_PHONE ============================
-  id: 588445235487175
+  id: 6396654973310751
   identification: 
     name: P13_EMP_PHONE
     type: Text Field
@@ -243,7 +243,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -267,7 +267,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_PHONE
     data-type: VARCHAR2
     query-only: false
@@ -285,7 +285,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_EMAIL ============================
-  id: 588848252487177
+  id: 6397057990310753
   identification: 
     name: P13_EMP_EMAIL
     type: Text Field
@@ -303,7 +303,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -327,7 +327,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_EMAIL
     data-type: VARCHAR2
     query-only: false
@@ -345,7 +345,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_BRANCH_ID ========================
-  id: 589225017487178
+  id: 6397434755310754
   identification: 
     name: P13_EMP_BRANCH_ID
     type: Select List
@@ -362,7 +362,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -397,7 +397,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_BRANCH_ID
     data-type: NUMBER
     query-only: false
@@ -415,7 +415,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_ISACTIVE =========================
-  id: 589970435487199
+  id: 6398180173310775
   identification: 
     name: P13_EMP_ISACTIVE
     type: Switch
@@ -431,7 +431,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -453,7 +453,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_ISACTIVE
     data-type: VARCHAR2
     query-only: false
@@ -472,7 +472,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_CR_USER ==========================
-  id: 590293189487202
+  id: 6398502927310778
   identification: 
     name: P13_EMP_CR_USER
     type: Hidden
@@ -482,14 +482,14 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_CR_USER
     data-type: VARCHAR2
     query-only: false
@@ -510,7 +510,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P13_EMP_CR_DATE ==========================
-  id: 590756550487202
+  id: 6398966288310778
   identification: 
     name: P13_EMP_CR_DATE
     type: Hidden
@@ -520,14 +520,14 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Employees Form # 587311957487170
+    region: Employees Form # 6395521695310746
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
     column: EMP_CR_DATE
     data-type: DATE
     query-only: false
@@ -549,14 +549,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 593797273487208
+  id: 6402007011310784
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 593494503487208
+    region: Buttons # 6401704241310784
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -575,14 +575,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 595270541487211
+  id: 6403480279310787
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 593494503487208
+    region: Buttons # 6401704241310784
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -612,14 +612,14 @@ buttons:
     item: P13_EMP_ID
 
 - # ====== Button: SAVE ========================================
-  id: 595609098487213
+  id: 6403818836310789
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 593494503487208
+    region: Buttons # 6401704241310784
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -645,14 +645,14 @@ buttons:
     item: P13_EMP_ID
 
 - # ====== Button: CREATE ======================================
-  id: 596018273487213
+  id: 6404228011310789
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 593494503487208
+    region: Buttons # 6401704241310784
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -679,7 +679,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 593955293487208
+  id: 6402165031310784
   identification: 
     name: Cancel Dialog
 
@@ -691,28 +691,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 593797273487208
+    button: CANCEL # 6402007011310784
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 594779872487211
+    id: 6402989610310787
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 593955293487208
+      event: Cancel Dialog # 6402165031310784
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Employees Form =============
-  id: 596454375487214
+  id: 6404664113310790
   identification: 
     name: Initialize form Employees Form
     type: Form - Initialization
     execution-chain: None
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
 
   execution: 
     sequence: 10
@@ -720,12 +720,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Employees Form ================
-  id: 596855892487214
+  id: 6405065630310790
   identification: 
     name: Process form Employees Form
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Employees Form # 587311957487170
+    form-region: Employees Form # 6395521695310746
 
   settings: 
     target-type: Region Source
@@ -742,7 +742,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 597253490487214
+  id: 6405463228310790
   identification: 
     name: Close Dialog
     type: Close Dialog

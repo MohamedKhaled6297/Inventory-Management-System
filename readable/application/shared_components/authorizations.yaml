@@ -1,6 +1,6 @@
 ---
 - # ====== Authorization: IS_ADMIN =============================
-  id: 767807182572611
+  id: 6576016920396187
   identification: 
     name: IS_ADMIN
 
@@ -24,7 +24,7 @@
     error-message: Access Denied. You do not have permission to access this page.
 
 - # ====== Authorization: CAN_MANAGE_STOCK =====================
-  id: 775861321466361
+  id: 6584071059289937
   identification: 
     name: CAN_MANAGE_STOCK
 
@@ -46,7 +46,7 @@
     error-message: Access Denied. You do not have permission to manage inventory transactions.
 
 - # ====== Authorization: CAN_MANAGE_DEPRECIATION ==============
-  id: 776010919469599
+  id: 6584220657293175
   identification: 
     name: CAN_MANAGE_DEPRECIATION
 
@@ -68,7 +68,7 @@
     error-message: Access Denied. You do not have permission to manage depreciation transactions.
 
 - # ====== Authorization: CAN_VIEW_REPORTS =====================
-  id: 776229832525195
+  id: 6584439570348771
   identification: 
     name: CAN_VIEW_REPORTS
 
@@ -91,7 +91,7 @@
     error-message: Access Denied. You do not have permission to view reports.
 
 - # ====== Authorization: CAN_VIEW_STOCK =======================
-  id: 776395287532399
+  id: 6584605025355975
   identification: 
     name: CAN_VIEW_STOCK
 
@@ -115,7 +115,7 @@
     error-message: Access Denied. You do not have permission to view stock information.
 
 - # ====== Authorization: CAN_VIEW_MASTER_DATA =================
-  id: 1103941645144916
+  id: 6912151382968492
   identification: 
     name: CAN_VIEW_MASTER_DATA
 
@@ -140,7 +140,7 @@
     error-message: Access Denied. You do not have permission to view master data.
 
 - # ====== Authorization: CAN_MANAGE_MASTER_DATA ===============
-  id: 1104203936157772
+  id: 6912413673981348
   identification: 
     name: CAN_MANAGE_MASTER_DATA
 
@@ -162,7 +162,7 @@
     error-message: Access Denied. You do not have permission to manage master data.
 
 - # ====== Authorization: CAN_VIEW_TRANSACTIONS_MENU ===========
-  id: 1118275466068375
+  id: 6926485203891951
   identification: 
     name: CAN_VIEW_TRANSACTIONS_MENU
 
@@ -185,7 +185,7 @@
     error-message: 'Access Denied: You do not have permission to access this section. Please contact your system administrator.'
 
 - # ====== Authorization: Administration Rights ================
-  id: 114548716062775457210
+  id: 114554524272513280786
   identification: 
     name: Administration Rights
 

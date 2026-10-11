@@ -124,7 +124,7 @@ css:
     }
 
 security: 
-  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -143,13 +143,13 @@ server-cache:
 
 regions: 
 - # ====== Region: Breadcrumb ==================================
-  id: 949045604292742
+  id: 6757255342116318
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -186,7 +186,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Stock Movement ==============================
-  id: 949712947292763
+  id: 6757922685116339
   identification: 
     name: Stock Movement
     type: Interactive Report
@@ -393,7 +393,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 949794434292763
+    id: 6758004172116339
     link: 
       link-column: Exclude Link Column
 
@@ -455,14 +455,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 953456604293830
+      id: 6761666342117406
       identification: 
         name: Primary Report
         alias: 67617
 
     columns: 
     - # ====== Column: MOVEMENT_DATE ===============================
-      id: 950507797292781
+      id: 6758717535116357
       identification: 
         column-name: MOVEMENT_DATE
         type: Plain Text
@@ -507,7 +507,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MOVEMENT_TYPE ===============================
-      id: 951598185292791
+      id: 6759807923116367
       identification: 
         column-name: MOVEMENT_TYPE
         type: Plain Text
@@ -548,7 +548,7 @@ regions:
         escape-special-characters: false
 
     - # ====== Column: QUANTITY ====================================
-      id: 952001916292791
+      id: 6760211654116367
       identification: 
         column-name: QUANTITY
         type: Plain Text
@@ -589,7 +589,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: REFERENCE_NO ================================
-      id: 952391043292792
+      id: 6760600781116368
       identification: 
         column-name: REFERENCE_NO
         type: Plain Text
@@ -630,7 +630,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: BRANCH ======================================
-      id: 954879149313425
+      id: 6763088887137001
       identification: 
         column-name: BRANCH
         type: Plain Text
@@ -671,7 +671,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PRODUCT =====================================
-      id: 954984628313426
+      id: 6763194366137002
       identification: 
         column-name: PRODUCT
         type: Plain Text
@@ -712,7 +712,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMPLOYEE ====================================
-      id: 955058096313427
+      id: 6763267834137003
       identification: 
         column-name: EMPLOYEE
         type: Plain Text
@@ -753,7 +753,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MOVEMENT_TYPE_CODE ==========================
-      id: 955132456313428
+      id: 6763342194137004
       identification: 
         column-name: MOVEMENT_TYPE_CODE
         type: Hidden
@@ -814,7 +814,7 @@ regions:
         alignment: center
 
 - # ====== Region: Movement Summary ============================
-  id: 955211844313429
+  id: 6763421582137005
   identification: 
     name: Movement Summary
     type: Cards
@@ -1021,7 +1021,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 955365674313430
+    id: 6763575412137006
     appearance: 
       layout: Grid
       grid-columns: 4 Columns
@@ -1063,7 +1063,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: Movement Filters ============================
-  id: 955397304313431
+  id: 6763607042137007
   identification: 
     name: Movement Filters
     type: Static Content
@@ -1103,7 +1103,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P23_DATE_FROM ============================
-  id: 955490361313432
+  id: 6763700099137008
   identification: 
     name: P23_DATE_FROM
     type: Date Picker
@@ -1122,7 +1122,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Movement Filters # 955397304313431
+    region: Movement Filters # 6763607042137007
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1161,7 +1161,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P23_DATE_TO ==============================
-  id: 955590994313433
+  id: 6763800732137009
   identification: 
     name: P23_DATE_TO
     type: Date Picker
@@ -1180,7 +1180,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Movement Filters # 955397304313431
+    region: Movement Filters # 6763607042137007
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1219,7 +1219,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P23_BRANCH_ID ============================
-  id: 955735146313434
+  id: 6763944884137010
   identification: 
     name: P23_BRANCH_ID
     type: Select List
@@ -1236,7 +1236,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Movement Filters # 955397304313431
+    region: Movement Filters # 6763607042137007
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1286,7 +1286,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P23_PROD_ID ==============================
-  id: 955811820313435
+  id: 6764021558137011
   identification: 
     name: P23_PROD_ID
     type: Select List
@@ -1303,7 +1303,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Movement Filters # 955397304313431
+    region: Movement Filters # 6763607042137007
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1352,7 +1352,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P23_MOVEMENT_TYPE ========================
-  id: 955977288313436
+  id: 6764187026137012
   identification: 
     name: P23_MOVEMENT_TYPE
     type: Select List
@@ -1369,7 +1369,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Movement Filters # 955397304313431
+    region: Movement Filters # 6763607042137007
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1415,14 +1415,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLEAR_FILTERS ===============================
-  id: 956371718313440
+  id: 6764581456137016
   identification: 
     button-name: CLEAR_FILTERS
     label: Clear Filters
 
   layout: 
     sequence: 60
-    region: Movement Filters # 955397304313431
+    region: Movement Filters # 6763607042137007
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -1445,7 +1445,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Refresh Movement Dashboard ==========
-  id: 956021299313437
+  id: 6764231037137013
   identification: 
     name: Refresh Movement Dashboard
 
@@ -1466,7 +1466,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh Stock Movement ======================
-    id: 956094025313438
+    id: 6764303763137014
     identification: 
       name: Refresh Stock Movement
       action: Refresh
@@ -1476,16 +1476,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Stock Movement # 949712947292763
+      region: Stock Movement # 6757922685116339
 
     execution: 
       sequence: 10
-      event: Refresh Movement Dashboard # 956021299313437
+      event: Refresh Movement Dashboard # 6764231037137013
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh Movement Summary ====================
-    id: 956199571313439
+    id: 6764409309137015
     identification: 
       name: Refresh Movement Summary
       action: Refresh
@@ -1495,16 +1495,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Movement Summary # 955211844313429
+      region: Movement Summary # 6763421582137005
 
     execution: 
       sequence: 20
-      event: Refresh Movement Dashboard # 956021299313437
+      event: Refresh Movement Dashboard # 6764231037137013
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Clear Movement Filters ==============
-  id: 956435577313441
+  id: 6764645315137017
   identification: 
     name: Clear Movement Filters
 
@@ -1516,11 +1516,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CLEAR_FILTERS # 956371718313440
+    button: CLEAR_FILTERS # 6764581456137016
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 956675608313443
+    id: 6764885346137019
     identification: 
       action: Execute JavaScript Code
 
@@ -1543,7 +1543,7 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: Clear Movement Filters # 956435577313441
+      event: Clear Movement Filters # 6764645315137017
       fire-when-event-result-is: True
       fire-on-initialization: false
 

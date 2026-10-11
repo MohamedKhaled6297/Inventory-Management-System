@@ -25,7 +25,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: CAN_MANAGE_MASTER_DATA # 1104203936157772
+  authorization-scheme: CAN_MANAGE_MASTER_DATA # 6912413673981348
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -44,7 +44,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Units Form ==================================
-  id: 122759786433375659657
+  id: 122765594643113483233
   identification: 
     name: Units Form
     type: Form
@@ -93,7 +93,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 122759790295864659662
+  id: 122765598505602483238
   identification: 
     name: Buttons
     type: Static Content
@@ -132,7 +132,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9_UNIT_ID ===============================
-  id: 122759786731774659657
+  id: 122765594941512483233
   identification: 
     name: P9_UNIT_ID
     type: Hidden
@@ -142,14 +142,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Units Form # 122759786433375659657
+    region: Units Form # 122765594643113483233
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
     column: UNIT_ID
     data-type: NUMBER
     query-only: true
@@ -165,7 +165,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9_UNIT_NAME =============================
-  id: 122759787109840659659
+  id: 122765595319578483235
   identification: 
     name: P9_UNIT_NAME
     type: Text Field
@@ -183,7 +183,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Units Form # 122759786433375659657
+    region: Units Form # 122765594643113483233
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -207,7 +207,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
     column: UNIT_NAME
     data-type: VARCHAR2
     query-only: false
@@ -225,7 +225,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9_UNIT_CODE =============================
-  id: 122759787527210659659
+  id: 122765595736948483235
   identification: 
     name: P9_UNIT_CODE
     type: Text Field
@@ -243,7 +243,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Units Form # 122759786433375659657
+    region: Units Form # 122765594643113483233
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -267,7 +267,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
     column: UNIT_CODE
     data-type: VARCHAR2
     query-only: false
@@ -285,7 +285,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9_UNIT_CR_USER ==========================
-  id: 122759787998684659660
+  id: 122765596208422483236
   identification: 
     name: P9_UNIT_CR_USER
     type: Hidden
@@ -295,14 +295,14 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Units Form # 122759786433375659657
+    region: Units Form # 122765594643113483233
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
     column: UNIT_CR_USER
     data-type: VARCHAR2
     query-only: false
@@ -323,7 +323,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9_UNIT_CR_DATE ==========================
-  id: 122759788399135659660
+  id: 122765596608873483236
   identification: 
     name: P9_UNIT_CR_DATE
     type: Hidden
@@ -333,14 +333,14 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Units Form # 122759786433375659657
+    region: Units Form # 122765594643113483233
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
     column: UNIT_CR_DATE
     data-type: DATE
     query-only: false
@@ -362,14 +362,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 122759790676998659662
+  id: 122765598886736483238
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 122759790295864659662
+    region: Buttons # 122765598505602483238
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -388,14 +388,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 122759792151741659664
+  id: 122765600361479483240
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 122759790295864659662
+    region: Buttons # 122765598505602483238
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -425,14 +425,14 @@ buttons:
     item: P9_UNIT_ID
 
 - # ====== Button: SAVE ========================================
-  id: 122759792522347659664
+  id: 122765600732085483240
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 122759790295864659662
+    region: Buttons # 122765598505602483238
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -458,14 +458,14 @@ buttons:
     item: P9_UNIT_ID
 
 - # ====== Button: CREATE ======================================
-  id: 122759792944627659664
+  id: 122765601154365483240
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 122759790295864659662
+    region: Buttons # 122765598505602483238
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -492,7 +492,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 122759790758009659662
+  id: 122765598967747483238
   identification: 
     name: Cancel Dialog
 
@@ -504,28 +504,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 122759790676998659662
+    button: CANCEL # 122765598886736483238
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 122759791618292659663
+    id: 122765599828030483239
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 122759790758009659662
+      event: Cancel Dialog # 122765598967747483238
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Units Form =================
-  id: 122759793411718659665
+  id: 122765601621456483241
   identification: 
     name: Initialize form Units Form
     type: Form - Initialization
     execution-chain: None
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
 
   execution: 
     sequence: 10
@@ -533,12 +533,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Units Form ====================
-  id: 122759793877564659665
+  id: 122765602087302483241
   identification: 
     name: Process form Units Form
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Units Form # 122759786433375659657
+    form-region: Units Form # 122765594643113483233
 
   settings: 
     target-type: Region Source
@@ -555,7 +555,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 122759794235706659665
+  id: 122765602445444483241
   identification: 
     name: Close Dialog
     type: Close Dialog

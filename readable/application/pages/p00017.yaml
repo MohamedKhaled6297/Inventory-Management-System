@@ -25,7 +25,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 767807182572611
+  authorization-scheme: IS_ADMIN # 6576016920396187
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -44,7 +44,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Add/Edit User ===============================
-  id: 652847696147991
+  id: 6461057433971567
   identification: 
     name: Add/Edit User
     type: Form
@@ -93,7 +93,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 659467392148050
+  id: 6467677129971626
   identification: 
     name: Buttons
     type: Static Content
@@ -132,7 +132,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P17_PASS =================================
-  id: 1404699706453643
+  id: 4403510031369933
   identification: 
     name: P17_PASS
     type: Textarea
@@ -149,7 +149,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -174,7 +174,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: PASS
     data-type: VARCHAR2
     query-only: false
@@ -193,7 +193,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_USER_ID ==============================
-  id: 653157557148011
+  id: 6461367294971587
   identification: 
     name: P17_USER_ID
     type: Hidden
@@ -203,14 +203,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: USER_ID
     data-type: NUMBER
     query-only: true
@@ -226,7 +226,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_USER_NAME ============================
-  id: 653495507148017
+  id: 6461705244971593
   identification: 
     name: P17_USER_NAME
     type: Text Field
@@ -244,7 +244,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -268,7 +268,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: USER_NAME
     data-type: VARCHAR2
     query-only: false
@@ -286,7 +286,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_LOGIN_NAME ===========================
-  id: 653974578148025
+  id: 6462184315971601
   identification: 
     name: P17_LOGIN_NAME
     type: Text Field
@@ -304,7 +304,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -328,7 +328,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: LOGIN_NAME
     data-type: VARCHAR2
     query-only: false
@@ -346,7 +346,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_EMAIL ================================
-  id: 654724855148030
+  id: 6462934592971606
   identification: 
     name: P17_EMAIL
     type: Text Field
@@ -364,7 +364,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -388,7 +388,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: EMAIL
     data-type: VARCHAR2
     query-only: false
@@ -406,7 +406,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_IS_ACTIVE ============================
-  id: 655164880148031
+  id: 6463374617971607
   identification: 
     name: P17_IS_ACTIVE
     type: Switch
@@ -422,7 +422,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -444,7 +444,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: IS_ACTIVE
     data-type: VARCHAR2
     query-only: false
@@ -463,7 +463,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_CR_USER ==============================
-  id: 655525671148033
+  id: 6463735408971609
   identification: 
     name: P17_CR_USER
     type: Hidden
@@ -473,14 +473,14 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: CR_USER
     data-type: VARCHAR2
     query-only: false
@@ -501,7 +501,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_CR_DATE ==============================
-  id: 655896366148034
+  id: 6464106103971610
   identification: 
     name: P17_CR_DATE
     type: Hidden
@@ -511,14 +511,14 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: CR_DATE
     data-type: DATE
     query-only: false
@@ -539,7 +539,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P17_USER_BRANCH_ID =======================
-  id: 656368993148038
+  id: 6464578730971614
   identification: 
     name: P17_USER_BRANCH_ID
     type: Select List
@@ -556,7 +556,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Add/Edit User # 652847696147991
+    region: Add/Edit User # 6461057433971567
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -591,7 +591,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
     column: USER_BRANCH_ID
     data-type: NUMBER
     query-only: false
@@ -610,14 +610,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 659859396148052
+  id: 6468069133971628
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 659467392148050
+    region: Buttons # 6467677129971626
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -636,14 +636,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 661245512148061
+  id: 6469455249971637
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 659467392148050
+    region: Buttons # 6467677129971626
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -673,14 +673,14 @@ buttons:
     item: P17_USER_ID
 
 - # ====== Button: SAVE ========================================
-  id: 661599760148064
+  id: 6469809497971640
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 659467392148050
+    region: Buttons # 6467677129971626
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -706,14 +706,14 @@ buttons:
     item: P17_USER_ID
 
 - # ====== Button: CREATE ======================================
-  id: 662074912148064
+  id: 6470284649971640
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 659467392148050
+    region: Buttons # 6467677129971626
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -740,7 +740,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 659965483148052
+  id: 6468175220971628
   identification: 
     name: Cancel Dialog
 
@@ -752,28 +752,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 659859396148052
+    button: CANCEL # 6468069133971628
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 660768938148059
+    id: 6468978675971635
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 659965483148052
+      event: Cancel Dialog # 6468175220971628
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Add/Edit User ==============
-  id: 662416202148074
+  id: 6470625939971650
   identification: 
     name: Initialize form Add/Edit User
     type: Form - Initialization
     execution-chain: None
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
 
   execution: 
     sequence: 10
@@ -781,12 +781,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Add/Edit User =================
-  id: 662813957148075
+  id: 6471023694971651
   identification: 
     name: Process form Add/Edit User
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Add/Edit User # 652847696147991
+    form-region: Add/Edit User # 6461057433971567
 
   settings: 
     target-type: Region Source
@@ -803,7 +803,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 663285551148077
+  id: 6471495288971653
   identification: 
     name: Close Dialog
     type: Close Dialog

@@ -6,14 +6,14 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
 ,p_release=>'24.2.0'
-,p_default_workspace_id=>68919995520195961853
-,p_default_application_id=>139471
+,p_default_workspace_id=>1600544795405981
+,p_default_application_id=>106
 ,p_default_id_offset=>5808209737823576
-,p_default_owner=>'WKSP_TOKIO2'
+,p_default_owner=>'HR'
 );
 wwv_imp_workspace.create_flow(
  p_id=>wwv_flow.g_flow_id
-,p_owner=>nvl(wwv_flow_application_install.get_schema,'WKSP_TOKIO2')
+,p_owner=>nvl(wwv_flow_application_install.get_schema,'HR')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,'Inventory Management System')
 ,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'INVENTORY-PROJECT')
 ,p_page_view_logging=>'YES'
@@ -28,7 +28,7 @@ wwv_imp_workspace.create_flow(
 ,p_timestamp_format=>'DS'
 ,p_timestamp_tz_format=>'DS'
 ,p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,'')
-,p_authentication_id=>wwv_flow_imp.id(767485187519427)
+,p_authentication_id=>wwv_flow_imp.id(6575694925343003)
 ,p_application_tab_set=>0
 ,p_logo_type=>'IT'
 ,p_logo=>'#APP_FILES#Inventory.png'
@@ -48,7 +48,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'Inventory Management System'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>75
-,p_version_scn=>6122797
+,p_version_scn=>6152654
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

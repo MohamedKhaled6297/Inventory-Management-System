@@ -20,7 +20,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: CAN_MANAGE_STOCK # 775861321466361
+  authorization-scheme: CAN_MANAGE_STOCK # 6584071059289937
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,13 +39,13 @@ server-cache:
 
 regions: 
 - # ====== Region: Breadcrumb ==================================
-  id: 845482629336616
+  id: 6653692367160192
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -82,7 +82,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Buttons =====================================
-  id: 846107964336620
+  id: 6654317702160196
   identification: 
     name: Buttons
     type: Static Content
@@ -122,7 +122,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Stock Transfer ==============================
-  id: 846951088336624
+  id: 6655160826160200
   identification: 
     name: Stock Transfer
     type: Interactive Grid
@@ -163,7 +163,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 847456135336625
+    id: 6655665873160201
     edit: 
       enabled: true
       allowed-operations: 
@@ -217,14 +217,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 847858937336625
+      id: 6656068675160201
       identification: 
         name: Primary Report
         alias: 66561
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 848252205336627
+    id: 6656461943160203
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -238,7 +238,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 848691571336627
+    id: 6656901309160203
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -247,7 +247,7 @@ regions:
       sequence: 20
 
   - # ====== Column: TRAN_ORD_ID =================================
-    id: 849785618336628
+    id: 6657995356160204
     identification: 
       column-name: TRAN_ORD_ID
       type: Hidden
@@ -279,7 +279,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: TRAN_ORD_FROM_BRANCH_ID =====================
-    id: 850749620336630
+    id: 6658959358160206
     identification: 
       column-name: TRAN_ORD_FROM_BRANCH_ID
       type: Select List
@@ -341,7 +341,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_TO_BRANCH_ID =======================
-    id: 851724824336630
+    id: 6659934562160206
     identification: 
       column-name: TRAN_ORD_TO_BRANCH_ID
       type: Select List
@@ -403,7 +403,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_EMP_ID =============================
-    id: 852715451336631
+    id: 6660925189160207
     identification: 
       column-name: TRAN_ORD_EMP_ID
       type: Select List
@@ -465,7 +465,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_DATE ===============================
-    id: 853718550336631
+    id: 6661928288160207
     identification: 
       column-name: TRAN_ORD_DATE
       type: Date Picker
@@ -520,7 +520,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_NOTES ==============================
-    id: 854756178336633
+    id: 6662965916160209
     identification: 
       column-name: TRAN_ORD_NOTES
       type: Textarea
@@ -578,7 +578,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_CR_USER ============================
-    id: 855728286336633
+    id: 6663938024160209
     identification: 
       column-name: TRAN_ORD_CR_USER
       type: Hidden
@@ -615,7 +615,7 @@ regions:
       sort: false
 
   - # ====== Column: TRAN_ORD_CR_DATE ============================
-    id: 856754236336633
+    id: 6664963974160209
     identification: 
       column-name: TRAN_ORD_CR_DATE
       type: Hidden
@@ -691,7 +691,7 @@ regions:
       alignment: center
 
 - # ====== Region: Transfer Order Details ======================
-  id: 858014210336645
+  id: 6666223948160221
   identification: 
     name: Transfer Order Details
     type: Interactive Grid
@@ -725,7 +725,7 @@ regions:
     landmark-type: Template Default
 
   master-detail: 
-    master-region: Stock Transfer # 846951088336624
+    master-region: Stock Transfer # 6655160826160200
 
   advanced: 
     region-display-selector: false
@@ -735,7 +735,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 858584388336645
+    id: 6666794126160221
     edit: 
       enabled: true
       allowed-operations: 
@@ -789,14 +789,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 858961452336645
+      id: 6667171190160221
       identification: 
         name: Primary Report
         alias: 66672
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 859357598336645
+    id: 6667567336160221
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -810,7 +810,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 859858291336645
+    id: 6668068029160221
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -819,7 +819,7 @@ regions:
       sequence: 20
 
   - # ====== Column: TRAN_ORD_DETAILS_ID =========================
-    id: 860858440336645
+    id: 6669068178160221
     identification: 
       column-name: TRAN_ORD_DETAILS_ID
       type: Hidden
@@ -851,7 +851,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: TRAN_ORD_DETAILS_TRAN_ORD_ID ================
-    id: 861881435336647
+    id: 6670091173160223
     identification: 
       column-name: TRAN_ORD_DETAILS_TRAN_ORD_ID
       type: Hidden
@@ -873,7 +873,7 @@ regions:
       primary-key: false
 
     master-detail: 
-      master-column: TRAN_ORD_ID # 849785618336628
+      master-column: TRAN_ORD_ID # 6657995356160204
 
     session-state: 
       data-type: VARCHAR2
@@ -886,7 +886,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: TRAN_ORD_DETAILS_PROD_ID ====================
-    id: 862845360336647
+    id: 6671055098160223
     identification: 
       column-name: TRAN_ORD_DETAILS_PROD_ID
       type: Select List
@@ -948,7 +948,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_DETAILS_QUANTITY ===================
-    id: 863864843336649
+    id: 6672074581160225
     identification: 
       column-name: TRAN_ORD_DETAILS_QUANTITY
       type: Number Field
@@ -996,7 +996,7 @@ regions:
       hide: true
 
   - # ====== Column: TRAN_ORD_DETAILS_CR_USER ====================
-    id: 864840042336649
+    id: 6673049780160225
     identification: 
       column-name: TRAN_ORD_DETAILS_CR_USER
       type: Hidden
@@ -1033,7 +1033,7 @@ regions:
       sort: false
 
   - # ====== Column: TRAN_ORD_DETAILS_CR_DATE ====================
-    id: 865848700336649
+    id: 6674058438160225
     identification: 
       column-name: TRAN_ORD_DETAILS_CR_DATE
       type: Hidden
@@ -1110,14 +1110,14 @@ regions:
 
 buttons: 
 - # ====== Button: SAVE ========================================
-  id: 846542840336622
+  id: 6654752578160198
   identification: 
     button-name: SAVE
     label: Save
 
   layout: 
     sequence: 10
-    region: Buttons # 846107964336620
+    region: Buttons # 6654317702160196
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1139,7 +1139,7 @@ buttons:
 
 validations: 
 - # ====== Validation: From and To Branch Must Be Different ====
-  id: 1404331108453640
+  id: 4403878629369936
   identification: 
     name: From and To Branch Must Be Different
 
@@ -1158,12 +1158,12 @@ validations:
 
 processes: 
 - # ====== Process: Stock Transfer - Save Interactive Grid Data 
-  id: 857712700336634
+  id: 6665922438160210
   identification: 
     name: Stock Transfer - Save Interactive Grid Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Stock Transfer # 846951088336624
+    editable-region: Stock Transfer # 6655160826160200
 
   settings: 
     target-type: Region Source
@@ -1180,16 +1180,16 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 846542840336622
+    when-button-pressed: SAVE # 6654752578160198
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: Transfer Order Details - Save Interactive Gr
-  id: 866831184336650
+  id: 6675040922160226
   identification: 
     name: Transfer Order Details - Save Interactive Grid Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Transfer Order Details # 858014210336645
+    editable-region: Transfer Order Details # 6666223948160221
 
   settings: 
     target-type: Region Source
@@ -1206,6 +1206,6 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 846542840336622
+    when-button-pressed: SAVE # 6654752578160198
     execution-scope: For Created and Modified Rows
 

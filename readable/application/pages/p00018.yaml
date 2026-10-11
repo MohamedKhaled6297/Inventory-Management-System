@@ -20,7 +20,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 767807182572611
+  authorization-scheme: IS_ADMIN # 6576016920396187
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,7 +39,7 @@ server-cache:
 
 regions: 
 - # ====== Region: User Roles ==================================
-  id: 757187301286955
+  id: 6565397039110531
   identification: 
     name: User Roles
     type: Interactive Report
@@ -83,7 +83,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 757277795286955
+    id: 6565487533110531
     link: 
       link-column: Link to Custom Target
       target: 
@@ -153,14 +153,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 762876001313802
+      id: 6571085739137378
       identification: 
         name: Primary Report
         alias: 65711
 
     columns: 
     - # ====== Column: USER_ROLE_ID ================================
-      id: 757881804286964
+      id: 6566091542110540
       identification: 
         column-name: USER_ROLE_ID
         type: Hidden
@@ -178,13 +178,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: USER_ID =====================================
-      id: 758210312286970
+      id: 6566420050110546
       identification: 
         column-name: USER_ID
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: INV_USERS.USER_NAME # 748728954286903
+        list-of-values: INV_USERS.USER_NAME # 6556938692110479
 
       heading: 
         heading: User
@@ -219,13 +219,13 @@ regions:
         pivot: true
 
     - # ====== Column: ROLE_ID =====================================
-      id: 758606717286972
+      id: 6566816455110548
       identification: 
         column-name: ROLE_ID
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: INV_ROLES.ROLE_NAME # 749465526286920
+        list-of-values: INV_ROLES.ROLE_NAME # 6557675264110496
 
       heading: 
         heading: Role
@@ -260,7 +260,7 @@ regions:
         pivot: true
 
     - # ====== Column: CR_USER =====================================
-      id: 759074332286972
+      id: 6567284070110548
       identification: 
         column-name: CR_USER
         type: Hidden
@@ -278,7 +278,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CR_DATE =====================================
-      id: 759489317286974
+      id: 6567699055110550
       identification: 
         column-name: CR_DATE
         type: Hidden
@@ -339,13 +339,13 @@ regions:
         alignment: center
 
 - # ====== Region: Breadcrumb ==================================
-  id: 761502624286978
+  id: 6569712362110554
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -383,14 +383,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 759913178286975
+  id: 6568122916110551
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 10
-    region: User Roles # 757187301286955
+    region: User Roles # 6565397039110531
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -415,7 +415,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 760214841286975
+  id: 6568424579110551
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -427,11 +427,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: User Roles # 757187301286955
+    region: User Roles # 6565397039110531
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 760721945286977
+    id: 6568931683110553
     identification: 
       action: Refresh
 
@@ -440,11 +440,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: User Roles # 757187301286955
+      region: User Roles # 6565397039110531
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 760214841286975
+      event: Edit Report - Dialog Closed # 6568424579110551
       fire-when-event-result-is: True
       fire-on-initialization: false
 

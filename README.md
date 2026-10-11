@@ -46,23 +46,28 @@
 
 ## Business Workflow
 
+The workflow below follows inventory quantities from transaction entry through stock validation, adjustment, reporting, and reconciliation.
+
 ```mermaid
 flowchart TD
-    A[Master Data: Products and Branches] --> B[Order IN]
-    B --> C[(Branch Stock)]
-    C --> D[Order OUT]
-    C --> E[Stock Transfer]
-    C --> F[Depreciation]
-    E --> G[(Destination Branch Stock)]
-    C --> H[Current Stock Report]
-    D --> I[Movement History]
-    E --> I
-    F --> I
-    B --> I
-    I --> J[Stock Reconciliation]
-    H --> K[Dashboard]
-    J --> K
+    A[Master Data: Products / Branches / Users] --> B{Transaction Type}
+    B -->|Receive| C[Order IN: Add to branch]
+    B -->|Issue| D[Order OUT: Deduct from branch]
+    B -->|Transfer| E[Transfer: Deduct source / Add destination]
+    B -->|Depreciate| F[Depreciation: Deduct from branch]
+    C --> G[Stock Adjustment Procedure]
+    D --> H{Sufficient stock?}
+    E --> H
+    F --> H
+    H -->|No| X[Reject insufficient-stock operation]
+    H -->|Yes| G
+    G --> I[(INV_STOCK: Branch / Product Balance)]
+    I --> J[Current Stock / Movement Reports]
+    J --> K[Stock Reconciliation]
+    K --> L[Dashboard and Monitoring]
 ```
+
+**Stock control:** `HR.INV_ADJUST_STOCK` and transaction triggers implement the quantity adjustments. A transfer changes stock in two branches; rejected insufficient-stock operations must not create negative balances. Audit metadata is maintained separately from the stock calculation.
 
 ## Main Features
 
@@ -93,20 +98,57 @@ The database uses centralized stock-adjustment logic through `HR.INV_ADJUST_STOC
 
 ## Roles & Permissions
 
-Access is governed by authorization schemes, not merely by hiding menu entries. The application includes the following schemes:
+The application maintains **five roles**. Users can be assigned roles through **Security → Users / Roles / User Roles**. A role is a named responsibility; access is enforced by the authorization schemes configured on pages, components, and actions.
 
-| Scheme | Responsibility |
-|---|---|
-| `IS_ADMIN` | Security and administrative functions |
-| `CAN_MANAGE_STOCK` | Inventory transactions |
-| `CAN_MANAGE_DEPRECIATION` | Depreciation operations |
-| `CAN_VIEW_REPORTS` | Reports and analytics |
-| `CAN_VIEW_STOCK` | Stock visibility |
-| `CAN_VIEW_MASTER_DATA` | Master data visibility |
-| `CAN_MANAGE_MASTER_DATA` | Master data maintenance |
-| `CAN_VIEW_TRANSACTIONS_MENU` | Inventory transaction menu visibility |
+| Role | Main responsibility | Typical permitted activities |
+|---|---|---|
+| `ADMIN` | Full system administration | Manage users and roles, master data, stock transactions, depreciation, and reports |
+| `STORE_USER` | Daily warehouse operations | Record authorized incoming/outgoing orders and stock transfers; view required reference data |
+| `MANAGER` | Inventory oversight | View stock and reports; perform depreciation **when** the dedicated authorization is granted |
+| `REPORT_USER` | Read-only reporting | View authorized stock reports and dashboards without transaction maintenance |
+| `MASTER_DATA_MANAGER` | Reference-data maintenance | Create and edit authorized products, branches, suppliers, categories, units, and other master data |
 
-Role assignments should be checked against the deployed authorization configuration. See the bilingual user guide for operating instructions.
+### Authorization scheme matrix
+
+The following describes the intended scheme-to-role mapping. **Verify the live APEX scheme definitions before treating it as an exact access audit**, especially when roles are combined or a scheme has additional conditions.
+
+| Authorization scheme | ADMIN | STORE_USER | MANAGER | REPORT_USER | MASTER_DATA_MANAGER |
+|---|:---:|:---:|:---:|:---:|:---:|
+| `IS_ADMIN` | ✓ | — | — | — | — |
+| `CAN_MANAGE_STOCK` | ✓ | ✓ | — | — | — |
+| `CAN_MANAGE_DEPRECIATION` | ✓ | — | ✓ | — | — |
+| `CAN_VIEW_REPORTS` | ✓ | — | ✓ | ✓ | — |
+| `CAN_VIEW_STOCK` | ✓ | ✓ | ✓ | ✓ | — |
+| `CAN_VIEW_MASTER_DATA` | ✓ | ✓ | ✓ | ✓ | ✓ |
+| `CAN_MANAGE_MASTER_DATA` | ✓ | — | — | — | ✓ |
+| `CAN_VIEW_TRANSACTIONS_MENU` | ✓ | ✓ | ✓ | — | — |
+
+**Important:** Menu visibility is not a security boundary. Apply authorization to the underlying pages, processes, buttons, and data access as appropriate. The `MANAGER` role's description mentions approvals, but this README does **not** claim an implemented approval workflow without corresponding verified pages and processes.
+
+## Audit Tracking
+
+The database includes audit-oriented fields for recording **who created** and **who last updated** inventory records and **when**. This applies to master data, stock, and transaction master/detail tables when the corresponding columns and triggers are installed.
+
+| Event | Audit metadata | Purpose |
+|---|---|---|
+| Insert | `*_CR_USER`, `*_CR_DATE` | Capture creator and creation timestamp |
+| Update | `*_UP_USER`, `*_UP_DATE` | Capture the last user and timestamp when business fields change |
+| Update without business-field change | Existing update metadata retained by the improved audit triggers | Avoid misleading last-modified timestamps |
+
+The project includes audit setup SQL, including `03_AUDIT_TRIGGERS_IMPROVED_V3.sql`, which defines audit triggers for **17 inventory tables** and expects the corresponding audit columns to exist. Its actual deployment and enabled status should be checked in the target database.
+
+**Scope limitation:** These columns provide creation and **last-update metadata**, not a full append-only history of every edit. They do not by themselves record old/new field values, deletion history, or a separate approval trail. A dedicated audit-history table and delete triggers would be needed for those requirements.
+
+### Audit verification (Oracle SQL)
+
+```sql
+SELECT trigger_name, table_name, status
+FROM user_triggers
+WHERE trigger_name LIKE 'TRG_INV_AUD_%'
+ORDER BY trigger_name;
+```
+
+---
 
 ## Reports & Dashboard
 
@@ -172,7 +214,7 @@ Before publishing a public repository, remove passwords, real user credentials, 
 
 - Automated deployment and database migration scripts
 - Additional validation and integration tests
-- Extended audit and operational monitoring
+- Dedicated append-only audit history (old/new values and deletion events)
 - Exportable management reports
 - Further mobile and accessibility refinements
 

@@ -70,7 +70,7 @@ css:
     }
 
 security: 
-  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -89,7 +89,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Order IN Summary ============================
-  id: 958035146313457
+  id: 6766244884137033
   identification: 
     name: Order IN Summary
     type: Cards
@@ -221,7 +221,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 958236186313459
+    id: 6766445924137035
     appearance: 
       layout: Grid
       grid-columns: 4 Columns
@@ -263,7 +263,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: Order IN Filters ============================
-  id: 958108051313458
+  id: 6766317789137034
   identification: 
     name: Order IN Filters
     type: Static Content
@@ -302,13 +302,13 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Breadcrumb ==================================
-  id: 1008094968256481
+  id: 6816304706080057
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -345,7 +345,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Order IN Report =============================
-  id: 1008805053256486
+  id: 6817014791080062
   identification: 
     name: Order IN Report
     type: Interactive Report
@@ -414,7 +414,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1008984750256486
+    id: 6817194488080062
     link: 
       link-column: Exclude Link Column
 
@@ -476,14 +476,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 1017750867269786
+      id: 6825960605093362
       identification: 
         name: Primary Report
         alias: 68260
 
     columns: 
     - # ====== Column: ORDER_IN_ID =================================
-      id: 1009624756256492
+      id: 6817834494080068
       identification: 
         column-name: ORDER_IN_ID
         type: Plain Text
@@ -524,7 +524,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ORDER_IN_DATE ===============================
-      id: 1010080447256494
+      id: 6818290185080070
       identification: 
         column-name: ORDER_IN_DATE
         type: Plain Text
@@ -569,7 +569,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: BRANCH_NAME =================================
-      id: 1010430656256495
+      id: 6818640394080071
       identification: 
         column-name: BRANCH_NAME
         type: Plain Text
@@ -610,7 +610,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMP_NAME ====================================
-      id: 1010878605256497
+      id: 6819088343080073
       identification: 
         column-name: EMP_NAME
         type: Plain Text
@@ -651,7 +651,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SUPPLIER_ID =================================
-      id: 1011239087256497
+      id: 6819448825080073
       identification: 
         column-name: SUPPLIER_ID
         type: Plain Text
@@ -692,7 +692,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_NAME ===================================
-      id: 1011680124256499
+      id: 6819889862080075
       identification: 
         column-name: PROD_NAME
         type: Plain Text
@@ -733,7 +733,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: QUANTITY ====================================
-      id: 1012038484256500
+      id: 6820248222080076
       identification: 
         column-name: QUANTITY
         type: Plain Text
@@ -774,7 +774,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: UNIT_PRICE ==================================
-      id: 1012399675256502
+      id: 6820609413080078
       identification: 
         column-name: UNIT_PRICE
         type: Plain Text
@@ -818,7 +818,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TOTAL_VALUE =================================
-      id: 1012854791256502
+      id: 6821064529080078
       identification: 
         column-name: TOTAL_VALUE
         type: Plain Text
@@ -862,7 +862,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ORDER_IN_NOTES ==============================
-      id: 1013196607256503
+      id: 6821406345080079
       identification: 
         column-name: ORDER_IN_NOTES
         type: Plain Text
@@ -947,7 +947,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P33_DATE_FROM ============================
-  id: 958387543313460
+  id: 6766597281137036
   identification: 
     name: P33_DATE_FROM
     type: Date Picker
@@ -966,7 +966,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Order IN Filters # 958108051313458
+    region: Order IN Filters # 6766317789137034
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1005,7 +1005,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P33_DATE_TO ==============================
-  id: 958403894313461
+  id: 6766613632137037
   identification: 
     name: P33_DATE_TO
     type: Date Picker
@@ -1024,7 +1024,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Order IN Filters # 958108051313458
+    region: Order IN Filters # 6766317789137034
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1063,7 +1063,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P33_BRANCH_ID ============================
-  id: 958559037313462
+  id: 6766768775137038
   identification: 
     name: P33_BRANCH_ID
     type: Select List
@@ -1080,7 +1080,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Order IN Filters # 958108051313458
+    region: Order IN Filters # 6766317789137034
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1128,7 +1128,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P33_PROD_ID ==============================
-  id: 958620011313463
+  id: 6766829749137039
   identification: 
     name: P33_PROD_ID
     type: Select List
@@ -1145,7 +1145,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Order IN Filters # 958108051313458
+    region: Order IN Filters # 6766317789137034
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1194,14 +1194,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLEAR_FILTERS ===============================
-  id: 958763675313464
+  id: 6766973413137040
   identification: 
     button-name: CLEAR_FILTERS
     label: Clear Filters
 
   layout: 
     sequence: 50
-    region: Order IN Filters # 958108051313458
+    region: Order IN Filters # 6766317789137034
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -1224,7 +1224,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Refresh Order IN Dashboard ==========
-  id: 958863523313465
+  id: 6767073261137041
   identification: 
     name: Refresh Order IN Dashboard
 
@@ -1244,7 +1244,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh → Order IN Report ===================
-    id: 958898291313466
+    id: 6767108029137042
     identification: 
       name: Refresh → Order IN Report
       action: Refresh
@@ -1254,16 +1254,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Order IN Report # 1008805053256486
+      region: Order IN Report # 6817014791080062
 
     execution: 
       sequence: 10
-      event: Refresh Order IN Dashboard # 958863523313465
+      event: Refresh Order IN Dashboard # 6767073261137041
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh → Order IN Summary ==================
-    id: 959024184313467
+    id: 6767233922137043
     identification: 
       name: Refresh → Order IN Summary
       action: Refresh
@@ -1273,16 +1273,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Order IN Summary # 958035146313457
+      region: Order IN Summary # 6766244884137033
 
     execution: 
       sequence: 20
-      event: Refresh Order IN Dashboard # 958863523313465
+      event: Refresh Order IN Dashboard # 6767073261137041
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Clear Order IN Filter ===============
-  id: 959104397313468
+  id: 6767314135137044
   identification: 
     name: Clear Order IN Filter
 
@@ -1294,11 +1294,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CLEAR_FILTERS # 958763675313464
+    button: CLEAR_FILTERS # 6766973413137040
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 959286674313469
+    id: 6767496412137045
     identification: 
       action: Execute JavaScript Code
 
@@ -1318,7 +1318,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Clear Order IN Filter # 959104397313468
+      event: Clear Order IN Filter # 6767314135137044
       fire-when-event-result-is: True
       fire-on-initialization: false
 

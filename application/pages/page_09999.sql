@@ -6,10 +6,10 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
 ,p_release=>'24.2.0'
-,p_default_workspace_id=>68919995520195961853
-,p_default_application_id=>139471
+,p_default_workspace_id=>1600544795405981
+,p_default_application_id=>106
 ,p_default_id_offset=>5808209737823576
-,p_default_owner=>'WKSP_TOKIO2'
+,p_default_owner=>'HR'
 );
 wwv_flow_imp_page.create_page(
  p_id=>9999
@@ -185,7 +185,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_component_map=>'12'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(114548716972810457212)
+ p_id=>wwv_flow_imp.id(114554525182548280788)
 ,p_plug_name=>'Inventory Management System'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>2674157997338192145
@@ -209,9 +209,9 @@ wwv_flow_imp_page.create_page_plug(
   'show_line_breaks', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(114548718680283457214)
+ p_id=>wwv_flow_imp.id(114554526890021280790)
 ,p_button_sequence=>40
-,p_button_plug_id=>wwv_flow_imp.id(114548716972810457212)
+,p_button_plug_id=>wwv_flow_imp.id(114554525182548280788)
 ,p_button_name=>'LOGIN'
 ,p_button_action=>'SUBMIT'
 ,p_button_template_options=>'#DEFAULT#'
@@ -224,10 +224,10 @@ wwv_flow_imp_page.create_page_button(
 ,p_grid_new_column=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(114548717458428457213)
+ p_id=>wwv_flow_imp.id(114554525668166280789)
 ,p_name=>'P9999_USERNAME'
 ,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(114548716972810457212)
+,p_item_plug_id=>wwv_flow_imp.id(114554525182548280788)
 ,p_prompt=>'Username'
 ,p_placeholder=>'Username'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
@@ -246,10 +246,10 @@ wwv_flow_imp_page.create_page_item(
   'trim_spaces', 'BOTH')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(114548717895849457214)
+ p_id=>wwv_flow_imp.id(114554526105587280790)
 ,p_name=>'P9999_PASSWORD'
 ,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(114548716972810457212)
+,p_item_plug_id=>wwv_flow_imp.id(114554525182548280788)
 ,p_prompt=>'Password'
 ,p_placeholder=>'Password'
 ,p_display_as=>'NATIVE_PASSWORD'
@@ -265,10 +265,10 @@ wwv_flow_imp_page.create_page_item(
   'submit_when_enter_pressed', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(114548718294167457214)
+ p_id=>wwv_flow_imp.id(114554526503905280790)
 ,p_name=>'P9999_REMEMBER'
 ,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(114548716972810457212)
+,p_item_plug_id=>wwv_flow_imp.id(114554525182548280788)
 ,p_prompt=>'Remember username'
 ,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
 ,p_label_alignment=>'RIGHT'
@@ -284,7 +284,7 @@ wwv_flow_imp_page.create_page_item(
   'use_defaults', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(114548720867644457216)
+ p_id=>wwv_flow_imp.id(114554529077382280792)
 ,p_process_sequence=>10
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_INVOKE_API'
@@ -296,8 +296,8 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>114548720867644457216
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
- p_id=>wwv_flow_imp.id(114548721365280457216)
-,p_page_process_id=>wwv_flow_imp.id(114548720867644457216)
+ p_id=>wwv_flow_imp.id(114554529575018280792)
+,p_page_process_id=>wwv_flow_imp.id(114554529077382280792)
 ,p_page_id=>9999
 ,p_name=>'p_username'
 ,p_direction=>'IN'
@@ -309,8 +309,8 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_value=>'lower( :P9999_USERNAME )'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
- p_id=>wwv_flow_imp.id(114548721870139457217)
-,p_page_process_id=>wwv_flow_imp.id(114548720867644457216)
+ p_id=>wwv_flow_imp.id(114554530079877280793)
+,p_page_process_id=>wwv_flow_imp.id(114554529077382280792)
 ,p_page_id=>9999
 ,p_name=>'p_consent'
 ,p_direction=>'IN'
@@ -321,7 +321,7 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_value=>'P9999_REMEMBER'
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(114548718989153457215)
+ p_id=>wwv_flow_imp.id(114554527198891280791)
 ,p_process_sequence=>20
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_INVOKE_API'
@@ -333,8 +333,8 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>114548718989153457215
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
- p_id=>wwv_flow_imp.id(114548719423828457215)
-,p_page_process_id=>wwv_flow_imp.id(114548718989153457215)
+ p_id=>wwv_flow_imp.id(114554527633566280791)
+,p_page_process_id=>wwv_flow_imp.id(114554527198891280791)
 ,p_page_id=>9999
 ,p_name=>'p_username'
 ,p_direction=>'IN'
@@ -345,8 +345,8 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_value=>'P9999_USERNAME'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
- p_id=>wwv_flow_imp.id(114548719947794457216)
-,p_page_process_id=>wwv_flow_imp.id(114548718989153457215)
+ p_id=>wwv_flow_imp.id(114554528157532280792)
+,p_page_process_id=>wwv_flow_imp.id(114554527198891280791)
 ,p_page_id=>9999
 ,p_name=>'p_password'
 ,p_direction=>'IN'
@@ -357,8 +357,8 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_value=>'P9999_PASSWORD'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
- p_id=>wwv_flow_imp.id(114548720424263457216)
-,p_page_process_id=>wwv_flow_imp.id(114548718989153457215)
+ p_id=>wwv_flow_imp.id(114554528634001280792)
+,p_page_process_id=>wwv_flow_imp.id(114554527198891280791)
 ,p_page_id=>9999
 ,p_name=>'p_set_persistent_auth'
 ,p_direction=>'IN'
@@ -368,7 +368,7 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_value_type=>'API_DEFAULT'
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(114548722706462457217)
+ p_id=>wwv_flow_imp.id(114554530916200280793)
 ,p_process_sequence=>30
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_SESSION_STATE'
@@ -378,7 +378,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>114548722706462457217
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(114548722354449457217)
+ p_id=>wwv_flow_imp.id(114554530564187280793)
 ,p_process_sequence=>10
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'NATIVE_PLSQL'

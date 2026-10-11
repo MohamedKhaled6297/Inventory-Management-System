@@ -20,7 +20,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: CAN_MANAGE_DEPRECIATION # 776010919469599
+  authorization-scheme: CAN_MANAGE_DEPRECIATION # 6584220657293175
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,13 +39,13 @@ server-cache:
 
 regions: 
 - # ====== Region: Breadcrumb ==================================
-  id: 877683925526349
+  id: 6685893663349925
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -82,7 +82,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Buttons =====================================
-  id: 878376310526353
+  id: 6686586048349929
   identification: 
     name: Buttons
     type: Static Content
@@ -122,7 +122,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Depreciation Order ==========================
-  id: 879109676526355
+  id: 6687319414349931
   identification: 
     name: Depreciation Order
     type: Interactive Grid
@@ -163,7 +163,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 879652975526356
+    id: 6687862713349932
     edit: 
       enabled: true
       allowed-operations: 
@@ -217,14 +217,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 880081843526356
+      id: 6688291581349932
       identification: 
         name: Primary Report
         alias: 66883
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 880411239526358
+    id: 6688620977349934
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -238,7 +238,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 880878134526359
+    id: 6689087872349935
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -247,7 +247,7 @@ regions:
       sequence: 20
 
   - # ====== Column: DEPREC_ORD_ID ===============================
-    id: 881841939526363
+    id: 6690051677349939
     identification: 
       column-name: DEPREC_ORD_ID
       type: Hidden
@@ -279,7 +279,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: DEPREC_ORD_BRANCH_ID ========================
-    id: 882838599526366
+    id: 6691048337349942
     identification: 
       column-name: DEPREC_ORD_BRANCH_ID
       type: Select List
@@ -341,7 +341,7 @@ regions:
       hide: true
 
   - # ====== Column: DEPREC_ORD_EMP_ID ===========================
-    id: 883887347526367
+    id: 6692097085349943
     identification: 
       column-name: DEPREC_ORD_EMP_ID
       type: Select List
@@ -403,7 +403,7 @@ regions:
       hide: true
 
   - # ====== Column: DEPREC_ORD_DATE =============================
-    id: 884815947526370
+    id: 6693025685349946
     identification: 
       column-name: DEPREC_ORD_DATE
       type: Date Picker
@@ -458,7 +458,7 @@ regions:
       hide: true
 
   - # ====== Column: DEPREC_ORD_NOTES ============================
-    id: 885835025526372
+    id: 6694044763349948
     identification: 
       column-name: DEPREC_ORD_NOTES
       type: Textarea
@@ -516,7 +516,7 @@ regions:
       hide: true
 
   - # ====== Column: DEPREC_ORD_CR_USER ==========================
-    id: 886839959526375
+    id: 6695049697349951
     identification: 
       column-name: DEPREC_ORD_CR_USER
       type: Hidden
@@ -553,7 +553,7 @@ regions:
       sort: false
 
   - # ====== Column: DEPREC_ORD_CR_DATE ==========================
-    id: 887807023526377
+    id: 6696016761349953
     identification: 
       column-name: DEPREC_ORD_CR_DATE
       type: Hidden
@@ -590,7 +590,7 @@ regions:
       sort: false
 
   - # ====== Column: DEPREC_ORD_UP_USER ==========================
-    id: 1076630652004337
+    id: 6884840389827913
     identification: 
       column-name: DEPREC_ORD_UP_USER
       type: Hidden
@@ -624,7 +624,7 @@ regions:
       sort: false
 
   - # ====== Column: DEPREC_ORD_UP_DATE ==========================
-    id: 1076771514004338
+    id: 6884981251827914
     identification: 
       column-name: DEPREC_ORD_UP_DATE
       type: Hidden
@@ -697,7 +697,7 @@ regions:
       alignment: center
 
 - # ====== Region: Depreciation Order Details ==================
-  id: 889092200526411
+  id: 6697301938349987
   identification: 
     name: Depreciation Order Details
     type: Interactive Grid
@@ -731,7 +731,7 @@ regions:
     landmark-type: Template Default
 
   master-detail: 
-    master-region: Depreciation Order # 879109676526355
+    master-region: Depreciation Order # 6687319414349931
 
   advanced: 
     region-display-selector: false
@@ -741,7 +741,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 889683952526414
+    id: 6697893690349990
     edit: 
       enabled: true
       allowed-operations: 
@@ -795,14 +795,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 890005807526414
+      id: 6698215545349990
       identification: 
         name: Primary Report
         alias: 66983
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 890465120526414
+    id: 6698674858349990
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -816,7 +816,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 890940515526416
+    id: 6699150253349992
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -825,7 +825,7 @@ regions:
       sequence: 20
 
   - # ====== Column: DEPREC_ORD_DETAILS_ID =======================
-    id: 891937661526419
+    id: 6700147399349995
     identification: 
       column-name: DEPREC_ORD_DETAILS_ID
       type: Hidden
@@ -857,7 +857,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: DEPREC_ORD_DETAILS_DEPREC_ORD_ID ============
-    id: 892945346526420
+    id: 6701155084349996
     identification: 
       column-name: DEPREC_ORD_DETAILS_DEPREC_ORD_ID
       type: Hidden
@@ -879,7 +879,7 @@ regions:
       primary-key: false
 
     master-detail: 
-      master-column: DEPREC_ORD_ID # 881841939526363
+      master-column: DEPREC_ORD_ID # 6690051677349939
 
     session-state: 
       data-type: VARCHAR2
@@ -892,7 +892,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: DEPREC_ORD_DETAILS_PROD_ID ==================
-    id: 893900104526424
+    id: 6702109842350000
     identification: 
       column-name: DEPREC_ORD_DETAILS_PROD_ID
       type: Select List
@@ -953,7 +953,7 @@ regions:
       hide: true
 
   - # ====== Column: DEPREC_ORD_DETAILS_QUANTITY =================
-    id: 894894357526425
+    id: 6703104095350001
     identification: 
       column-name: DEPREC_ORD_DETAILS_QUANTITY
       type: Number Field
@@ -1001,7 +1001,7 @@ regions:
       hide: true
 
   - # ====== Column: DEPREC_ORD_DETAILS_CR_USER ==================
-    id: 895982462526428
+    id: 6704192200350004
     identification: 
       column-name: DEPREC_ORD_DETAILS_CR_USER
       type: Hidden
@@ -1038,7 +1038,7 @@ regions:
       sort: false
 
   - # ====== Column: DEPREC_ORD_DETAILS_CR_DATE ==================
-    id: 896954495526430
+    id: 6705164233350006
     identification: 
       column-name: DEPREC_ORD_DETAILS_CR_DATE
       type: Hidden
@@ -1115,14 +1115,14 @@ regions:
 
 buttons: 
 - # ====== Button: SAVE ========================================
-  id: 878775915526353
+  id: 6686985653349929
   identification: 
     button-name: SAVE
     label: Save
 
   layout: 
     sequence: 10
-    region: Buttons # 878376310526353
+    region: Buttons # 6686586048349929
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1144,12 +1144,12 @@ buttons:
 
 processes: 
 - # ====== Process: Depreciation Order - Save Interactive Grid D
-  id: 888803466526378
+  id: 6697013204349954
   identification: 
     name: Depreciation Order - Save Interactive Grid Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Depreciation Order # 879109676526355
+    editable-region: Depreciation Order # 6687319414349931
 
   settings: 
     target-type: Region Source
@@ -1166,16 +1166,16 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 878775915526353
+    when-button-pressed: SAVE # 6686985653349929
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: Depreciation Order Details - Save Interactiv
-  id: 897926285526431
+  id: 6706136023350007
   identification: 
     name: Depreciation Order Details - Save Interactive Grid Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Depreciation Order Details # 889092200526411
+    editable-region: Depreciation Order Details # 6697301938349987
 
   settings: 
     target-type: Region Source
@@ -1192,6 +1192,6 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 878775915526353
+    when-button-pressed: SAVE # 6686985653349929
     execution-scope: For Created and Modified Rows
 

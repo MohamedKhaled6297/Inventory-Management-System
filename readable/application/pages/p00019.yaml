@@ -24,7 +24,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 767807182572611
+  authorization-scheme: IS_ADMIN # 6576016920396187
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Add/Edit User Roles =========================
-  id: 747948473286874
+  id: 6556158211110450
   identification: 
     name: Add/Edit User Roles
     type: Form
@@ -92,7 +92,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 752361314286933
+  id: 6560571052110509
   identification: 
     name: Buttons
     type: Static Content
@@ -131,7 +131,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P19_USER_ROLE_ID =========================
-  id: 748241694286888
+  id: 6556451432110464
   identification: 
     name: P19_USER_ROLE_ID
     type: Hidden
@@ -141,14 +141,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Add/Edit User Roles # 747948473286874
+    region: Add/Edit User Roles # 6556158211110450
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
     column: USER_ROLE_ID
     data-type: NUMBER
     query-only: true
@@ -164,7 +164,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P19_USER_ID ==============================
-  id: 748600829286894
+  id: 6556810567110470
   identification: 
     name: P19_USER_ID
     type: Select List
@@ -181,7 +181,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Add/Edit User Roles # 747948473286874
+    region: Add/Edit User Roles # 6556158211110450
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -215,7 +215,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
     column: USER_ID
     data-type: NUMBER
     query-only: false
@@ -233,7 +233,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P19_ROLE_ID ==============================
-  id: 749359237286920
+  id: 6557568975110496
   identification: 
     name: P19_ROLE_ID
     type: Select List
@@ -250,7 +250,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Add/Edit User Roles # 747948473286874
+    region: Add/Edit User Roles # 6556158211110450
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -284,7 +284,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
     column: ROLE_ID
     data-type: NUMBER
     query-only: false
@@ -302,7 +302,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P19_CR_USER ==============================
-  id: 750013907286922
+  id: 6558223645110498
   identification: 
     name: P19_CR_USER
     type: Hidden
@@ -312,14 +312,14 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Add/Edit User Roles # 747948473286874
+    region: Add/Edit User Roles # 6556158211110450
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
     column: CR_USER
     data-type: VARCHAR2
     query-only: false
@@ -340,7 +340,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P19_CR_DATE ==============================
-  id: 750426078286925
+  id: 6558635816110501
   identification: 
     name: P19_CR_DATE
     type: Hidden
@@ -350,14 +350,14 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Add/Edit User Roles # 747948473286874
+    region: Add/Edit User Roles # 6556158211110450
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
     column: CR_DATE
     data-type: DATE
     query-only: false
@@ -379,14 +379,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 752733618286933
+  id: 6560943356110509
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 752361314286933
+    region: Buttons # 6560571052110509
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -405,14 +405,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 754109491286941
+  id: 6562319229110517
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 752361314286933
+    region: Buttons # 6560571052110509
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -442,14 +442,14 @@ buttons:
     item: P19_USER_ROLE_ID
 
 - # ====== Button: SAVE ========================================
-  id: 754553277286942
+  id: 6562763015110518
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 752361314286933
+    region: Buttons # 6560571052110509
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -475,14 +475,14 @@ buttons:
     item: P19_USER_ROLE_ID
 
 - # ====== Button: CREATE ======================================
-  id: 754900201286944
+  id: 6563109939110520
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 752361314286933
+    region: Buttons # 6560571052110509
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -509,7 +509,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 752879660286933
+  id: 6561089398110509
   identification: 
     name: Cancel Dialog
 
@@ -521,28 +521,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 752733618286933
+    button: CANCEL # 6560943356110509
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 753689167286939
+    id: 6561898905110515
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 752879660286933
+      event: Cancel Dialog # 6561089398110509
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Add/Edit User Roles ========
-  id: 755302149286945
+  id: 6563511887110521
   identification: 
     name: Initialize form Add/Edit User Roles
     type: Form - Initialization
     execution-chain: None
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
 
   execution: 
     sequence: 10
@@ -550,12 +550,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Add/Edit User Roles ===========
-  id: 755782674286947
+  id: 6563992412110523
   identification: 
     name: Process form Add/Edit User Roles
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Add/Edit User Roles # 747948473286874
+    form-region: Add/Edit User Roles # 6556158211110450
 
   settings: 
     target-type: Region Source
@@ -572,7 +572,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 756128482286947
+  id: 6564338220110523
   identification: 
     name: Close Dialog
     type: Close Dialog

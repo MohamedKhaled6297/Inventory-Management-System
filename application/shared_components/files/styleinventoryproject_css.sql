@@ -6,10 +6,10 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
 ,p_release=>'24.2.0'
-,p_default_workspace_id=>68919995520195961853
-,p_default_application_id=>139471
+,p_default_workspace_id=>1600544795405981
+,p_default_application_id=>106
 ,p_default_id_offset=>5808209737823576
-,p_default_owner=>'WKSP_TOKIO2'
+,p_default_owner=>'HR'
 );
 wwv_flow_imp.g_varchar2_table := wwv_flow_imp.empty_varchar2_table;
 wwv_flow_imp.g_varchar2_table(1) := '2F2A20546F6F6C204261722A2F0D0A2E742D4865616465722C0D0A2E742D4865616465722D6272616E64696E672C0D0A2E742D4865616465722D6E61762F2A2C0D0A2E742D4865616465722D6E61764261722A2F0D0A207B0D0A202020206261636B6772';
@@ -31,7 +31,7 @@ wwv_flow_imp.g_varchar2_table(16) := '6F637573207B0D0A0D0A20202020626F782D736861
 wwv_flow_imp.g_varchar2_table(17) := '74616E743B0D0A7D0D0A0D0A2F2A2072656D6F76652064656661756C7420666F6375732072696E67202A2F0D0A2E742D547265654E61762D2D7374796C6542202E612D54726565566965772D6C6162656C3A666F637573207B0D0A202020206F75746C69';
 wwv_flow_imp.g_varchar2_table(18) := '6E653A206E6F6E652021696D706F7274616E743B0D0A7D0D0A';
 wwv_flow_imp_shared.create_app_static_file(
- p_id=>wwv_flow_imp.id(114553874776611687578)
+ p_id=>wwv_flow_imp.id(114559682986349511154)
 ,p_file_name=>'styleInventoryProject.css'
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'

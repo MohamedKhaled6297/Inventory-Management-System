@@ -102,7 +102,7 @@ css:
     }
 
 security: 
-  authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+  authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -121,7 +121,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Stock Summary ===============================
-  id: 1404267651453639
+  id: 4403942086369937
   identification: 
     name: Stock Summary
     title: Stock Summary
@@ -248,7 +248,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1404123583453638
+    id: 4404086154369938
     appearance: 
       layout: Grid
       grid-columns: 4 Columns
@@ -290,7 +290,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: Stock Filters ===============================
-  id: 1403986937453636
+  id: 4404222800369940
   identification: 
     name: Stock Filters
     type: Static Content
@@ -329,13 +329,13 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Breadcrumb ==================================
-  id: 906559756906542
+  id: 6714769494730118
   identification: 
     name: Breadcrumb
     type: Breadcrumb
 
   source: 
-    breadcrumb: Breadcrumb # 114548710692820457195
+    breadcrumb: Breadcrumb # 114554518902558280771
 
   layout: 
     sequence: 10
@@ -372,7 +372,7 @@ regions:
       - '#DEFAULT#'
 
 - # ====== Region: Current Stock ===============================
-  id: 907214669906549
+  id: 6715424407730125
   identification: 
     name: Current Stock
     type: Interactive Report
@@ -506,7 +506,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 907343951906549
+    id: 6715553689730125
     link: 
       link-column: Exclude Link Column
 
@@ -568,14 +568,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 911516843908392
+      id: 6719726581731968
       identification: 
         name: Primary Report
         alias: 67198
 
     columns: 
     - # ====== Column: STOCK_STATUS_CODE ===========================
-      id: 1404068610453637
+      id: 4404141127369939
       identification: 
         column-name: STOCK_STATUS_CODE
         type: Hidden
@@ -593,7 +593,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STOCK_ID ====================================
-      id: 907956081906564
+      id: 6716165819730140
       identification: 
         column-name: STOCK_ID
         type: Hidden
@@ -611,7 +611,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: BRANCH_ID ===================================
-      id: 908387250906567
+      id: 6716596988730143
       identification: 
         column-name: BRANCH_ID
         type: Hidden
@@ -629,7 +629,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: BRANCH_NAME =================================
-      id: 908728856906569
+      id: 6716938594730145
       identification: 
         column-name: BRANCH_NAME
         type: Plain Text
@@ -670,7 +670,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_ID =====================================
-      id: 909117447906569
+      id: 6717327185730145
       identification: 
         column-name: PROD_ID
         type: Hidden
@@ -688,7 +688,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_NAME ===================================
-      id: 909546775906570
+      id: 6717756513730146
       identification: 
         column-name: PROD_NAME
         type: Plain Text
@@ -729,7 +729,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_MIN_STOCK ==============================
-      id: 909952308906572
+      id: 6718162046730148
       identification: 
         column-name: PROD_MIN_STOCK
         type: Plain Text
@@ -770,7 +770,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_MAX_STOCK ==============================
-      id: 910354545906572
+      id: 6718564283730148
       identification: 
         column-name: PROD_MAX_STOCK
         type: Plain Text
@@ -811,7 +811,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STOCK_QTY ===================================
-      id: 910757909906572
+      id: 6718967647730148
       identification: 
         column-name: STOCK_QTY
         type: Plain Text
@@ -852,7 +852,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STOCK_STATUS ================================
-      id: 911143911906574
+      id: 6719353649730150
       identification: 
         column-name: STOCK_STATUS
         type: Plain Text
@@ -937,7 +937,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P30_BRANCH_ID ============================
-  id: 1403898554453635
+  id: 4404311183369941
   identification: 
     name: P30_BRANCH_ID
     type: Select List
@@ -954,7 +954,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Stock Filters # 1403986937453636
+    region: Stock Filters # 4404222800369940
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1004,7 +1004,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P30_STOCK_STATUS =========================
-  id: 1403726116453634
+  id: 4404483621369942
   identification: 
     name: P30_STOCK_STATUS
     type: Select List
@@ -1021,7 +1021,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Stock Filters # 1403986937453636
+    region: Stock Filters # 4404222800369940
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1067,14 +1067,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLEAR_FILTERS ===============================
-  id: 1403331267453630
+  id: 4404878470369946
   identification: 
     button-name: CLEAR_FILTERS
     label: Clear Filters
 
   layout: 
     sequence: 30
-    region: Stock Filters # 1403986937453636
+    region: Stock Filters # 4404222800369940
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -1097,7 +1097,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Refresh Stock Dashboard =============
-  id: 1403665235453633
+  id: 4404544502369943
   identification: 
     name: Refresh Stock Dashboard
 
@@ -1115,7 +1115,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 1403517003453632
+    id: 4404692734369944
     identification: 
       action: Refresh
 
@@ -1124,16 +1124,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Current Stock # 907214669906549
+      region: Current Stock # 6715424407730125
 
     execution: 
       sequence: 10
-      event: Refresh Stock Dashboard # 1403665235453633
+      event: Refresh Stock Dashboard # 4404544502369943
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 1403480899453631
+    id: 4404728838369945
     identification: 
       action: Refresh
 
@@ -1142,16 +1142,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Stock Summary # 1404267651453639
+      region: Stock Summary # 4403942086369937
 
     execution: 
       sequence: 20
-      event: Refresh Stock Dashboard # 1403665235453633
+      event: Refresh Stock Dashboard # 4404544502369943
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Clear Stock Filters =================
-  id: 1403236748453629
+  id: 4404972989369947
   identification: 
     name: Clear Stock Filters
 
@@ -1163,11 +1163,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CLEAR_FILTERS # 1403331267453630
+    button: CLEAR_FILTERS # 4404878470369946
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 1403185104453628
+    id: 4405024633369948
     identification: 
       name: Clear
       action: Clear
@@ -1180,12 +1180,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Clear Stock Filters # 1403236748453629
+      event: Clear Stock Filters # 4404972989369947
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh Current Stock =======================
-    id: 1403053691453627
+    id: 4405156046369949
     identification: 
       name: Refresh Current Stock
       action: Refresh
@@ -1195,16 +1195,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Current Stock # 907214669906549
+      region: Current Stock # 6715424407730125
 
     execution: 
       sequence: 20
-      event: Clear Stock Filters # 1403236748453629
+      event: Clear Stock Filters # 4404972989369947
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh Cards ===============================
-    id: 1402931790453626
+    id: 4405277947369950
     identification: 
       name: Refresh Cards
       action: Refresh
@@ -1214,11 +1214,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Stock Summary # 1404267651453639
+      region: Stock Summary # 4403942086369937
 
     execution: 
       sequence: 30
-      event: Clear Stock Filters # 1403236748453629
+      event: Clear Stock Filters # 4404972989369947
       fire-when-event-result-is: True
       fire-on-initialization: false
 

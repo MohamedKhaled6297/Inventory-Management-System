@@ -6,10 +6,10 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.11.30'
 ,p_release=>'24.2.0'
-,p_default_workspace_id=>68919995520195961853
-,p_default_application_id=>139471
+,p_default_workspace_id=>1600544795405981
+,p_default_application_id=>106
 ,p_default_id_offset=>5808209737823576
-,p_default_owner=>'WKSP_TOKIO2'
+,p_default_owner=>'HR'
 );
 wwv_flow_imp_page.create_page(
  p_id=>23
@@ -120,24 +120,24 @@ wwv_flow_imp_page.create_page(
 '    font-weight: 700;',
 '}'))
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(776229832525195)
+,p_required_role=>wwv_flow_imp.id(6584439570348771)
 ,p_protection_level=>'C'
 ,p_page_component_map=>'23'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(949045604292742)
+ p_id=>wwv_flow_imp.id(6757255342116318)
 ,p_plug_name=>'Breadcrumb'
 ,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>2531463326621247859
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'REGION_POSITION_01'
-,p_menu_id=>wwv_flow_imp.id(114548710692820457195)
+,p_menu_id=>wwv_flow_imp.id(114554518902558280771)
 ,p_plug_source_type=>'NATIVE_BREADCRUMB'
 ,p_menu_template_id=>4072363345357175094
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(949712947292763)
+ p_id=>wwv_flow_imp.id(6757922685116339)
 ,p_plug_name=>'Stock Movement'
 ,p_region_name=>'stock_movement_report'
 ,p_region_template_options=>'#DEFAULT#:t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc'
@@ -308,7 +308,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_prn_page_header=>'Stock Movement'
 );
 wwv_flow_imp_page.create_worksheet(
- p_id=>wwv_flow_imp.id(949794434292763)
+ p_id=>wwv_flow_imp.id(6758004172116339)
 ,p_name=>'Stock Movement'
 ,p_max_row_count_message=>'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
 ,p_no_data_found_message=>'No data found.'
@@ -324,7 +324,7 @@ wwv_flow_imp_page.create_worksheet(
 ,p_internal_uid=>6758004172116339
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(950507797292781)
+ p_id=>wwv_flow_imp.id(6758717535116357)
 ,p_db_column_name=>'MOVEMENT_DATE'
 ,p_display_order=>1
 ,p_column_identifier=>'A'
@@ -336,7 +336,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(955058096313427)
+ p_id=>wwv_flow_imp.id(6763267834137003)
 ,p_db_column_name=>'EMPLOYEE'
 ,p_display_order=>11
 ,p_column_identifier=>'J'
@@ -346,7 +346,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(954879149313425)
+ p_id=>wwv_flow_imp.id(6763088887137001)
 ,p_db_column_name=>'BRANCH'
 ,p_display_order=>21
 ,p_column_identifier=>'H'
@@ -356,7 +356,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(954984628313426)
+ p_id=>wwv_flow_imp.id(6763194366137002)
 ,p_db_column_name=>'PRODUCT'
 ,p_display_order=>31
 ,p_column_identifier=>'I'
@@ -366,7 +366,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(955132456313428)
+ p_id=>wwv_flow_imp.id(6763342194137004)
 ,p_db_column_name=>'MOVEMENT_TYPE_CODE'
 ,p_display_order=>41
 ,p_column_identifier=>'K'
@@ -375,7 +375,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_display_text_as=>'HIDDEN_ESCAPE_SC'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(951598185292791)
+ p_id=>wwv_flow_imp.id(6759807923116367)
 ,p_db_column_name=>'MOVEMENT_TYPE'
 ,p_display_order=>51
 ,p_column_identifier=>'D'
@@ -386,7 +386,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(952001916292791)
+ p_id=>wwv_flow_imp.id(6760211654116367)
 ,p_db_column_name=>'QUANTITY'
 ,p_display_order=>61
 ,p_column_identifier=>'E'
@@ -396,7 +396,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(952391043292792)
+ p_id=>wwv_flow_imp.id(6760600781116368)
 ,p_db_column_name=>'REFERENCE_NO'
 ,p_display_order=>71
 ,p_column_identifier=>'F'
@@ -406,7 +406,7 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_rpt(
- p_id=>wwv_flow_imp.id(953456604293830)
+ p_id=>wwv_flow_imp.id(6761666342117406)
 ,p_application_user=>'APXWS_DEFAULT'
 ,p_report_seq=>10
 ,p_report_alias=>'67617'
@@ -415,7 +415,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_columns=>'MOVEMENT_DATE:EMPLOYEE:BRANCH:PRODUCT:MOVEMENT_TYPE:QUANTITY:REFERENCE_NO:'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(955211844313429)
+ p_id=>wwv_flow_imp.id(6763421582137005)
 ,p_plug_name=>'Movement Summary'
 ,p_region_name=>'movement_summary'
 ,p_region_template_options=>'#DEFAULT#:t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc'
@@ -589,8 +589,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_show_total_row_count=>false
 );
 wwv_flow_imp_page.create_card(
- p_id=>wwv_flow_imp.id(955365674313430)
-,p_region_id=>wwv_flow_imp.id(955211844313429)
+ p_id=>wwv_flow_imp.id(6763575412137006)
+,p_region_id=>wwv_flow_imp.id(6763421582137005)
 ,p_layout_type=>'GRID'
 ,p_grid_column_count=>4
 ,p_card_css_classes=>'movement-card movement-card-&CARD_TYPE.'
@@ -607,7 +607,7 @@ wwv_flow_imp_page.create_card(
 ,p_media_adv_formatting=>false
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(955397304313431)
+ p_id=>wwv_flow_imp.id(6763607042137007)
 ,p_plug_name=>'Movement Filters'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>4072358936313175081
@@ -618,9 +618,9 @@ wwv_flow_imp_page.create_page_plug(
   'output_as', 'HTML')).to_clob
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(956371718313440)
+ p_id=>wwv_flow_imp.id(6764581456137016)
 ,p_button_sequence=>60
-,p_button_plug_id=>wwv_flow_imp.id(955397304313431)
+,p_button_plug_id=>wwv_flow_imp.id(6763607042137007)
 ,p_button_name=>'CLEAR_FILTERS'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
@@ -632,10 +632,10 @@ wwv_flow_imp_page.create_page_button(
 ,p_grid_new_row=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(955490361313432)
+ p_id=>wwv_flow_imp.id(6763700099137008)
 ,p_name=>'P23_DATE_FROM'
 ,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(955397304313431)
+,p_item_plug_id=>wwv_flow_imp.id(6763607042137007)
 ,p_prompt=>'Date From'
 ,p_format_mask=>'DD/MM/YYYY'
 ,p_display_as=>'NATIVE_DATE_PICKER_APEX'
@@ -652,10 +652,10 @@ wwv_flow_imp_page.create_page_item(
   'use_defaults', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(955590994313433)
+ p_id=>wwv_flow_imp.id(6763800732137009)
 ,p_name=>'P23_DATE_TO'
 ,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(955397304313431)
+,p_item_plug_id=>wwv_flow_imp.id(6763607042137007)
 ,p_prompt=>'Date To'
 ,p_format_mask=>'DD/MM/YYYY'
 ,p_display_as=>'NATIVE_DATE_PICKER_APEX'
@@ -672,10 +672,10 @@ wwv_flow_imp_page.create_page_item(
   'use_defaults', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(955735146313434)
+ p_id=>wwv_flow_imp.id(6763944884137010)
 ,p_name=>'P23_BRANCH_ID'
 ,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(955397304313431)
+,p_item_plug_id=>wwv_flow_imp.id(6763607042137007)
 ,p_prompt=>'Branch'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -695,10 +695,10 @@ wwv_flow_imp_page.create_page_item(
   'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(955811820313435)
+ p_id=>wwv_flow_imp.id(6764021558137011)
 ,p_name=>'P23_PROD_ID'
 ,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(955397304313431)
+,p_item_plug_id=>wwv_flow_imp.id(6763607042137007)
 ,p_prompt=>'Product'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_lov=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -717,10 +717,10 @@ wwv_flow_imp_page.create_page_item(
   'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(955977288313436)
+ p_id=>wwv_flow_imp.id(6764187026137012)
 ,p_name=>'P23_MOVEMENT_TYPE'
 ,p_item_sequence=>50
-,p_item_plug_id=>wwv_flow_imp.id(955397304313431)
+,p_item_plug_id=>wwv_flow_imp.id(6763607042137007)
 ,p_prompt=>'Movement Type'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_lov=>'STATIC:Order IN;ORDER IN,Order OUT;ORDER OUT,Transfer IN;TRANSFER IN,Transfer OUT;TRANSFER OUT,Depreciation;DEPRECIATION'
@@ -735,7 +735,7 @@ wwv_flow_imp_page.create_page_item(
   'page_action_on_selection', 'NONE')).to_clob
 );
 wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(956021299313437)
+ p_id=>wwv_flow_imp.id(6764231037137013)
 ,p_name=>'Refresh Movement Dashboard'
 ,p_event_sequence=>10
 ,p_triggering_element_type=>'ITEM'
@@ -745,42 +745,42 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'change'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(956094025313438)
-,p_event_id=>wwv_flow_imp.id(956021299313437)
+ p_id=>wwv_flow_imp.id(6764303763137014)
+,p_event_id=>wwv_flow_imp.id(6764231037137013)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Stock Movement'
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_imp.id(949712947292763)
+,p_affected_region_id=>wwv_flow_imp.id(6757922685116339)
 ,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(956199571313439)
-,p_event_id=>wwv_flow_imp.id(956021299313437)
+ p_id=>wwv_flow_imp.id(6764409309137015)
+,p_event_id=>wwv_flow_imp.id(6764231037137013)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Movement Summary'
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_imp.id(955211844313429)
+,p_affected_region_id=>wwv_flow_imp.id(6763421582137005)
 ,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(956435577313441)
+ p_id=>wwv_flow_imp.id(6764645315137017)
 ,p_name=>'Clear Movement Filters'
 ,p_event_sequence=>20
 ,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(956371718313440)
+,p_triggering_button_id=>wwv_flow_imp.id(6764581456137016)
 ,p_bind_type=>'bind'
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'click'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(956675608313443)
-,p_event_id=>wwv_flow_imp.id(956435577313441)
+ p_id=>wwv_flow_imp.id(6764885346137019)
+,p_event_id=>wwv_flow_imp.id(6764645315137017)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'

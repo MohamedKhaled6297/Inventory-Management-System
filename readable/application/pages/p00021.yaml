@@ -24,7 +24,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 767807182572611
+  authorization-scheme: IS_ADMIN # 6576016920396187
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Add/Edit Roles ==============================
-  id: 715454757339075
+  id: 6523664495162651
   identification: 
     name: Add/Edit Roles
     type: Form
@@ -92,7 +92,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 719989886339127
+  id: 6528199624162703
   identification: 
     name: Buttons
     type: Static Content
@@ -131,7 +131,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P21_ROLE_ID ==============================
-  id: 715733744339091
+  id: 6523943482162667
   identification: 
     name: P21_ROLE_ID
     type: Hidden
@@ -141,14 +141,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Add/Edit Roles # 715454757339075
+    region: Add/Edit Roles # 6523664495162651
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
     column: ROLE_ID
     data-type: NUMBER
     query-only: true
@@ -164,7 +164,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P21_ROLE_NAME ============================
-  id: 716098762339109
+  id: 6524308500162685
   identification: 
     name: P21_ROLE_NAME
     type: Text Field
@@ -182,7 +182,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Add/Edit Roles # 715454757339075
+    region: Add/Edit Roles # 6523664495162651
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -206,7 +206,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
     column: ROLE_NAME
     data-type: VARCHAR2
     query-only: false
@@ -224,7 +224,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P21_DESCRIPTION ==========================
-  id: 716515271339113
+  id: 6524725009162689
   identification: 
     name: P21_DESCRIPTION
     type: Text Field
@@ -242,7 +242,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Add/Edit Roles # 715454757339075
+    region: Add/Edit Roles # 6523664495162651
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -266,7 +266,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
     column: DESCRIPTION
     data-type: VARCHAR2
     query-only: false
@@ -284,25 +284,23 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P21_IS_ACTIVE ============================
-  id: 716897570339114
+  id: 6525107308162690
   identification: 
     name: P21_IS_ACTIVE
-    type: Text Field
+    type: Switch
 
   label: 
     label: Is Active
-    alignment: Right
+    alignment: Left
 
   settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
+    use-defaults: false
+    on-value: 1
+    off-value: 0
 
   layout: 
     sequence: 40
-    region: Add/Edit Roles # 715454757339075
+    region: Add/Edit Roles # 6523664495162651
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -316,27 +314,26 @@ page-items:
     template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
-    width: 32
 
   validation: 
     value-required: false
-    maximum-length: 1
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
     column: IS_ACTIVE
     data-type: VARCHAR2
     query-only: false
     primary-key: false
 
+  default: 
+    type: Static
+    static-value: 1
+
   session-state: 
     storage: Per Request (Memory Only)
-
-  quick-picks: 
-    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
@@ -344,59 +341,37 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P21_CR_USER ==============================
-  id: 717326663339116
+  id: 6525536401162692
   identification: 
     name: P21_CR_USER
-    type: Text Field
-
-  label: 
-    label: Cr User
-    alignment: Right
+    type: Hidden
 
   settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
+    value-protected: false
 
   layout: 
     sequence: 50
-    region: Add/Edit Roles # 715454757339075
+    region: Add/Edit Roles # 6523664495162651
     slot: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating
-    template-options: 
-    - '#DEFAULT#'
-    width: 32
-
-  validation: 
-    value-required: false
-    maximum-length: 50
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
     column: CR_USER
     data-type: VARCHAR2
     query-only: false
     primary-key: false
 
-  session-state: 
-    storage: Per Request (Memory Only)
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':APP_SUER'
 
-  quick-picks: 
-    show-quick-picks: false
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
 
   security: 
     session-state-protection: Unrestricted
@@ -404,60 +379,37 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P21_CR_DATE ==============================
-  id: 717767871339116
+  id: 6525977609162692
   identification: 
     name: P21_CR_DATE
-    type: Date Picker
-
-  label: 
-    label: Cr Date
-    alignment: Right
+    type: Hidden
 
   settings: 
-    show-time: false
-    display-as: Popup
-    minimum-date: None
-    maximum-date: None
-    multiple-months: No
-    use-defaults: true
+    value-protected: false
 
   layout: 
     sequence: 60
-    region: Add/Edit Roles # 715454757339075
+    region: Add/Edit Roles # 6523664495162651
     slot: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating
-    template-options: 
-    - '#DEFAULT#'
-    width: 32
-
-  validation: 
-    value-required: false
-    maximum-length: 255
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
     column: CR_DATE
     data-type: DATE
     query-only: false
     primary-key: false
 
-  session-state: 
-    storage: Per Request (Memory Only)
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: SYSDATE
 
-  quick-picks: 
-    show-quick-picks: false
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
 
   security: 
     session-state-protection: Unrestricted
@@ -466,14 +418,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 720372103339127
+  id: 6528581841162703
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 719989886339127
+    region: Buttons # 6528199624162703
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -492,14 +444,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 721790027339139
+  id: 6529999765162715
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 719989886339127
+    region: Buttons # 6528199624162703
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -529,14 +481,14 @@ buttons:
     item: P21_ROLE_ID
 
 - # ====== Button: SAVE ========================================
-  id: 722108009339141
+  id: 6530317747162717
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 719989886339127
+    region: Buttons # 6528199624162703
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -562,14 +514,14 @@ buttons:
     item: P21_ROLE_ID
 
 - # ====== Button: CREATE ======================================
-  id: 722557594339141
+  id: 6530767332162717
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 719989886339127
+    region: Buttons # 6528199624162703
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -596,7 +548,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 720448276339127
+  id: 6528658014162703
   identification: 
     name: Cancel Dialog
 
@@ -608,28 +560,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 720372103339127
+    button: CANCEL # 6528581841162703
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 721286690339138
+    id: 6529496428162714
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 720448276339127
+      event: Cancel Dialog # 6528658014162703
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Add/Edit Roles =============
-  id: 722910755339147
+  id: 6531120493162723
   identification: 
     name: Initialize form Add/Edit Roles
     type: Form - Initialization
     execution-chain: None
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
 
   execution: 
     sequence: 10
@@ -637,12 +589,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Add/Edit Roles ================
-  id: 723331947339149
+  id: 6531541685162725
   identification: 
     name: Process form Add/Edit Roles
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Add/Edit Roles # 715454757339075
+    form-region: Add/Edit Roles # 6523664495162651
 
   settings: 
     target-type: Region Source
@@ -659,7 +611,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 723732733339149
+  id: 6531942471162725
   identification: 
     name: Close Dialog
     type: Close Dialog

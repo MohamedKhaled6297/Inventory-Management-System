@@ -278,7 +278,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Inventory Overview ==========================
-  id: 1040463891505647
+  id: 6848673629329223
   identification: 
     name: Inventory Overview
     type: Cards
@@ -425,7 +425,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1040547655505648
+    id: 6848757393329224
     appearance: 
       layout: Grid
       grid-columns: 4 Columns
@@ -467,7 +467,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: Stock by Branch =============================
-  id: 1040679329505649
+  id: 6848889067329225
   identification: 
     name: Stock by Branch
     type: Chart
@@ -508,7 +508,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1040736642505650
+    id: 6848946380329226
     chart: 
       type: Bar
 
@@ -547,7 +547,7 @@ regions:
 
     series: 
     - # ====== Series: Stock Quantity ==============================
-      id: 1040824344505651
+      id: 6849034082329227
       identification: 
         name: Stock Quantity
 
@@ -585,7 +585,7 @@ regions:
 
     axes: 
     - # ====== Axis: x =============================================
-      id: 1040980031505652
+      id: 6849189769329228
       identification: 
         name: x
         show-axis: true
@@ -607,7 +607,7 @@ regions:
         position: Outside
 
     - # ====== Axis: y =============================================
-      id: 1041026552505653
+      id: 6849236290329229
       identification: 
         name: y
         show-axis: true
@@ -632,7 +632,7 @@ regions:
         show: true
 
 - # ====== Region: Stock Movement Trend ========================
-  id: 1041136314505654
+  id: 6849346052329230
   identification: 
     name: Stock Movement Trend
     type: Chart
@@ -673,7 +673,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1041305828505656
+    id: 6849515566329232
     chart: 
       type: Line
 
@@ -712,7 +712,7 @@ regions:
 
     series: 
     - # ====== Series: Stock Movements =============================
-      id: 1041484949505657
+      id: 6849694687329233
       identification: 
         name: Stock Movements
 
@@ -817,7 +817,7 @@ regions:
 
     axes: 
     - # ====== Axis: x =============================================
-      id: 1041530380505658
+      id: 6849740118329234
       identification: 
         name: x
         show-axis: true
@@ -839,7 +839,7 @@ regions:
         position: Outside
 
     - # ====== Axis: y =============================================
-      id: 1041640057505659
+      id: 6849849795329235
       identification: 
         name: y
         show-axis: true
@@ -864,7 +864,7 @@ regions:
         show: true
 
 - # ====== Region: Recent Stock Movements ======================
-  id: 1041263714505655
+  id: 6849473452329231
   identification: 
     name: Recent Stock Movements
     type: Interactive Report
@@ -1040,7 +1040,7 @@ regions:
     exclude-title-from-translation: false
 
   security: 
-    authorization-scheme: CAN_VIEW_REPORTS # 776229832525195
+    authorization-scheme: CAN_VIEW_REPORTS # 6584439570348771
 
   server-cache: 
     caching: Disabled
@@ -1049,7 +1049,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1042572471505668
+    id: 6850782209329244
     link: 
       link-column: Exclude Link Column
 
@@ -1108,14 +1108,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 1086286003005008
+      id: 6894495740828584
       identification: 
         name: Primary Report
         alias: 68945
 
     columns: 
     - # ====== Column: MOVEMENT_DATE ===============================
-      id: 1042613817505669
+      id: 6850823555329245
       identification: 
         column-name: MOVEMENT_DATE
         type: Plain Text
@@ -1160,7 +1160,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MOVEMENT_TYPE ===============================
-      id: 1042717845505670
+      id: 6850927583329246
       identification: 
         column-name: MOVEMENT_TYPE
         type: Plain Text
@@ -1201,7 +1201,7 @@ regions:
         escape-special-characters: false
 
     - # ====== Column: REFERENCE_NO ================================
-      id: 1042865246505671
+      id: 6851074984329247
       identification: 
         column-name: REFERENCE_NO
         type: Plain Text
@@ -1242,7 +1242,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: BRANCH_NAME =================================
-      id: 1042956357505672
+      id: 6851166095329248
       identification: 
         column-name: BRANCH_NAME
         type: Plain Text
@@ -1283,7 +1283,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_NAME ===================================
-      id: 1042998189505673
+      id: 6851207927329249
       identification: 
         column-name: PROD_NAME
         type: Plain Text
@@ -1324,7 +1324,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMP_NAME ====================================
-      id: 1043174875505674
+      id: 6851384613329250
       identification: 
         column-name: EMP_NAME
         type: Plain Text
@@ -1365,7 +1365,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: QTY =========================================
-      id: 1075420055004325
+      id: 6883629792827901
       identification: 
         column-name: QTY
         type: Plain Text
@@ -1406,7 +1406,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: QTY_CHANGE ==================================
-      id: 1075517692004326
+      id: 6883727429827902
       identification: 
         column-name: QTY_CHANGE
         type: Plain Text
@@ -1489,7 +1489,7 @@ regions:
         alignment: center
 
 - # ====== Region: Stock Alerts ================================
-  id: 1075600160004327
+  id: 6883809897827903
   identification: 
     name: Stock Alerts
     title: Stock Alerts
@@ -1555,7 +1555,7 @@ regions:
     exclude-title-from-translation: false
 
   security: 
-    authorization-scheme: CAN_VIEW_STOCK # 776395287532399
+    authorization-scheme: CAN_VIEW_STOCK # 6584605025355975
 
   server-cache: 
     caching: Disabled
@@ -1564,7 +1564,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 1075767197004328
+    id: 6883976934827904
     link: 
       link-column: Exclude Link Column
 
@@ -1623,14 +1623,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 1091983027085417
+      id: 6900192764908993
       identification: 
         name: Primary Report
         alias: 69002
 
     columns: 
     - # ====== Column: BRANCH_NAME =================================
-      id: 1075828381004329
+      id: 6884038118827905
       identification: 
         column-name: BRANCH_NAME
         type: Plain Text
@@ -1671,7 +1671,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PROD_NAME ===================================
-      id: 1075918887004330
+      id: 6884128624827906
       identification: 
         column-name: PROD_NAME
         type: Plain Text
@@ -1712,7 +1712,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CURRENT_STOCK ===============================
-      id: 1076013280004331
+      id: 6884223017827907
       identification: 
         column-name: CURRENT_STOCK
         type: Plain Text
@@ -1753,7 +1753,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MIN_STOCK ===================================
-      id: 1076135963004332
+      id: 6884345700827908
       identification: 
         column-name: MIN_STOCK
         type: Plain Text
@@ -1794,7 +1794,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SHORTAGE_QTY ================================
-      id: 1076195590004333
+      id: 6884405327827909
       identification: 
         column-name: SHORTAGE_QTY
         type: Plain Text
@@ -1835,7 +1835,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: STOCK_STATUS ================================
-      id: 1076323748004334
+      id: 6884533485827910
       identification: 
         column-name: STOCK_STATUS
         type: Plain Text
@@ -1919,7 +1919,7 @@ regions:
         alignment: center
 
 - # ====== Region: Inventory Management System =================
-  id: 114548723975300457220
+  id: 114554532185038280796
   identification: 
     name: Inventory Management System
     type: Static Content
@@ -1972,14 +1972,14 @@ regions:
 
 buttons: 
 - # ====== Button: VIEW_CURRENT_STOCK ==========================
-  id: 1076422098004335
+  id: 6884631835827911
   identification: 
     button-name: VIEW_CURRENT_STOCK
     label: View Current Stock
 
   layout: 
     sequence: 10
-    region: Stock Alerts # 1075600160004327
+    region: Stock Alerts # 6883809897827903
     slot: ABOVE_BOX
     start-new-layout: false
     start-new-row: true
