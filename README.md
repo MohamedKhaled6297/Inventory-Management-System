@@ -1,163 +1,185 @@
 <div align="center">
 
-<img src="assets/inventory-logo.png" alt="Inventory Management System" width="135" />
+<img src="docs/images/inventory-logo.png" alt="Inventory Management System Logo" width="125" />
 
-# 📦 Inventory Management System
+# Inventory Management System
 ### نظام إدارة المخزون
 
-**A bilingual, role-based inventory management application built with Oracle APEX and Oracle Database.**
+**An Oracle APEX inventory solution for multi-branch stock control, transactions, reporting, and role-based access.**
 
-**نظام لإدارة المخزون وحركاته وتقاريره، يدعم العربية والإنجليزية والصلاحيات حسب الدور.**
+**نظام لإدارة المخزون بين الفروع، وتسجيل الحركات، وإعداد التقارير، والتحكم في الصلاحيات.**
 
 ![Oracle APEX](https://img.shields.io/badge/Oracle-APEX-C74634?style=for-the-badge&logo=oracle&logoColor=white)
 ![Oracle Database](https://img.shields.io/badge/Oracle-Database-F80000?style=for-the-badge&logo=oracle&logoColor=white)
-![PL/SQL](https://img.shields.io/badge/PL%2FSQL-Database%20Logic-1B4F72?style=for-the-badge)
-![Languages](https://img.shields.io/badge/Languages-Arabic%20%7C%20English-0088CC?style=for-the-badge)
+![PL/SQL](https://img.shields.io/badge/PL%2FSQL-Business%20Logic-184E77?style=for-the-badge)
+![Arabic English](https://img.shields.io/badge/UI-Arabic%20%7C%20English-009FD4?style=for-the-badge)
 
 </div>
 
 ---
 
-## ✨ Overview
+## Overview
 
-Inventory Management System manages products and stock quantities across branches. Stock is updated through controlled inventory transactions, and users can monitor quantities, movement history, and discrepancies through reports and a dashboard.
+**Inventory Management System** is a bilingual Oracle APEX application for recording incoming and outgoing inventory, transfers between branches, and depreciation. It provides stock monitoring, operational reports, reconciliation, and authorization-based navigation.
 
-> **Repository note:** This package contains an Oracle APEX application export and a bilingual user guide. Database schema deployment scripts and environment-specific configuration must be verified and supplied separately before a clean installation can be guaranteed.
+## Application Preview
 
-## 🚀 Key Features
+### Dashboard — English
 
-| Module | Capabilities |
-|---|---|
-| 🧾 Master Data | Branches, products, categories, units, suppliers, customers and employees |
-| 📥 Order In | Receive products and increase branch stock |
-| 📤 Order Out | Issue products and decrease branch stock, with stock validation |
-| 🔁 Stock Transfer | Transfer quantities between branches |
-| 📉 Depreciation | Record damaged/depreciated quantities and deduct stock |
-| 📊 Dashboard | Stock KPIs, stock by branch, movement visualizations |
-| 📋 Reports | Current stock, stock movements, reconciliation, transaction reports |
-| 🔐 Authorization | Role-based access to administrative, stock and reporting functions |
-| 🌍 Localization | Arabic RTL and English LTR interfaces |
+<p align="center"><img src="docs/images/dashboard-en.png" alt="Inventory dashboard in English" width="1050" /></p>
 
-## 🧭 How Stock Moves
+### Dashboard — Arabic / RTL
+
+<p align="center"><img src="docs/images/dashboard-ar.png" alt="Inventory dashboard in Arabic" width="1050" /></p>
+
+### Inventory Reports
+
+<p align="center"><img src="docs/images/inventory-report.png" alt="Inventory reporting screen" width="1050" /></p>
+
+### Depreciation Order
+
+<p align="center"><img src="docs/images/depreciation-order.png" alt="Depreciation order screen" width="1050" /></p>
+
+> Screenshots show example local-development data and may differ from the latest deployed version.
+
+---
+
+## Business Workflow
 
 ```mermaid
 flowchart TD
-    A[Master Data] --> B[Order In]
-    B --> C[Branch Stock]
-    C --> D[Order Out]
-    C --> E[Transfer Between Branches]
+    A[Master Data: Products and Branches] --> B[Order IN]
+    B --> C[(Branch Stock)]
+    C --> D[Order OUT]
+    C --> E[Stock Transfer]
     C --> F[Depreciation]
-    C --> G[Reports and Dashboard]
-    D --> G
-    E --> G
-    F --> G
+    E --> G[(Destination Branch Stock)]
+    C --> H[Current Stock Report]
+    D --> I[Movement History]
+    E --> I
+    F --> I
+    B --> I
+    I --> J[Stock Reconciliation]
+    H --> K[Dashboard]
+    J --> K
 ```
 
-- **Order In:** increases stock in the receiving branch.
-- **Order Out:** decreases stock, provided sufficient quantity is available.
-- **Transfer:** decreases stock at the source and increases it at the destination.
-- **Depreciation:** decreases stock for the selected branch.
-- **Reconciliation:** compares recorded stock against quantities calculated from supported transaction history; accuracy depends on complete opening balances and movement records.
+## Main Features
 
-## 🖥️ Application Screenshots
-
-Add approved application screenshots under `assets/screenshots/` and update the paths below:
-
-| Dashboard | Inventory Transactions |
+| Module | Capabilities |
 |---|---|
-| `assets/screenshots/dashboard.png` | `assets/screenshots/transactions.png` |
+| **Dashboard** | Total stock, active products, low-stock and out-of-stock indicators, stock charts |
+| **Master Data** | Branches, products, categories, units, suppliers, customers, employees |
+| **Order IN** | Record receiving orders and increase branch stock |
+| **Order OUT** | Record issues and deduct available quantities |
+| **Stock Transfer** | Move quantities between source and destination branches |
+| **Depreciation** | Record depreciated quantities and deduct branch stock |
+| **Current Stock** | Review stock levels, minimums, and stock status |
+| **Stock Movement** | View inventory transactions with filtering |
+| **Stock Reconciliation** | Compare current stock with calculated movement totals |
+| **Operational Reports** | Order IN, Order OUT, and depreciation reports |
+| **Security** | Role-based access and authorization schemes |
+| **Localization** | Arabic RTL and English LTR interface |
 
-| Current Stock | Stock Movement |
+## Inventory Rules
+
+- **Receiving:** adds quantity to the selected branch.
+- **Issuing:** subtracts quantity; insufficient stock is rejected.
+- **Transfer:** subtracts from the source branch and adds to the destination branch.
+- **Depreciation:** subtracts the depreciated quantity.
+- **Reconciliation:** compares stored balances with quantities derived from transaction history. Opening balances and any external/manual stock changes must be accounted for to interpret results correctly.
+
+The database uses centralized stock-adjustment logic through `HR.INV_ADJUST_STOCK` and supporting transaction triggers.
+
+## Roles & Permissions
+
+Access is governed by authorization schemes, not merely by hiding menu entries. The application includes the following schemes:
+
+| Scheme | Responsibility |
 |---|---|
-| `assets/screenshots/current-stock.png` | `assets/screenshots/stock-movement.png` |
-
-*Screenshots are intentionally not represented as uploaded until the final approved images are added.*
-
-## 🔐 Roles & Permissions
-
-The application uses authorization schemes to control access. Schemes used in the project include:
-
-| Authorization scheme | Purpose |
-|---|---|
-| `IS_ADMIN` | Administrative/security access |
-| `CAN_MANAGE_STOCK` | Inventory transaction management |
-| `CAN_MANAGE_DEPRECIATION` | Depreciation management |
-| `CAN_VIEW_REPORTS` | Reporting access |
+| `IS_ADMIN` | Security and administrative functions |
+| `CAN_MANAGE_STOCK` | Inventory transactions |
+| `CAN_MANAGE_DEPRECIATION` | Depreciation operations |
+| `CAN_VIEW_REPORTS` | Reports and analytics |
 | `CAN_VIEW_STOCK` | Stock visibility |
 | `CAN_VIEW_MASTER_DATA` | Master data visibility |
 | `CAN_MANAGE_MASTER_DATA` | Master data maintenance |
 | `CAN_VIEW_TRANSACTIONS_MENU` | Inventory transaction menu visibility |
 
-**Important:** Verify the role-to-scheme mappings and each page's authorization in the deployed application before using this table as a security audit.
+Role assignments should be checked against the deployed authorization configuration. See the bilingual user guide for operating instructions.
 
-## 🧰 Technology Stack
+## Reports & Dashboard
 
-- Oracle APEX — application pages, interactive grids, reports and UI
-- Oracle Database — relational inventory data
-- SQL / PL/SQL — validations, procedures, triggers and business logic
-- JavaScript / CSS — interface enhancements and bilingual presentation
+The dashboard includes stock KPIs and visualizations. Reports provide filters for branches, products, dates, and applicable transaction types. The stock reconciliation report helps identify mismatches between recorded stock and calculated movements.
 
-## 📂 Repository Structure
+## Technology Stack
+
+| Technology | Use |
+|---|---|
+| Oracle APEX | Application UI and reporting |
+| Oracle Database | Persistent data storage |
+| SQL / PL/SQL | Queries, validations, triggers, and stock procedures |
+| JavaScript / CSS | Bilingual UI enhancements and loading experience |
+| Git / GitHub | Version control and documentation |
+
+## Project Structure
 
 ```text
 Inventory-Management-System/
-├── README.md
+├── application/            # Oracle APEX split application export
+├── readable/               # Human-readable APEX export
+├── assets/                 # Static assets (where included)
+├── docs/
+│   ├── images/
+│   │   ├── inventory-logo.png
+│   │   ├── dashboard-en.png
+│   │   ├── dashboard-ar.png
+│   │   ├── inventory-report.png
+│   │   └── depreciation-order.png
+│   └── User_Guide_AR_EN.docx  # If included in repository
+├── install.sql             # APEX installation export
 ├── .gitignore
-├── apex/
-│   └── oracle-apex-app-106-export.zip
-├── assets/
-│   ├── inventory-logo.png
-│   └── screenshots/             # Add approved screenshots
-└── docs/
-    └── User_Guide_AR_EN.docx
+└── README.md
 ```
 
-## ⚙️ Installation & Setup
+## Installation
 
-1. Prepare a compatible Oracle Database and Oracle APEX environment.
-2. Create a dedicated database schema and required database objects using your **reviewed** DDL, PL/SQL, constraints and seed scripts. Do not use production credentials or unreviewed demo passwords.
-3. Open **App Builder → Import** and import the application export (unzip it first if required by your APEX version/import workflow).
-4. Confirm application ID, parsing schema, authentication, authorization and application static files.
-5. Configure Arabic/English translations and confirm RTL/LTR display.
-6. Test the stock procedures and triggers on a **non-production database** before allowing users to post transactions.
-7. Run the acceptance checklist below.
+**Prerequisites:** an Oracle Database instance, Oracle APEX, ORDS, an APEX workspace, and a schema with the necessary inventory database objects and privileges.
 
-> The included APEX export is not a substitute for a full database schema export. The Oracle APEX and database versions have not been independently verified for this package.
+1. Clone the repository:
 
-## ✅ Acceptance Checklist
+   ```bash
+   git clone https://github.com/MohamedKhaled6297/Inventory-Management-System.git
+   ```
+2. Review the database scripts and provision the required tables, procedures, triggers, authorization data, and privileges in the target schema.
+3. Import the Oracle APEX application from the exported files (`install.sql` or the application import, as appropriate).
+4. Configure the parsing schema, authentication, authorization, static files, and environment-specific settings.
+5. Test receiving, issuing, transfers, depreciation, and reconciliation with test data before production use.
 
-- [ ] Authentication and role-based authorization verified
-- [ ] Master data create/edit validations tested
-- [ ] Order In updates stock correctly
-- [ ] Order Out blocks insufficient stock
-- [ ] Transfer adjusts both branches correctly
-- [ ] Depreciation decreases stock correctly
-- [ ] Update/delete transaction behavior verified
-- [ ] Current Stock and Reconciliation totals checked
-- [ ] Arabic and English views checked, including loading behavior
-- [ ] No passwords, secrets or real personal data committed
+> **Deployment note:** An APEX export alone does not necessarily provision the database schema. Verify database scripts and dependencies separately; do not assume a clean install is automated.
 
-## 📘 User Guide
+## User Guide
 
-📄 [Arabic & English User Guide (Word)](docs/User_Guide_AR_EN.docx)
+The project includes an Arabic/English user guide explaining navigation, inventory workflows, and permissions. Place the guide at `docs/User_Guide_AR_EN.docx` to make it available here:
 
-## 🛡️ Security Notes
+[Download Bilingual User Guide](docs/User_Guide_AR_EN.docx)
 
-Never commit real database passwords, authentication secrets, wallet files, personal records, or sample accounts with working passwords. Review exported application configuration and SQL seed scripts before publishing this repository publicly. Use environment-specific configuration for deployment.
+## Security Notes
 
-## 🗺️ Future Enhancements
+Before publishing a public repository, remove passwords, real user credentials, connection strings, confidential records, internal endpoints, and environment-specific secrets. Review SQL seed scripts and application exports carefully.
 
-- Approval workflow for stock transactions
-- Exportable analytics and scheduled reporting
-- Inventory audit trail improvements
-- Automated deployment and regression tests
+## Roadmap
+
+- Automated deployment and database migration scripts
+- Additional validation and integration tests
+- Extended audit and operational monitoring
+- Exportable management reports
+- Further mobile and accessibility refinements
+
+## Author
+
+**Mohamed Khaled** — Oracle APEX / SQL / PL/SQL
 
 ---
 
-<div align="center">
-
-**Inventory Management System — Built with Oracle APEX**
-
-*Manage stock • Track movement • Improve visibility*
-
-</div>
+<div align="center"><strong>Inventory Management System</strong><br/>Multi-Branch Inventory Control · Arabic & English</div>
